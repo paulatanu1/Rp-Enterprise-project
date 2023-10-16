@@ -1,0 +1,44 @@
+# Compiled Frontend
+website/*
+website/.*
+website-compilation/*
+website-compilation/.*
+
+# Frontend folders
+frontend/src/assets/images/*
+# frontend/src/assets/fonts/*
+
+# IDEs and editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+workspace.code-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Log Files
+# ---------
+*.log
+
+# Backup Files
+# ------------
+*.bak
+*.backup
+*.bakup
+*.bkup
+*.bk
+*.zip
