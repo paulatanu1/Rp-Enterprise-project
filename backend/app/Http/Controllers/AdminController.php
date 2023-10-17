@@ -8,7 +8,7 @@ use  App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 
-class AuthController extends Controller
+class AdminController extends Controller
 {
 
 
@@ -23,41 +23,18 @@ class AuthController extends Controller
      * @return Response
      */
 
-    public function register(Request $request) {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6',
-        ]);
-
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
+    public function dashboard(Request $request)
+    {
+        dd("hhh");
 
         return response()->json(
             [
                 'message' => 'User registered successfully'
-            ], 200
+            ],
+            200
         );
     }
 
-    public function login(Request $request){
-
-        $this->validate($request, [
-            'email' => 'required|string',
-            'password' => 'required|string',
-        ]);
-
-        $credentials = $request->only(['email', 'password']);
-
-        if (!$token = Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
-
-        return $this->respondWithToken($token);
-    }
 
     /**
      * Get the authenticated User.
@@ -74,7 +51,8 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout(){
+    public function logout()
+    {
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
@@ -85,7 +63,8 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function refresh(){
+    public function refresh()
+    {
         return $this->respondWithToken(auth()->refresh());
     }
 
@@ -96,7 +75,8 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token){
+    protected function respondWithToken($token)
+    {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
