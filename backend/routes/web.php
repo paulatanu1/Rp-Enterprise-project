@@ -25,6 +25,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 $router->group(['middleware' => 'admin'], function () use ($router) {
     $router->post('/admin/dashboard', 'AdminController@dashboard');
+    $router->post('/admin/productAdd', 'AdminController@productAdd');
+    $router->post('/admin/productList', 'AdminController@productList');
     $router->post('logout', 'AuthController@logout');
     $router->post('refresh', 'AuthController@refresh');
     $router->post('me', 'AuthController@me');
