@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use  App\Models\Product;
-use Illuminate\Support\Facades\Hash;
+use App\Libraries\Helpers;
+
+
+
 
 
 class AdminController extends Controller
@@ -127,6 +129,9 @@ class AdminController extends Controller
     }
 
     public function productList(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
         if ($request->input('sort_by') == '') {
             $post['sort_by'] = "";
         } else {
@@ -186,13 +191,18 @@ class AdminController extends Controller
 
         $productListArr = Product::productList($post, $page_number, $no_of_records);
         $productListArrCount = Product::productList($post, $page_number, $no_of_records);
-        return response()->json(
-            [
-                'message' => 'Product list fetch successfully',
-                'data' => $productListArr,
-                'total_count' => count($productListArrCount)
-            ],
-            200
-        );
+        if(!empty($productListArr)){
+            $success_message = 'Fetch successfully';
+            $http_response = 'http_response_ok';
+            $result_arr['dataset'] = $productListArr;
+            $result_arr['total_count'] = count($productListArrCount);
+        } else {
+            $result_arr['dataset'] = array();
+            $result_arr['total_count'] = 0;
+            $error_message = 'Result not found';
+            $http_response = 'http_response_ok_no_content';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+
     }
 }
