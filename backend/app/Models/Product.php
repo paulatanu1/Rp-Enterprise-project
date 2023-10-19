@@ -32,8 +32,7 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
     }
 
 
-    public static function productList($post,$page_number = '', $no_of_records = '')
-    {
+    public static function productList($post,$page_number = '', $no_of_records = ''){
         $productArr = Product::select('id', 'status', 'lot_no', 'stone_id', 'location', 'weight', 'shape', 'color', 'clarity', 'cut', 'polish', 'symmetry', 'rapnet_price', 'system_discount', 'lab', 'certificate', 'certi_pdf_url', 'ratio', 'measurements', 'fluor_int', 'table', 'depth', 'crown_ht', 'crown_angle', 'pavilion_dep', 'pavilion_an', 'stone_type', 'v360', 'imgurl', 'eye_clean');
 
         if (!empty($post['sort_by']) && !empty($post['order_by'])) {
@@ -89,6 +88,16 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
             $productArr = array();
         }
         return $productArr;
+    }
+
+    public static function fetchProductById($id){
+        $result = Product::where('id',$id['product_id'])->first();
+        return $result;
+    }
+
+    public static function updateRecord($id, $dataArr){
+        $result = Product::where('id', $id)->update($dataArr);
+        return $result;
     }
     
 }

@@ -89,6 +89,9 @@ class AdminController extends Controller
     }
 
     public function productAdd(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
         $product = new Product();
         $product->status = $request->input('status');
         $product->lot_no = $request->input('lot_no');
@@ -120,12 +123,11 @@ class AdminController extends Controller
         $product->imgurl = $request->input('imgurl');
         $product->eye_clean = $request->input('eye_clean');
         $product->save();
-        return response()->json(
-            [
-                'message' => 'Product add successfully'
-            ],
-            200
-        );
+
+        $success_message = 'Data add successfully';
+        $http_response = 'http_response_ok';
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+
     }
 
     public function productList(Request $request){
@@ -204,5 +206,58 @@ class AdminController extends Controller
         }
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
 
+    }
+
+    public function productEdit(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        if ($request->input('product_id') == '') {
+            $post['product_id'] = "";
+        } else {
+            $post['product_id'] = $request->input('product_id');
+        }
+
+        $productArr = Product::fetchProductById($post);
+        if(!empty($productArr)){
+            $productId = $productArr['id'];
+            $product['status'] = $request->input('status');
+            $product['lot_no'] = $request->input('lot_no');
+            $product['stone_id'] = $request->input('stone_id');
+            $product['location'] = $request->input('location');
+            $product['weight'] = $request->input('weight');
+            $product['shape'] = $request->input('shape');
+            $product['color'] = $request->input('color');
+            $product['clarity'] = $request->input('clarity');
+            $product['cut'] = $request->input('cut');
+            $product['polish'] = $request->input('polish');
+            $product['symmetry'] = $request->input('symmetry');
+            $product['rapnet_price'] = $request->input('rapnet_price');
+            $product['system_discount'] = $request->input('system_discount');
+            $product['lab'] = $request->input('lab');
+            $product['certificate'] = $request->input('certificate');
+            $product['certi_pdf_url'] = $request->input('certi_pdf_url');
+            $product['ratio'] = $request->input('ratio');
+            $product['measurements'] = $request->input('measurements');
+            $product['fluor_int'] = $request->input('fluor_int');
+            $product['table'] = $request->input('table');
+            $product['depth'] = $request->input('depth');
+            $product['crown_ht'] = $request->input('crown_ht');
+            $product['crown_angle'] = $request->input('crown_angle');
+            $product['pavilion_dep'] = $request->input('pavilion_dep');
+            $product['pavilion_an'] = $request->input('pavilion_an');
+            $product['stone_type'] = $request->input('stone_type');
+            $product['v360'] = $request->input('v360');
+            $product['imgurl'] = $request->input('imgurl');
+            $product['eye_clean'] = $request->input('eye_clean');
+            $adminMaster = Product::updateRecord($productId, $product);
+
+            $success_message = 'Data update successfully';
+            $http_response = 'http_response_ok';
+        }else{
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
 }
