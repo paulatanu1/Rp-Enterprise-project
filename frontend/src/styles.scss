@@ -53,3 +53,13 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+body {
+    font-size: 15px;
+    line-height: 26px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Open Sans", sans-serif;
+    color: #707070;
+    font-weight: 400;
+}

@@ -224,3 +224,22 @@
     //     }
     // }
 }
+
+.tm-header-bottomarea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: 100%;
+    z-index: 99;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.11);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.11);
+}
+
+.tm-header-bottomarea {
+    border-top: 1px solid #ebebeb;
+}
+
+.bg-white {
+    background-color: #ffffff !important;
+}
