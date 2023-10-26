@@ -1,0 +1,35 @@
+.tm-section {
+    position: relative;
+    z-index: 1;
+}
+
+.tm-padding-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.bg-grey {
+    background-color: #f7f7f7;
+}
+
+.tm-sectiontitle {
+    margin-bottom: 55px;
+    padding: 0 40px;
+}
+
+.tm-sectiontitle h3 {
+    margin-top: -5px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+h3,
+.h3 {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 600;
+}
+
+.tm-sectiontitle p {
+    margin-bottom: 0;
+}

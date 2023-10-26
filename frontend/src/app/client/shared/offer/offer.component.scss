@@ -291,3 +291,26 @@ button.tm-button {
         opacity: 0;
     }
 }
+
+
+.tm-button:hover::before,
+a.tm-button:hover::before,
+button.tm-button:hover::before {
+    top: 0;
+}
+
+.tm-button::before,
+a.tm-button::before,
+button.tm-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -100%;
+    height: 100%;
+    width: 100%;
+    background: #000000;
+    z-index: -1;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
