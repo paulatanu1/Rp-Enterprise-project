@@ -191,19 +191,45 @@ class AdminController extends Controller
             $post['clarity'] = $request->input('clarity');
         }
 
+        $productListArrCount = Product::productList($post);
         $productListArr = Product::productList($post, $page_number, $no_of_records);
-        $productListArrCount = Product::productList($post, $page_number, $no_of_records);
         if(!empty($productListArr)){
-            $success_message = 'Fetch successfully';
-            $http_response = 'http_response_ok';
-            $result_arr['dataset'] = $productListArr;
-            $result_arr['total_count'] = count($productListArrCount);
-        } else {
-            $result_arr['dataset'] = array();
-            $result_arr['total_count'] = 0;
-            $error_message = 'Result not found';
-            $http_response = 'http_response_ok_no_content';
+            foreach ($productListArr as $key => $items) {
+                // Original price
+                // $originalPrice = $items['rapnet_price']; // Replace this with your original price
+                $originalPrice = $items['rapnet_price']; // Replace this with your original price
+
+                // Discount percentage
+                $discountPercentage = $items['system_discount']; // Replace this with your discount percentage
+
+                // Calculate the discount amount
+                $discountAmount = ($originalPrice * $discountPercentage) / 100;
+
+                // Calculate the discounted price
+                $discountedPrice = $originalPrice - $discountAmount;
+                $discountedPrice = number_format($discountedPrice, 2, '.', ',');
+
+                $weight = $items['weight'];
+                $system_amount = $discountedPrice * $weight;
+                $system_amount = number_format($system_amount, 2, '.', ',');
+
+                $productListArr[$key]['system_price'] = $discountedPrice;
+                $productListArr[$key]['system_amount'] = $system_amount;
+            }
+
+            if (!empty($productListArr)) {
+                $success_message = 'Fetch successfully';
+                $http_response = 'http_response_ok';
+                $result_arr['dataset'] = $productListArr;
+                $result_arr['total_count'] = count($productListArrCount);
+            } else {
+                $result_arr['dataset'] = array();
+                $result_arr['total_count'] = 0;
+                $error_message = 'Result not found';
+                $http_response = 'http_response_ok_no_content';
+            }
         }
+        
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
 
     }
@@ -255,6 +281,70 @@ class AdminController extends Controller
             $success_message = 'Data update successfully';
             $http_response = 'http_response_ok';
         }else{
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+
+    public function stoneType(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $stoneType = Product::stoneType();
+        if (!empty($stoneType)) {
+            $result_arr['dataset'] = $stoneType;
+            $success_message = 'Data Fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+    
+    public function shape(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $shape = Product::shape();
+        if (!empty($shape)) {
+            $result_arr['dataset'] = $shape;
+            $success_message = 'Data Fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+
+    public function color(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $color = Product::color();
+        if (!empty($color)) {
+            $result_arr['dataset'] = $color;
+            $success_message = 'Data Fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+
+    public function clarity(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $clarity = Product::clarity();
+        if (!empty($clarity)) {
+            $result_arr['dataset'] = $clarity;
+            $success_message = 'Data Fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
             $error_message = 'Data not found';
             $http_response = 'http_response_bad_request';
         }

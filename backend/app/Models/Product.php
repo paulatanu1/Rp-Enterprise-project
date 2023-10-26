@@ -95,8 +95,20 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
         return $result;
     }
 
-    public static function updateRecord($id, $dataArr){
-        $result = Product::where('id', $id)->update($dataArr);
+    public static function stoneType(){
+        $result = Product::select('stone_type')->groupBy('stone_type')->get();
+        return $result;
+    }
+    public static function shape(){
+        $result = Product::select('shape')->groupBy('shape')->get();
+        return $result;
+    }
+    public static function color(){
+        $result = Product::select('color')->groupBy('color')->get();
+        return $result;
+    }
+    public static function clarity(){
+        $result = Product::select('clarity')->groupBy('clarity')->get();
         return $result;
     }
     
