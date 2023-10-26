@@ -6,6 +6,7 @@ import { FrontpageComponent } from './frontpage.component';
 import { TopContactBarComponent } from '../shared/top-contact-bar/top-contact-bar.component';
 import { SearchAreaComponent } from '../shared/search-area/search-area.component';
 import { ManuBarComponent } from '../shared/manu-bar/manu-bar.component';
+import { FooterComponent } from '../shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ManuBarComponent } from '../shared/manu-bar/manu-bar.component';
     TopContactBarComponent,
     SearchAreaComponent,
     ManuBarComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, FrontpageRoutingModule],
 })
