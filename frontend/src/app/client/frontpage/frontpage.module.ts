@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { FrontpageRoutingModule } from './frontpage-routing.module';
 import { FrontpageComponent } from './frontpage.component';
-
+import { TopContactBarComponent } from '../shared/top-contact-bar/top-contact-bar.component';
+import { SearchAreaComponent } from '../shared/search-area/search-area.component';
+import { ManuBarComponent } from '../shared/manu-bar/manu-bar.component';
 
 @NgModule({
   declarations: [
-    FrontpageComponent
+    FrontpageComponent,
+    TopContactBarComponent,
+    SearchAreaComponent,
+    ManuBarComponent,
   ],
-  imports: [
-    CommonModule,
-    FrontpageRoutingModule
-  ]
+  imports: [CommonModule, FrontpageRoutingModule],
 })
-export class FrontpageModule { }
+export class FrontpageModule {}

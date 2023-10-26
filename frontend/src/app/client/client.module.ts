@@ -14,24 +14,8 @@ import { LatestBlogsComponent } from './shared/latest-blogs/latest-blogs.compone
 import { AffiliationsComponent } from './shared/affiliations/affiliations.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
-
 @NgModule({
-  declarations: [
-    ClientComponent,
-    ManuBarComponent,
-    TopContactBarComponent,
-    SearchAreaComponent,
-    BannerComponent,
-    PopulerShapesComponent,
-    NewProductComponent,
-    OfferComponent,
-    LatestBlogsComponent,
-    AffiliationsComponent,
-    FooterComponent
-  ],
-  imports: [
-    CommonModule,
-    ClientRoutingModule
-  ]
+  declarations: [ClientComponent],
+  imports: [CommonModule, ClientRoutingModule],
 })
-export class ClientModule { }
+export class ClientModule {}
