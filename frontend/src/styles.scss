@@ -9,7 +9,7 @@ p {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     -webkit-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
@@ -59,7 +59,7 @@ body {
     line-height: 26px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
     color: #707070;
     font-weight: 400;
 }
