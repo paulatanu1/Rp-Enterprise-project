@@ -4,14 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
 
-
 @NgModule({
-  declarations: [
-    BlogComponent
-  ],
-  imports: [
-    CommonModule,
-    BlogRoutingModule
-  ]
+  declarations: [],
+  imports: [CommonModule, BlogRoutingModule],
 })
-export class BlogModule { }
+export class BlogModule {}
