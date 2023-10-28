@@ -1,0 +1,228 @@
+.tm-header {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 99;
+}
+
+.tm-breadcrumb-area {
+    background-position: bottom center;
+}
+
+.tm-padding-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.bg-grey {
+    background-color: #f7f7f7;
+}
+
+.tm-breadcrumb h2 {
+    font-weight: 600;
+    margin-top: -5px;
+    color: #ffffff;
+}
+
+.tm-breadcrumb ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    font-size: 0;
+    margin-bottom: -10px;
+}
+
+.tm-breadcrumb ul li {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.tm-breadcrumb ul li a {
+    color: #ffffff;
+}
+
+.tm-breadcrumb ul li a::after {
+    content: '/';
+    padding: 0 5px;
+}
+
+// Page Content
+
+.tm-contact-block {
+    background: #f7f7f7;
+    padding: 30px;
+}
+
+.tm-contact-block i {
+    font-size: 40px;
+    color: #000000;
+    margin-bottom: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.tm-contact-block h6 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.tm-contact-block p {
+    margin-bottom: 0;
+}
+
+.tm-padding-section-top {
+    padding-top: 100px;
+}
+
+
+.tm-sectiontitle {
+    margin-bottom: 55px;
+    padding: 0 40px;
+}
+
+.tm-sectiontitle h3 {
+    margin-top: -5px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.tm-sectiontitle p {
+    margin-bottom: 0;
+}
+
+.form-messages,
+.appointment-messages {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.tm-form-inner {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: -30px;
+}
+
+.tm-form-fieldhalf {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 calc(50% - 15px);
+    -ms-flex: 0 0 calc(50% - 15px);
+    flex: 0 0 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+}
+
+.tm-form-field {
+    margin-top: 30px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.tm-form label {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    color: #000000;
+    line-height: 22px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.tm-form input,
+.tm-form textarea,
+.tm-form select {
+    border: 1px solid #d2d2d2;
+    background: transparent;
+    color: #707070;
+    border-radius: 4px;
+}
+
+input,
+select,
+button {
+    height: 50px;
+    padding: 0 15px;
+}
+
+.tm-form textarea {
+    min-height: 200px;
+}
+
+.tm-form input,
+.tm-form textarea,
+.tm-form select {
+    border: 1px solid #d2d2d2;
+    background: transparent;
+    color: #707070;
+    border-radius: 4px;
+}
+
+textarea {
+    padding: 10px 15px;
+}
+
+.tm-button,
+a.tm-button,
+button.tm-button {
+    display: inline-block;
+    height: 50px;
+    min-width: 150px;
+    background: #f2ba59;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+    font-weight: 600;
+    border-radius: 4px;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    padding: 0 40px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.tm-button::before,
+a.tm-button::before,
+button.tm-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -100%;
+    height: 100%;
+    width: 100%;
+    background: #000000;
+    z-index: -1;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.tm-contact-block a {
+    color: #707070;
+}
+
+a {
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}

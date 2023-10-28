@@ -1,0 +1,42 @@
+.navbar {
+    height: 100px;
+    background-color: #567086;
+    padding: 0;
+}
+
+.navbar .container {
+    position: relative;
+}
+
+.dropdown-item,
+.nav-link {
+    padding: 15px 20px;
+}
+
+.nav-link {
+    color: #fff;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 90%;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .active>.nav-link,
+.navbar-nav .nav-link.active {
+    background-color: #f5a623;
+    color: #fff;
+}
+
+.dropdown,
+.dropleft,
+.dropright,
+.dropup {
+    position: relative;
+}

@@ -16,3 +16,28 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('login', 'AuthController@login');
+    $router->post('register', 'AuthController@register');
+    
+});
+
+$router->group(['middleware' => 'admin'], function () use ($router) {
+    $router->post('/admin/dashboard', 'AdminController@dashboard');
+    $router->post('/admin/productAdd', 'AdminController@productAdd');
+    $router->post('/admin/productList', 'AdminController@productList');
+    $router->post('/admin/productEdit', 'AdminController@productEdit');
+    $router->post('/admin/stoneType', 'AdminController@stoneType');
+    $router->post('/admin/shape', 'AdminController@shape');
+    $router->post('/admin/color', 'AdminController@color');
+    $router->post('/admin/clarity', 'AdminController@clarity');
+    $router->post('logout', 'AuthController@logout');
+    $router->post('refresh', 'AuthController@refresh');
+    $router->post('me', 'AuthController@me');
+});
+
+$router->group(['middleware' => 'user'], function () use ($router) {
+    $router->post('/user/profile', 'UserController@dashboard');
+});
+
