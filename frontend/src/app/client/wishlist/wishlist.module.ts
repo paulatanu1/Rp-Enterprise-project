@@ -4,14 +4,8 @@ import { CommonModule } from '@angular/common';
 import { WishlistRoutingModule } from './wishlist-routing.module';
 import { WishlistComponent } from './wishlist.component';
 
-
 @NgModule({
-  declarations: [
-    WishlistComponent
-  ],
-  imports: [
-    CommonModule,
-    WishlistRoutingModule
-  ]
+  declarations: [],
+  imports: [CommonModule, WishlistRoutingModule],
 })
-export class WishlistModule { }
+export class WishlistModule {}

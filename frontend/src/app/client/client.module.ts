@@ -19,6 +19,8 @@ import { AboutComponent } from './about/about.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
+import { CartComponent } from './cart/cart.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     BlogComponent,
     ContactComponent,
     LoginRegisterComponent,
+    CartComponent,
+    WishlistComponent,
   ],
   imports: [CommonModule, ClientRoutingModule, CarouselModule.forRoot()],
   exports: [
