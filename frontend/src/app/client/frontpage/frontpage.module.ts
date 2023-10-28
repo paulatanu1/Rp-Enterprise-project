@@ -12,7 +12,8 @@ import { PopulerShapesComponent } from '../shared/populer-shapes/populer-shapes.
 import { NewProductComponent } from '../shared/new-product/new-product.component';
 import { LatestBlogsComponent } from '../shared/latest-blogs/latest-blogs.component';
 import { AffiliationsComponent } from '../shared/affiliations/affiliations.component';
-
+import { BannerComponent } from '../shared/banner/banner.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 @NgModule({
   declarations: [
     FrontpageComponent,
@@ -25,7 +26,8 @@ import { AffiliationsComponent } from '../shared/affiliations/affiliations.compo
     NewProductComponent,
     LatestBlogsComponent,
     AffiliationsComponent,
+    BannerComponent,
   ],
-  imports: [CommonModule, FrontpageRoutingModule],
+  imports: [CommonModule, FrontpageRoutingModule, CarouselModule.forRoot()],
 })
 export class FrontpageModule {}
