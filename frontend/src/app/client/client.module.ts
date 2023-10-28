@@ -18,6 +18,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AboutComponent } from './about/about.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginRegisterComponent } from './login-register/login-register.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ContactComponent } from './contact/contact.component';
     AboutComponent,
     BlogComponent,
     ContactComponent,
+    LoginRegisterComponent,
   ],
   imports: [CommonModule, ClientRoutingModule, CarouselModule.forRoot()],
   exports: [

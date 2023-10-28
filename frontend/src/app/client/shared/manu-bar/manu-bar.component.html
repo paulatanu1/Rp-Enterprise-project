@@ -3,17 +3,17 @@
   <div class="container">
     <nav class="tm-header-nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/about']">About</a></li>
         <li class="tm-header-nav-dropdown">
-          <a href="products.html">Shop</a>
+          <a>Shop</a>
           <ul>
-            <li><a href="products.html">Products</a></li>
+            <li><a [routerLink]="['/product']">Products</a></li>
           </ul>
         </li>
 
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a [routerLink]="['/blog']">Blog</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
       </ul>
     </nav>
   </div>

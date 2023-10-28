@@ -3,7 +3,7 @@
     <div class="tm-mobilenav"></div>
     <div class="row align-items-center">
       <div class="col-lg-3 col-6 order-1 order-lg-1">
-        <a href="index.html" class="tm-header-logo">
+        <a [routerLink]="['/']" class="tm-header-logo">
           <img src="assets/images/logo.png" alt="surose" />
         </a>
       </div>
@@ -16,13 +16,13 @@
       <div class="col-lg-3 col-6 order-2 order-lg-3">
         <ul class="tm-header-icons">
           <li>
-            <a href="wishlist.html">
+            <a [routerLink]="['/wishlist']">
               <i class="ion-android-favorite-outline"></i>
               <span>0</span>
             </a>
           </li>
           <li>
-            <a href="cart.html">
+            <a [routerLink]="['/cart']">
               <i class="ion-bag"></i>
               <span>0</span>
             </a>
