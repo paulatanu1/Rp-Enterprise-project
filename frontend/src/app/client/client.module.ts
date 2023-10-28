@@ -13,9 +13,39 @@ import { OfferComponent } from './shared/offer/offer.component';
 import { LatestBlogsComponent } from './shared/latest-blogs/latest-blogs.component';
 import { AffiliationsComponent } from './shared/affiliations/affiliations.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { FrontpageComponent } from './frontpage/frontpage.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [ClientComponent],
-  imports: [CommonModule, ClientRoutingModule],
+  declarations: [
+    ClientComponent,
+    TopContactBarComponent,
+    SearchAreaComponent,
+    ManuBarComponent,
+    FooterComponent,
+    OfferComponent,
+    PopulerShapesComponent,
+    NewProductComponent,
+    LatestBlogsComponent,
+    AffiliationsComponent,
+    BannerComponent,
+    FrontpageComponent,
+    AboutComponent,
+  ],
+  imports: [CommonModule, ClientRoutingModule, CarouselModule.forRoot()],
+  exports: [
+    TopContactBarComponent,
+    SearchAreaComponent,
+    ManuBarComponent,
+    FooterComponent,
+    OfferComponent,
+    PopulerShapesComponent,
+    NewProductComponent,
+    LatestBlogsComponent,
+    AffiliationsComponent,
+    BannerComponent,
+    FrontpageComponent,
+  ],
 })
 export class ClientModule {}

@@ -60,8 +60,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: "Montserrat", sans-serif !important;
-    color: #707070;
+    color: #707070 !important;
     font-weight: 400;
 }
+
 /* Importing Bootstrap SCSS file. */
 @import "./node_modules/bootstrap/scss/bootstrap";
