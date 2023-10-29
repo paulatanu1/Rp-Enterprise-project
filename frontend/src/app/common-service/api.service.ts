@@ -32,7 +32,7 @@ export class ApiService {
     let paths: string[] = location.pathname.split('/').splice(1, 1);
 
     if (IsUrlrawformat == false) {
-      url = environment.API_URL + '/' + environment.API_VERSION + url;
+      url = environment.API_URL + '/' + url;
     }
 
     let httpHeaderValue = new HttpHeaders();
@@ -51,22 +51,24 @@ export class ApiService {
     //     .set('X-localization', localization);
     // }
 
-    if (method == 'post') {
-      console.log(httpHeaderValue);
+    if (method === 'post') {
       return this.http
         .post(url, data, { headers: httpHeaderValue, observe: 'response' })
         .pipe(
           timeout(environment.API_TIMEOUT),
-          catchError((e, c) => {
-            return throwError(e);
+          catchError((error) => {
+            console.log(error, 'errr');
+            console.error('HTTP request failed:', error);
+            return throwError('Something went wrong. Please try again later.');
           }),
           map((response: any) => {
-            var responseobj = JSON.parse(JSON.stringify(response.body));
-            responseobj.status = response.status;
-            if (responseobj.token != undefined) {
-              ls.set('login_token', responseobj.token);
+            console.log(response, 'resss');
+            const responseObj = response.body;
+            responseObj.status = response.status;
+            if (responseObj.token !== undefined) {
+              ls.set('login_token', responseObj.token);
             }
-            return responseobj;
+            return responseObj;
           })
         );
     } else if (method == 'get') {

@@ -23,6 +23,7 @@ import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ProductComponent } from './product/product.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,13 @@ import { MyAccountComponent } from './my-account/my-account.component';
     ProductComponent,
     MyAccountComponent,
   ],
-  imports: [CommonModule, ClientRoutingModule, CarouselModule.forRoot()],
+  imports: [
+    CommonModule,
+    ClientRoutingModule,
+    CarouselModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [
     TopContactBarComponent,
     SearchAreaComponent,
