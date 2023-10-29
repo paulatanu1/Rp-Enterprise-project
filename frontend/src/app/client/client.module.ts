@@ -21,6 +21,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     LoginRegisterComponent,
     CartComponent,
     WishlistComponent,
+    ProductComponent,
   ],
   imports: [CommonModule, ClientRoutingModule, CarouselModule.forRoot()],
   exports: [
