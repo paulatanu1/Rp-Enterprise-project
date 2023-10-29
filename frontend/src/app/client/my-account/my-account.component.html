@@ -1,1 +1,27 @@
-<p>my-account works!</p>
+<div id="wrapper" class="wrapper">
+  <div class="tm-header tm-header-sticky">
+    <app-top-contact-bar></app-top-contact-bar>
+    <app-search-area></app-search-area>
+    <app-manu-bar></app-manu-bar>
+  </div>
+  <!-- Breadcrumb Area -->
+  <div
+    class="tm-breadcrumb-area tm-padding-section bg-grey"
+    style="
+      background-image: url(../../../../../../assets/images/breadcrumb-bg.jpg);
+      margin-top: 57.6719px;
+    "
+  >
+    <div class="container">
+      <div class="tm-breadcrumb">
+        <h2>My Account</h2>
+        <ul>
+          <li><a [routerLink]="['/']">Home</a></li>
+          <li>My Account</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--// Breadcrumb Area -->
+  <app-footer></app-footer>
+</div>

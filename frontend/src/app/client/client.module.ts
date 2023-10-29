@@ -22,6 +22,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ProductComponent } from './product/product.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ProductComponent } from './product/product.component';
     CartComponent,
     WishlistComponent,
     ProductComponent,
+    MyAccountComponent,
   ],
   imports: [CommonModule, ClientRoutingModule, CarouselModule.forRoot()],
   exports: [
