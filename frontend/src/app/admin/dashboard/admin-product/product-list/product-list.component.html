@@ -1,0 +1,133 @@
+<div class="wrapper bg-blue">
+  <app-admin-header></app-admin-header>
+  <div class="container-fluid mt-5">
+    <div class="row tm-content-row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+        <div class="tm-bg-primary-dark tm-block tm-block-products">
+          <div class="tm-product-table-container">
+            <table class="table table-hover tm-table-small tm-product-table">
+              <thead>
+                <tr>
+                  <!-- <th scope="col">&nbsp;</th> -->
+                  <th scope="col">certi_pdf_url</th>
+                  <th scope="col">certificate</th>
+                  <th scope="col">clarity</th>
+                  <th scope="col">color</th>
+                  <th scope="col">crown_angle</th>
+                  <th scope="col">crown_ht</th>
+                  <th scope="col">cut</th>
+                  <th scope="col">depth</th>
+                  <th scope="col">eye_clean</th>
+                  <th scope="col">fluor_int</th>
+                  <th scope="col">imgurl</th>
+                  <th scope="col">lab</th>
+                  <th scope="col">location</th>
+                  <th scope="col">lot_no</th>
+                  <th scope="col">measurements</th>
+                  <th scope="col">pavilion_an</th>
+                  <th scope="col">pavilion_dep</th>
+                  <th scope="col">polish</th>
+                  <th scope="col">rapnet_price</th>
+                  <th scope="col">ratio</th>
+                  <th scope="col">shape</th>
+                  <th scope="col">status</th>
+                  <th scope="col">stone_id</th>
+                  <th scope="col">stone_type</th>
+                  <th scope="col">symmetry</th>
+                  <th scope="col">system_amount</th>
+                  <th scope="col">system_discount</th>
+                  <th scope="col">system_price</th>
+                  <th scope="col">v360</th>
+                  <th scope="col">weight</th>
+                  <th scope="col">&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of productItems">
+                  <!-- <th scope="row"><input type="checkbox" /></th> -->
+                  <td class="tm-product-name">
+                    <a
+                      *ngIf="item.certi_pdf_url"
+                      href="{{ item.certi_pdf_url }}"
+                      target="_blank"
+                    >
+                      {{ item.certi_pdf_url }}
+                    </a>
+                    <p *ngIf="!item.certi_pdf_url">Not Available</p>
+                  </td>
+                  <td class="tm-product-name">
+                    {{ item.certificate ? item.certificate : 'NA' }}
+                  </td>
+                  <td class="tm-product-name">
+                    {{ item.clarity ? item.clarity : 'NA' }}
+                  </td>
+                  <td class="tm-product-name">
+                    {{ item.color ? item.color : 'NA' }}
+                  </td>
+                  <td class="tm-product-name">{{ item.crown_angle }}</td>
+                  <td class="tm-product-name">{{ item.crown_ht }}</td>
+                  <td class="tm-product-name">{{ item.cut }}</td>
+                  <td class="tm-product-name">{{ item.depth }}</td>
+                  <td class="tm-product-name">{{ item.eye_clean }}</td>
+                  <td class="tm-product-name">{{ item.fluor_int }}</td>
+                  <!-- <td class="tm-product-name">{{item.id}}</td> -->
+                  <td class="tm-product-name">
+                    <a
+                      *ngIf="item.imgurl"
+                      href="{{ item.imgurl }}"
+                      target="_blank"
+                    >
+                      {{ item.imgurl }}
+                    </a>
+                    <p *ngIf="!item.imgurl">Not Available</p>
+                  </td>
+                  <td class="tm-product-name">{{ item.lab }}</td>
+                  <td class="tm-product-name">{{ item.location }}</td>
+                  <td class="tm-product-name">{{ item.lot_no }}</td>
+                  <td class="tm-product-name">{{ item.measurements }}</td>
+                  <td class="tm-product-name">{{ item.pavilion_an }}</td>
+                  <td class="tm-product-name">{{ item.pavilion_dep }}</td>
+                  <td class="tm-product-name">{{ item.polish }}</td>
+                  <td class="tm-product-name">{{ item.rapnet_price }}</td>
+                  <td class="tm-product-name">{{ item.ratio }}</td>
+                  <td class="tm-product-name">{{ item.shape }}</td>
+                  <td class="tm-product-name">{{ item.status }}</td>
+                  <td class="tm-product-name">{{ item.stone_id }}</td>
+                  <td class="tm-product-name">{{ item.stone_type }}</td>
+                  <td class="tm-product-name">{{ item.symmetry }}</td>
+                  <td class="tm-product-name">{{ item.system_amount }}</td>
+                  <td class="tm-product-name">{{ item.system_discount }}</td>
+                  <td class="tm-product-name">{{ item.table }}</td>
+                  <td class="tm-product-name">{{ item.v360 }}</td>
+                  <td class="tm-product-name">{{ item.weight }}</td>
+                  <td>
+                    <a href="#" class="tm-product-delete-link">
+                      <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                    </a>
+                  </td>
+                </tr>
+                ß
+              </tbody>
+            </table>
+          </div>
+          <!-- table container -->
+          <a
+            href="add-product.html"
+            class="btn btn-primary btn-block text-uppercase mb-3"
+          >
+            Add new product
+          </a>
+          <button class="btn btn-primary btn-block text-uppercase">
+            Delete selected products
+          </button>
+        </div>
+      </div>
+      <!-- <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
+          <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+            <h2 class="tm-block-title">Product Filter</h2>
+          </div>
+        </div> -->
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
