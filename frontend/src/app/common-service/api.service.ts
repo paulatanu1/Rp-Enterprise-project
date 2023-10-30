@@ -37,19 +37,14 @@ export class ApiService {
 
     let httpHeaderValue = new HttpHeaders();
     if (headertoken == undefined) {
-      httpHeaderValue = httpHeaderValue
-        .set('Authorization', 'Bearer ' + ls.get('login_token'))
-        .set('Content-Type', 'application/json')
-        .set('X-localization', localization);
-      httpHeaderValue = httpHeaderValue.set('X-localization', localization);
+      httpHeaderValue = httpHeaderValue.set(
+        'Authorization',
+        'Bearer ' + ls.get('login_token')
+      );
+      // .set('Content-Type', 'application/json')
+      // .set('X-localization', localization);
+      // httpHeaderValue = httpHeaderValue.set('X-localization', localization);
     }
-    //  else {
-
-    //   httpHeaderValue = httpHeaderValue
-    //     .set('Authorization', 'Bearer ' + ls.set('login_token', ls.get('login_token')))
-    //     //.set('Content-Type', 'application/json')
-    //     .set('X-localization', localization);
-    // }
 
     if (method === 'post') {
       return this.http
@@ -62,11 +57,13 @@ export class ApiService {
             return throwError('Something went wrong. Please try again later.');
           }),
           map((response: any) => {
-            console.log(response, 'resss');
+            // console.log(response, '-----', response.body, 'resss');
             const responseObj = response.body;
             responseObj.status = response.status;
-            if (responseObj.token !== undefined) {
-              ls.set('login_token', responseObj.token);
+            console.log(responseObj.access_token, 'responseObj');
+            if (responseObj.access_token !== undefined) {
+              ls.set('login_token', responseObj.access_token);
+              console.log(responseObj.access_token, 'token 12');
             }
             return responseObj;
           })

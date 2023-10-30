@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LoginRegisterService } from '../client-services/login-register.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import ls from 'localstorage-slim';
 
 @Component({
   selector: 'app-login-register',
@@ -11,7 +14,9 @@ import { HttpClient } from '@angular/common/http';
 export class LoginRegisterComponent implements OnInit {
   constructor(
     private loginRegistrarion: LoginRegisterService,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
   loginForm!: FormGroup;
   ngOnInit(): void {
@@ -22,21 +27,39 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   login() {
-    // this.loginRegistrarion.userLogin(this.loginForm.value).subscribe({
-    //   next: (res: any) => {
-    //     console.log(res, 'ress');
-    //   },
-    //   error: (err: any) => {},
-    // });
-    this.http
-      .post('http://localhost:8000/api/login', this.loginForm.value)
-      .subscribe({
-        next: (res) => {
-          console.log(res, 'resss');
-        },
-        error: (err) => {
-          console.log(err, 'errr');
-        },
-      });
+    this.loginRegistrarion.userLogin(this.loginForm.value).subscribe({
+      next: (res: any) => {
+        let userName = res.user.name;
+        ls.set('userName', userName);
+        this.toastr.success(`Hello ${res.user.name}`, 'Login Successful!', {
+          timeOut: 3000,
+          closeButton: true,
+          progressBar: true,
+        });
+        if (res.role === 1) {
+          this.router.navigateByUrl('/admin');
+        } else {
+          this.router.navigateByUrl('/');
+        }
+      },
+      error: (err: any) => {
+        console.log(err, 'rrr');
+        this.toastr.error(`${err}`, 'OOOPS !', {
+          timeOut: 3000,
+          closeButton: true,
+          progressBar: true,
+        });
+      },
+    });
+    // this.http
+    //   .post('http://localhost:8000/api/login', this.loginForm.value)
+    //   .subscribe({
+    //     next: (res) => {
+    //       console.log(res, 'resss111');
+    //     },
+    //     error: (err) => {
+    //       console.log(err, 'errr');
+    //     },
+    //   });
   }
 }
