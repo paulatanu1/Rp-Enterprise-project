@@ -169,7 +169,7 @@ class Application extends Container
      */
     public function version()
     {
-        return 'Lumen (10.0.1) (Laravel Components ^10.0)';
+        return 'Lumen (10.0.2) (Laravel Components ^10.0)';
     }
 
     /**
@@ -1006,6 +1006,7 @@ class Application extends Container
         $this->router = null;
         $this->dispatcher = null;
         static::$instance = null;
+        static::$aliasesRegistered = false;
     }
 
     /**
