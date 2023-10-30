@@ -77,12 +77,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
     color: #000000;
-}
-
-.mt-50 {
-    margin-top: 50px;
 }
 
 .tm-button,
@@ -125,6 +121,48 @@ button.tm-button::before {
 a.tm-button:hover::before,
 button.tm-button:hover::before {
     top: 0;
+}
+
+/* Readmore */
+.tm-readmore,
+a.tm-readmore,
+button.tm-readmore {
+    display: inline-block;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+    color: #000000;
+    font-size: 16px;
+}
+
+.tm-readmore::after,
+a.tm-readmore::after,
+button.tm-readmore::after {
+    content: "\f3d3";
+    font-family: 'Ionicons';
+    font-size: 18px;
+    line-height: 1;
+    padding-left: 10px;
+    color: #000000;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.tm-readmore:hover,
+a.tm-readmore:hover,
+button.tm-readmore:hover {
+    color: #f2ba59;
+}
+
+.tm-readmore:hover::after,
+a.tm-readmore:hover::after,
+button.tm-readmore:hover::after {
+    color: #f2ba59;
+    padding-left: 15px;
+}
+
+.mt-50 {
+    margin-top: 50px;
 }
 
 /* Importing Bootstrap SCSS file. */

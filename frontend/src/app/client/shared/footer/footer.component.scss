@@ -477,6 +477,7 @@ $snapchat: #FFFC00;
     ul {
         li {
             padding-top: 5px;
+            line-height: 26px;
 
             &:first-child {
                 padding-top: 0;
@@ -1410,4 +1411,13 @@ caption,
 hr {
     margin: 0;
     margin-bottom: 15px;
+}
+.single-widget .widget-title {
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 13px;
+    margin-top: -5px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 28px;
 }
