@@ -78,9 +78,7 @@ h6,
     font-family: "Montserrat", sans-serif !important;
     color: #000000;
 }
-.mt-50 {
-    margin-top: 50px;
-}
+
 .tm-button,
 a.tm-button,
 button.tm-button {
@@ -159,6 +157,9 @@ a.tm-readmore:hover::after,
 button.tm-readmore:hover::after {
     color: #f2ba59;
     padding-left: 15px;
+}
+.mt-50 {
+    margin-top: 50px;
 }
 /* Importing Bootstrap SCSS file. */
 @import "./node_modules/bootstrap/scss/bootstrap";
