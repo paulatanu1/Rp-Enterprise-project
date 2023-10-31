@@ -55,7 +55,7 @@ final class Php83
             throw new \ValueError(sprintf('mb_str_pad(): Argument #5 ($encoding) must be a valid encoding, "%s" given', $encoding));
         }
 
-        // BC for PHP 7.3 and lower
+        // BC for PHP 8.2 and lower
         if (!$validEncoding) {
             throw new \ValueError(sprintf('mb_str_pad(): Argument #5 ($encoding) must be a valid encoding, "%s" given', $encoding));
         }

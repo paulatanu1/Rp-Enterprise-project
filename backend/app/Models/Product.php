@@ -111,5 +111,10 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
         $result = Product::select('clarity')->groupBy('clarity')->get();
         return $result;
     }
+
+    public static function deleteProduct($product_id){
+        $result = Product::where('id', $product_id)->delete();
+        return $result;
+    }
     
 }

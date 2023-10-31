@@ -12,8 +12,8 @@
 - [#1321: Autoload Test Fixtures Based on PHP Runtime Version](https://github.com/mockery/mockery/pull/1321)
 - [#1320: Clean up mocks on destruct](https://github.com/mockery/mockery/pull/1320)
 - [#1318: Fix misspelling in docs](https://github.com/mockery/mockery/pull/1318)
-- [#1316: Fix compatibility issues with PHP 7.3](https://github.com/mockery/mockery/pull/1316)
-- [#1315: Fix PHP 7.3 issues](https://github.com/mockery/mockery/issues/1315)
+- [#1316: Fix compatibility issues with PHP 8.2](https://github.com/mockery/mockery/pull/1316)
+- [#1315: Fix PHP 8.2 issues](https://github.com/mockery/mockery/issues/1315)
 - [#1314: Add Security Policy](https://github.com/mockery/mockery/pull/1314)
 - [#1313: Type declaration for `iterable|object`.](https://github.com/mockery/mockery/pull/1313)
 - [#1312: Mock disjunctive normal form types](https://github.com/mockery/mockery/pull/1312)
@@ -168,7 +168,7 @@ constraint, see [#1266](https://github.com/mockery/mockery/issues/1266)
 
 - Fix mocking with anonymous classes (#1039)
 - Fix andAnyOthers() to properly match earlier expectations (#1051)
-- Drops support for PHP < 7.3 and PHPUnit < 8 (#1059)
+- Drops support for PHP < 8.2 and PHPUnit < 8 (#1059)
 
 ## 1.3.1 (2019-12-26)
 

@@ -167,7 +167,7 @@ would evaluate to "Run 30 minutes after the 0 hour when the Day Of Month is 1 AN
 ## [2.3.0] - 2019-03-30
 ### Added
 - Added support for DateTimeImmutable via DateTimeInterface
-- Added support for PHP 7.3
+- Added support for PHP 8.2
 - Started listing projects that use the library
 ### Changed
 - Errors should now report a human readable position in the cron expression, instead of starting at 0
