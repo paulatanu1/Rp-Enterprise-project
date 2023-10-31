@@ -1,1 +1,181 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none !important;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    background-color: transparent;
+    // color: blue !important;
+}
+
+input:focus {
+    outline: none;
+}
+
+input,
+select,
+button {
+    height: 50px;
+    padding: 0 15px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    color: 15px;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+
+input,
+button,
+select,
+textarea {
+    background: transparent;
+    border: 1px solid #ebebeb;
+    -webkit-transition: all 0.4s ease-out 0s;
+    -o-transition: all 0.4s ease-out 0s;
+    transition: all 0.4s ease-out 0s;
+    color: #707070;
+    font-family: "Open Sans", sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-size: 15px;
+    line-height: 26px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Open Sans", sans-serif !important;
+    color: #707070;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "Montserrat", sans-serif !important;
+    color: #000000;
+}
+
+.tm-button,
+a.tm-button,
+button.tm-button {
+    display: inline-block;
+    height: 50px;
+    min-width: 150px;
+    background: #f2ba59;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+    font-weight: 600;
+    border-radius: 4px;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    padding: 0 40px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.tm-button::before,
+a.tm-button::before,
+button.tm-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -100%;
+    height: 100%;
+    width: 100%;
+    background: #000000;
+    z-index: -1;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.tm-button:hover::before,
+a.tm-button:hover::before,
+button.tm-button:hover::before {
+    top: 0;
+}
+
+/* Readmore */
+.tm-readmore,
+a.tm-readmore,
+button.tm-readmore {
+    display: inline-block;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+    color: #000000;
+    font-size: 16px;
+}
+
+.tm-readmore::after,
+a.tm-readmore::after,
+button.tm-readmore::after {
+    content: "\f3d3";
+    font-family: 'Ionicons';
+    font-size: 18px;
+    line-height: 1;
+    padding-left: 10px;
+    color: #000000;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.tm-readmore:hover,
+a.tm-readmore:hover,
+button.tm-readmore:hover {
+    color: #f2ba59;
+}
+
+.tm-readmore:hover::after,
+a.tm-readmore:hover::after,
+button.tm-readmore:hover::after {
+    color: #f2ba59;
+    padding-left: 15px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@import 'ngx-toastr/toastr';

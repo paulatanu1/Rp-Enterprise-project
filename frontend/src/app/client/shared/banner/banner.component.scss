@@ -1,0 +1,53 @@
+.tm-heroslider {
+    margin-top: 56px;
+    .bannerText {
+        position: relative;
+        left: 0;
+        top: 0;
+        z-index: 10;
+    }
+    .carousel-item {
+        height: 754px;
+        position: relative;
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+    }
+    .tm-heroslider-content {
+        padding: 150px 0;
+        h1 {
+            margin-top: -10px;
+            font-size: 50px;
+            line-height: 64px;
+            color: #000000;
+            font-weight: 700;
+        }
+        p {
+            font-size: 20px;
+            line-height: 30px;
+            margin-top: 30px;
+            color: #000000;
+        }
+        .tm-button {
+            margin-top: 25px;
+            display: inline-block;
+            height: 50px;
+            min-width: 150px;
+            background: #f2ba59;
+            color: #ffffff;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 600;
+            border-radius: 4px;
+            z-index: 1;
+            position: relative;
+            overflow: hidden;
+            padding: 0 40px;
+            vertical-align: middle;
+            font-size: 16px;
+        }
+    }
+}
