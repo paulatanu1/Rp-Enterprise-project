@@ -1,0 +1,31 @@
+export interface IproductAdd {
+  status: string;
+  lot_no: string;
+  stone_id: string;
+  location: string;
+  weight: string;
+  shape: string;
+  color: string;
+  clarity: string;
+  cut: string;
+  polish: string;
+  symmetry: string;
+  rapnet_price: string;
+  system_discount: string;
+  lab: string;
+  certificate: string;
+  certi_pdf_url: string;
+  ratio: string;
+  measurements: string;
+  fluor_int: string;
+  table: string;
+  depth: string;
+  crown_ht: string;
+  crown_angle: string;
+  pavilion_dep: string;
+  pavilion_an: string;
+  stone_type: string;
+  v360: string;
+  imgurl: string;
+  eye_clean: string;
+}
