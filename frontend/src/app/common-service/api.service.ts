@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError, map, throwError, timeout } from 'rxjs';
 import ls from 'localstorage-slim';
+ls.config.encrypt = environment.LS_CONFIG_ENCRYPT;
 
 @Injectable({
   providedIn: 'root',

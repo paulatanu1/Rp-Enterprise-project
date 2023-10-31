@@ -1,1 +1,199 @@
-<p>product-add works!</p>
+<div class="wrapper bg-blue">
+  <app-admin-header></app-admin-header>
+  <div class="container-fluid mt-5">
+    <div class="row tm-content-row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+        <div class="container">
+          <div class="ham">
+            <button type="button" [routerLink]="['//admin/admin-product']">
+              Product
+            </button>
+            <h2 class="heading">> Add New Product</h2>
+          </div>
+          <form [formGroup]="productAdd" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="form-group col-sm-4 cs-form">
+                <label for="status">Status:</label>
+                <input type="text" id="status" formControlName="status" />
+              </div>
+              <div class="form-group col-sm-4 cs-form">
+                <label for="lot_no">Lot No:</label>
+                <input type="text" id="lot_no" formControlName="lot_no" />
+              </div>
+              <div class="form-group col-sm-4 cs-form">
+                <label for="stone_id">Stone ID:</label>
+                <input type="text" id="stone_id" formControlName="stone_id" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-4 cs-form">
+                <label for="location">Location:</label>
+                <input type="text" id="location" formControlName="location" />
+              </div>
+              <div class="form-group col-sm-4 cs-form">
+                <label for="weight">Weight:</label>
+                <input type="text" id="weight" formControlName="weight" />
+              </div>
+
+              <div class="form-group col-sm-4 cs-form">
+                <label for="shape">Shape:</label>
+                <input type="text" id="shape" formControlName="shape" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="color">Color:</label>
+                <input type="text" id="color" formControlName="color" />
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="clarity">Clarity:</label>
+                <input type="text" id="clarity" formControlName="clarity" />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="cut">Cut:</label>
+                <input type="text" id="cut" formControlName="cut" />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="polish">Polish:</label>
+                <input type="text" id="polish" formControlName="polish" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="symmetry">Symmetry:</label>
+                <input type="text" id="symmetry" formControlName="symmetry" />
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="rapnet_price">Rapnet Price:</label>
+                <input
+                  type="text"
+                  id="rapnet_price"
+                  formControlName="rapnet_price"
+                />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="system_discount">System Discount:</label>
+                <input
+                  type="text"
+                  id="system_discount"
+                  formControlName="system_discount"
+                />
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="lab">Lab:</label>
+                <input type="text" id="lab" formControlName="lab" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="certificate">Certificate:</label>
+                <input
+                  type="text"
+                  id="certificate"
+                  formControlName="certificate"
+                />
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="certi_pdf_url">Certificate PDF URL:</label>
+                <input
+                  type="text"
+                  id="certi_pdf_url"
+                  formControlName="certi_pdf_url"
+                />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="ratio">Ratio:</label>
+                <input type="text" id="ratio" formControlName="ratio" />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="crown_ht">Crown Height:</label>
+                <input type="text" id="crown_ht" formControlName="crown_ht" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="measurements">Measurements:</label>
+                <input
+                  type="text"
+                  id="measurements"
+                  formControlName="measurements"
+                />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="fluor_int">Fluorescence Intensity:</label>
+                <input type="text" id="fluor_int" formControlName="fluor_int" />
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="table">Table:</label>
+                <input type="text" id="table" formControlName="table" />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="depth">Depth:</label>
+                <input type="text" id="depth" formControlName="depth" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="crown_angle">Crown Angle:</label>
+                <input
+                  type="text"
+                  id="crown_angle"
+                  formControlName="crown_angle"
+                />
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="pavilion_dep">Pavilion Depth:</label>
+                <input
+                  type="text"
+                  id="pavilion_dep"
+                  formControlName="pavilion_dep"
+                />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="pavilion_an">Pavilion Angle:</label>
+                <input
+                  type="text"
+                  id="pavilion_an"
+                  formControlName="pavilion_an"
+                />
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="stone_type">Stone Type:</label>
+                <input
+                  type="text"
+                  id="stone_type"
+                  formControlName="stone_type"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-4 cs-form">
+                <label for="v360">V360:</label>
+                <input type="text" id="v360" formControlName="v360" />
+              </div>
+
+              <div class="form-group col-sm-4 cs-form">
+                <label for="imgurl">Image URL:</label>
+                <input type="text" id="imgurl" formControlName="imgurl" />
+              </div>
+              <div class="form-group col-sm-4 cs-form">
+                <label for="eye_clean">Eye Clean:</label>
+                <input type="text" id="eye_clean" formControlName="eye_clean" />
+              </div>
+            </div>
+            <div class="btn btn-submit">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
