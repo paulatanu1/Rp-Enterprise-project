@@ -21,7 +21,7 @@ use PhpParser\Lexer\TokenEmulator\TokenEmulator;
 
 class Emulative extends Lexer
 {
-    const PHP_7_3 = '7.3dev';
+    const PHP_7_3 = '8.2dev';
     const PHP_7_4 = '7.4dev';
     const PHP_8_0 = '8.0dev';
     const PHP_8_1 = '8.1dev';

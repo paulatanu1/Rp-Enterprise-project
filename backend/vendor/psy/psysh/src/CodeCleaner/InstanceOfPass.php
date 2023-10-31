@@ -34,7 +34,7 @@ class InstanceOfPass extends CodeCleanerPass
 
     public function __construct()
     {
-        $this->atLeastPhp73 = \version_compare(\PHP_VERSION, '7.3', '>=');
+        $this->atLeastPhp73 = \version_compare(\PHP_VERSION, '8.2', '>=');
     }
 
     /**
@@ -48,7 +48,7 @@ class InstanceOfPass extends CodeCleanerPass
      */
     public function enterNode(Node $node)
     {
-        // Basically everything is allowed in PHP 7.3 :)
+        // Basically everything is allowed in PHP 8.2 :)
         if ($this->atLeastPhp73) {
             return;
         }

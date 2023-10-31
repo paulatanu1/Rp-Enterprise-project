@@ -2738,7 +2738,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3|^8.0"
+                "php": "^8.2|^8.0"
             },
             "require-dev": {
                 "nesbot/carbon": "^2.61",
@@ -3063,7 +3063,7 @@
                 "phpunit/phpunit": "^9.5.5",
                 "scrutinizer/ocular": "^1.8.1",
                 "unleashedtech/php-coding-standard": "^3.1",
-                "vimeo/psalm": "^4.7.3"
+                "vimeo/psalm": "^4.8.2"
             },
             "time": "2022-12-11T20:36:23+00:00",
             "type": "library",
@@ -3141,7 +3141,7 @@
             "require": {
                 "hamcrest/hamcrest-php": "^2.0.1",
                 "lib-pcre": ">=7.0",
-                "php": ">=7.3"
+                "php": ">=8.2"
             },
             "conflict": {
                 "phpunit/phpunit": "<8.0"

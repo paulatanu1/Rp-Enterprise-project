@@ -41,7 +41,7 @@ class TimeitCommand extends Command
      */
     public function __construct($name = null)
     {
-        // @todo Remove microtime use after we drop support for PHP < 7.3
+        // @todo Remove microtime use after we drop support for PHP < 8.2
         self::$useHrtime = \function_exists('hrtime');
 
         $this->parser = new CodeArgumentParser();

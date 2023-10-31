@@ -551,7 +551,7 @@ class CarbonImmutable extends DateTimeImmutable implements CarbonInterface
      */
     private static function getEndOfTimeYear(): int
     {
-        if (version_compare(PHP_VERSION, '7.3.0-dev', '<')) {
+        if (version_compare(PHP_VERSION, '8.2.0-dev', '<')) {
             return 145261681241552;
         }
 
@@ -568,7 +568,7 @@ class CarbonImmutable extends DateTimeImmutable implements CarbonInterface
      */
     private static function getStartOfTimeYear(): int
     {
-        if (version_compare(PHP_VERSION, '7.3.0-dev', '<')) {
+        if (version_compare(PHP_VERSION, '8.2.0-dev', '<')) {
             return -135908816449551;
         }
 
