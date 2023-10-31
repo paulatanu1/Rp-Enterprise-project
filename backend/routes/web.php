@@ -20,6 +20,8 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('login', 'AuthController@login');
     $router->post('register', 'AuthController@register');
+    $router->post('mail', 'AuthController@mail');
+    $router->post('sendEmail', 'AuthController@sendEmail');
     
 });
 

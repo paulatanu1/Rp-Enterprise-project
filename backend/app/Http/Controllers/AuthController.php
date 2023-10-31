@@ -6,11 +6,84 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use  App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use  App\Models\Contact;
+use App\Mail\YourMailable;
+use Illuminate\Support\Facades\View;
+use Symfony\Component\Mime\Part\TextPart;
+
+
 
 
 class AuthController extends Controller
 {
 
+    public function mail(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        $product = new Contact();
+        $product->name = $request->input('name');
+        $product->email = $request->input('email');
+        $product->phone = $request->input('phone');
+        $product->subject = $request->input('subject');
+        $product->message = $request->input('message');
+        $product->save();
+
+        $user_data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'subject' => $request->input('subject'),
+            'message' => $request->input('message'),
+            'from_email' => env('SEND_MAIL_ADDRESS'),
+            'email_name' => env('MAIL_FROM_NAME'),
+        ];
+
+        try {
+            // $emailContent = View::make('mail', $user_data)->render();
+            // $textPart = new TextPart($emailContent);
+            Mail::send('mail', $user_data, function($message) use ($user_data) {
+            $message->to($user_data['email'], $user_data['name'])->subject($user_data['subject']);
+            $message->from($user_data['from_email'], $user_data['email_name']);
+            
+
+            });
+        } catch (\Exception $e) {
+            // Log or output the error message for debugging
+            dd($e->getMessage());
+        }
+        echo 'Email Sent. Check your inbox.';
+    }
+    public function sendEmail(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        $product = new Contact();
+        $product->name = $request->input('name');
+        $product->email = $request->input('email');
+        $product->phone = $request->input('phone');
+        $product->subject = $request->input('subject');
+        $product->message = $request->input('message');
+        $product->save();
+        // dd("hhhhh");
+
+        $data = [
+            'name' => 'Arunkumar',
+            'message' => 'This is a test email from Selva',
+        ];
+
+        $res = Mail::to('bera6648@gmail.com', 'Arunkumar')
+        ->send(new YourMailable($data));
+        dd($res);
+
+        dd ("done");
+    }
 
     // public function __construct()
     // {
