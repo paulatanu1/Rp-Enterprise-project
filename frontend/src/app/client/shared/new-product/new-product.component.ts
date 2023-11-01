@@ -1,15 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientProductService } from '../../client-services/client-product.service';
+import { IhomepageProduct } from '../../client-model/client-model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.scss']
+  styleUrls: ['./new-product.component.scss'],
 })
 export class NewProductComponent implements OnInit {
-
-  constructor() { }
+  productList: IhomepageProduct[] = [];
+  constructor(private product: ClientProductService) {}
 
   ngOnInit(): void {
+    this.getProduct();
   }
 
+  getProduct() {
+    this.product.getHomePageProducts().subscribe({
+      next: (res) => {
+        this.productList = res.response.raws.data.dataset;
+      },
+      error: (err) => {},
+    });
+  }
+
+  shareProductOnWhatsApp(item: IhomepageProduct) {
+    const message = encodeURIComponent(
+      `I want to buy Product:- ${item.shape},color:- ${item.color},Product Id:- ${item.id},product URL:- ${item.imgurl}`
+    );
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
+    console.log(whatsappURL);
+    // window.location.href = whatsappURL;
+
+    window.open(whatsappURL, '_blank');
+
+    // <a href="https://api.whatsapp.com/send?phone=1XXXXXXXXXX&text=I want to buy Product X. Price: $19.99">Buy Now</a>
+  }
 }
