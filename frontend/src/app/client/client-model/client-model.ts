@@ -18,7 +18,7 @@ export interface IhomepageProduct {
   lot_no: string;
   stone_id: string;
   location: string;
-  weight: string;
+  weight: number;
   shape: string;
   color: string;
   clarity: string;
@@ -43,6 +43,6 @@ export interface IhomepageProduct {
   v360: string;
   imgurl: string;
   eye_clean: number;
-  system_price: string;
+  system_price: number;
   system_amount: string;
 }

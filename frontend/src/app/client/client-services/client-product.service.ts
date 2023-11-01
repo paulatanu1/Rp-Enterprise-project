@@ -37,4 +37,34 @@ export class ClientProductService {
     let url: string = '/api/productList';
     return this.api.ApiCallWithLocalization(payload, url, 'post');
   }
+
+  getProductPageProducts() {
+    const payload: IproductList = {
+      sort_by: '',
+      order_by: '',
+      page_number: '',
+      no_of_records: '',
+      search: '',
+      search_by: '',
+      color: '',
+      clarity: '',
+      weight: '',
+      shape: '',
+      stone_type: [],
+    };
+    (payload.sort_by = ''),
+      (payload.order_by = 'asc'),
+      (payload.page_number = '1'),
+      (payload.no_of_records = '100'),
+      (payload.search = ''),
+      (payload.search_by = ''),
+      (payload.color = ''),
+      (payload.clarity = ''),
+      (payload.weight = ''),
+      (payload.shape = ''),
+      (payload.stone_type = []);
+
+    let url: string = '/api/productList';
+    return this.api.ApiCallWithLocalization(payload, url, 'post');
+  }
 }
