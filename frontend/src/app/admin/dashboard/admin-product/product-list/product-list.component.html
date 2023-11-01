@@ -8,7 +8,7 @@
             <table class="table table-hover tm-table-small tm-product-table">
               <thead>
                 <tr>
-                  <!-- <th scope="col">&nbsp;</th> -->
+                  <th scope="col">&nbsp;</th>
                   <th scope="col">certi_pdf_url</th>
                   <th scope="col">certificate</th>
                   <th scope="col">clarity</th>
@@ -43,8 +43,20 @@
                 </tr>
               </thead>
               <tbody>
+                <tr *ngIf="productItems.length == 0">
+                  <p>No Record Found</p>
+                  <td>
+                    <p>No Record Found</p>
+                  </td>
+                </tr>
+
                 <tr *ngFor="let item of productItems">
                   <!-- <th scope="row"><input type="checkbox" /></th> -->
+                  <td>
+                    <a href="#" class="tm-product-delete-link">
+                      Del
+                    </a>
+                  </td>
                   <td class="tm-product-name">
                     <a
                       *ngIf="item.certi_pdf_url"
@@ -100,19 +112,13 @@
                   <td class="tm-product-name">{{ item.table }}</td>
                   <td class="tm-product-name">{{ item.v360 }}</td>
                   <td class="tm-product-name">{{ item.weight }}</td>
-                  <td>
-                    <a href="#" class="tm-product-delete-link">
-                      <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
-                  </td>
                 </tr>
-                ß
               </tbody>
             </table>
           </div>
           <!-- table container -->
           <a
-            href="add-product.html"
+            [routerLink]="['/admin/admin-product/add']"
             class="btn btn-primary btn-block text-uppercase mb-3"
           >
             Add new product

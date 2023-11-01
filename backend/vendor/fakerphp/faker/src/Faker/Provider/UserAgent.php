@@ -84,7 +84,7 @@ class UserAgent extends Base
     /**
      * Generate Edge user agent
      *
-     * @example 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36 Edg/99.0.1150.36'
+     * @example 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/538.26 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/538.26 Edg/99.0.1150.36'
      *
      * @return string
      */

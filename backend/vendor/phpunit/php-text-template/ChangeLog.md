@@ -12,7 +12,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Removed
 
-* This component is no longer supported on PHP 7.3, PHP 7.4 and PHP 8.0
+* This component is no longer supported on PHP 8.2, PHP 7.4 and PHP 8.0
 
 ## [2.0.4] - 2020-10-26
 
@@ -24,7 +24,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Changed
 
-* Changed PHP version constraint in `composer.json` from `^7.3 || ^8.0` to `>=7.3`
+* Changed PHP version constraint in `composer.json` from `^8.2 || ^8.0` to `>=8.2`
 
 ## [2.0.2] - 2020-06-26
 

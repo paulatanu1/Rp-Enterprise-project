@@ -4,7 +4,7 @@ All notable changes to phar-io/manifest are documented in this file using the [K
 
 ## [2.0.3] - 20.07.2021
 
-- Fixed PHP 7.2 / PHP 7.3 incompatibility introduced in previous release
+- Fixed PHP 7.2 / PHP 8.2 incompatibility introduced in previous release
 
 ## [2.0.2] - 20.07.2021
 

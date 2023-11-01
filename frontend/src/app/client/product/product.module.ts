@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ProductRoutingModule],
+  imports: [CommonModule, ProductRoutingModule, MatPaginatorModule],
 })
 export class ProductModule {}

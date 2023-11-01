@@ -44,7 +44,7 @@
         "security": "https://github.com/mockery/mockery/security/advisories"
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.2",
         "lib-pcre": ">=7.0",
         "hamcrest/hamcrest-php": "^2.0.1"
     },
@@ -80,7 +80,7 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.3.999"
+            "php": "8.2.999"
         },
         "preferred-install": "dist",
         "sort-packages": true

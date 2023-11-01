@@ -1,1 +1,448 @@
-<p>product-add works!</p>
+<div class="wrapper bg-blue">
+  <app-admin-header></app-admin-header>
+  <div class="container-fluid mt-5">
+    <div class="row tm-content-row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+        <div class="container">
+          <div class="ham">
+            <button type="button" [routerLink]="['//admin/admin-product']">
+              Product
+            </button>
+            <h2 class="heading">> Add New Product</h2>
+          </div>
+          <form [formGroup]="productAdd" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="form-group col-sm-4 cs-form">
+                <label for="status">Status:</label>
+                <!-- <input type="text" id="status" formControlName="status" /> -->
+                <select
+                  (change)="updateStatus($event)"
+                  class="status-set"
+                  formControlName="status"
+                >
+                  <option [value]="item.id" *ngFor="let item of productStatus">
+                    {{ item.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group col-sm-4 cs-form">
+                <label for="lot_no">
+                  Lot No:
+                  <sup>*</sup>
+                </label>
+                <input type="text" id="lot_no" formControlName="lot_no" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('lot_no')?.hasError('required') &&
+                    productAdd.get('lot_no')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+
+              <div class="form-group col-sm-4 cs-form">
+                <label for="stone_id">Stone ID:</label>
+                <input type="text" id="stone_id" formControlName="stone_id" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('stone_id')?.hasError('required') &&
+                    productAdd.get('stone_id')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-sm-4 cs-form">
+                <label for="location">Location:</label>
+                <input type="text" id="location" formControlName="location" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('location')?.hasError('required') &&
+                    productAdd.get('location')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-4 cs-form">
+                <label for="weight">Weight:</label>
+                <input type="text" id="weight" formControlName="weight" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('weight')?.hasError('required') &&
+                    productAdd.get('weight')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+
+              <div class="form-group col-sm-4 cs-form">
+                <label for="shape">Shape:</label>
+                <!-- <input type="text" id="shape" formControlName="shape" /> -->
+                <select formControlName="shape">
+                  <option *ngFor="let shape of shapesItem">
+                    {{ shape.shape }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="color">Color:</label>
+                <!-- <input type="text" id="color" formControlName="color" /> -->
+                <select formControlName="color">
+                  <option *ngFor="let item of color">
+                    {{ item.color }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="clarity">Clarity:</label>
+                <!-- <input type="text" id="clarity" formControlName="clarity" /> -->
+                <select formControlName="clarity">
+                  <option *ngFor="let item of clarity">
+                    {{ item.clarity }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="cut">Cut:</label>
+                <input type="text" id="cut" formControlName="cut" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('cut')?.hasError('required') &&
+                    productAdd.get('cut')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="polish">Polish:</label>
+                <input type="text" id="polish" formControlName="polish" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('polish')?.hasError('required') &&
+                    productAdd.get('polish')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="symmetry">Symmetry:</label>
+                <input type="text" id="symmetry" formControlName="symmetry" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('symmetry')?.hasError('required') &&
+                    productAdd.get('symmetry')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="rapnet_price">Rapnet Price:</label>
+                <input
+                  type="text"
+                  id="rapnet_price"
+                  formControlName="rapnet_price"
+                />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('rapnet_price')?.hasError('required') &&
+                    productAdd.get('rapnet_price')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="system_discount">System Discount:</label>
+                <input
+                  type="text"
+                  id="system_discount"
+                  formControlName="system_discount"
+                />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('system_discount')?.hasError('required') &&
+                    productAdd.get('system_discount')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="lab">Lab:</label>
+                <input type="text" id="lab" formControlName="lab" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('lab')?.hasError('required') &&
+                    productAdd.get('lab')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="certificate">Certificate:</label>
+                <input
+                  type="text"
+                  id="certificate"
+                  formControlName="certificate"
+                />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('certificate')?.hasError('required') &&
+                    productAdd.get('certificate')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="certi_pdf_url">Certificate PDF URL:</label>
+                <input
+                  type="text"
+                  id="certi_pdf_url"
+                  formControlName="certi_pdf_url"
+                />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('certi_pdf_url')?.hasError('required') &&
+                    productAdd.get('certi_pdf_url')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="ratio">Ratio:</label>
+                <input type="text" id="ratio" formControlName="ratio" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('ratio')?.hasError('required') &&
+                    productAdd.get('ratio')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="crown_ht">Crown Height:</label>
+                <input type="text" id="crown_ht" formControlName="crown_ht" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('crown_ht')?.hasError('required') &&
+                    productAdd.get('crown_ht')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="measurements">Measurements:</label>
+                <input
+                  type="text"
+                  id="measurements"
+                  formControlName="measurements"
+                />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('measurements')?.hasError('required') &&
+                    productAdd.get('measurements')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="fluor_int">Fluorescence Intensity:</label>
+                <input type="text" id="fluor_int" formControlName="fluor_int" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('fluor_int')?.hasError('required') &&
+                    productAdd.get('fluor_int')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="table">Table:</label>
+                <input type="text" id="table" formControlName="table" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('table')?.hasError('required') &&
+                    productAdd.get('table')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="depth">Depth:</label>
+                <input type="text" id="depth" formControlName="depth" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('depth')?.hasError('required') &&
+                    productAdd.get('depth')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3 cs-form">
+                <label for="crown_angle">Crown Angle:</label>
+                <input
+                  type="text"
+                  id="crown_angle"
+                  formControlName="crown_angle"
+                />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('crown_angle')?.hasError('required') &&
+                    productAdd.get('crown_angle')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+
+              <div class="form-group col-sm-3 cs-form">
+                <label for="pavilion_dep">Pavilion Depth:</label>
+                <input
+                  type="text"
+                  id="pavilion_dep"
+                  formControlName="pavilion_dep"
+                />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('pavilion_dep')?.hasError('required') &&
+                    productAdd.get('pavilion_dep')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="pavilion_an">Pavilion Angle:</label>
+                <input
+                  type="text"
+                  id="pavilion_an"
+                  formControlName="pavilion_an"
+                />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('pavilion_an')?.hasError('required') &&
+                    productAdd.get('pavilion_an')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-3 cs-form">
+                <label for="stone_type">Stone Type:</label>
+                <!-- <input
+                  type="text"
+                  id="stone_type"
+                  formControlName="stone_type"
+                /> -->
+                <select formControlName="stone_type">
+                  <option *ngFor="let item of stoneType">
+                    {{ item.stone_type }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-4 cs-form">
+                <label for="v360">V360:</label>
+                <input type="text" id="v360" formControlName="v360" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('v360')?.hasError('required') &&
+                    productAdd.get('v360')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+
+              <div class="form-group col-sm-4 cs-form">
+                <label for="imgurl">Image URL:</label>
+                <input type="text" id="imgurl" formControlName="imgurl" />
+                <div
+                  class="error-msg"
+                  *ngIf="
+                    productAdd.get('imgurl')?.hasError('required') &&
+                    productAdd.get('imgurl')?.touched
+                  "
+                >
+                  This field is required.
+                </div>
+              </div>
+              <div class="form-group col-sm-4 cs-form">
+                <label for="eye_clean">Eye Clean:</label>
+                <!-- <input type="text" id="eye_clean" formControlName="eye_clean" /> -->
+                <select
+                  (change)="updateEyeClean($event)"
+                  class="status-set"
+                  formControlName="eye_clean"
+                >
+                  <option [value]="item.id" *ngFor="let item of eyeClean">
+                    {{ item.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="btn btn-submit">
+              <button [disabled]="isSubmited" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

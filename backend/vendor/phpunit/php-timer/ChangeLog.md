@@ -6,7 +6,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Removed
 
-* This component is no longer supported on PHP 7.3, PHP 7.4 and PHP 8.0
+* This component is no longer supported on PHP 8.2, PHP 7.4 and PHP 8.0
 
 ## [5.0.3] - 2020-10-26
 
@@ -18,7 +18,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Changed
 
-* Changed PHP version constraint in `composer.json` from `^7.3 || ^8.0` to `>=7.3`
+* Changed PHP version constraint in `composer.json` from `^8.2 || ^8.0` to `>=8.2`
 
 ## [5.0.1] - 2020-06-26
 
@@ -58,7 +58,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Changed
 
-* `Timer::timeSinceStartOfRequest()` no longer tries `$_SERVER['REQUEST_TIME']` when `$_SERVER['REQUEST_TIME_FLOAT']` is not available (`$_SERVER['REQUEST_TIME_FLOAT']` was added in PHP 5.4 and this library requires PHP 7.3)
+* `Timer::timeSinceStartOfRequest()` no longer tries `$_SERVER['REQUEST_TIME']` when `$_SERVER['REQUEST_TIME_FLOAT']` is not available (`$_SERVER['REQUEST_TIME_FLOAT']` was added in PHP 5.4 and this library requires PHP 8.2)
 * Improved exception messages when `$_SERVER['REQUEST_TIME_FLOAT']` is not set or is not of type `float`
 
 ### Changed

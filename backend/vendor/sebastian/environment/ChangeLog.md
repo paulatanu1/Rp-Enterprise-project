@@ -15,7 +15,7 @@ All notable changes in `sebastianbergmann/environment` are documented in this fi
 
 * Removed `SebastianBergmann\Environment\OperatingSystem::getFamily()` because this component is no longer supported on PHP versions that do not have `PHP_OS_FAMILY`
 * Removed `SebastianBergmann\Environment\Runtime::isHHVM()`
-* This component is no longer supported on PHP 7.3, PHP 7.4, and PHP 8.0
+* This component is no longer supported on PHP 8.2, PHP 7.4, and PHP 8.0
 
 ## [5.1.5] - 2022-MM-DD
 
@@ -33,7 +33,7 @@ All notable changes in `sebastianbergmann/environment` are documented in this fi
 
 ### Changed
 
-* Changed PHP version constraint in `composer.json` from `^7.3 || ^8.0` to `>=7.3`
+* Changed PHP version constraint in `composer.json` from `^8.2 || ^8.0` to `>=8.2`
 
 ## [5.1.2] - 2020-06-26
 
