@@ -51,6 +51,70 @@
               </select>
             </form>
 
+            <mat-form-field>
+              <mat-label>Clarity</mat-label>
+              <mat-select [(value)]="clarityFilter">
+                <mat-option value="All">All</mat-option>
+                <mat-option
+                  *ngFor="let option of clarityOptions"
+                  [value]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Shape</mat-label>
+              <mat-select [(value)]="shapeFilter">
+                <mat-option value="All">All</mat-option>
+                <mat-option
+                  *ngFor="let option of shapeOptions"
+                  [value]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Search By</mat-label>
+              <mat-select [(value)]="searchByFilter">
+                <mat-option value="All">All</mat-option>
+                <mat-option
+                  *ngFor="let option of searchByOptions"
+                  [value]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+              <input
+                matInput
+                placeholder="Search"
+                [formControl]="searchControl"
+                [matAutocomplete]="auto"
+                minlength="3"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <button
+              mat-button
+              [disabled]="
+                searchControl.value ? searchControl.value.length < 3 : true
+              "
+            >
+              Search
+            </button>
+
             <div class="tm-shop-products">
               <div class="row mt-30-reverse">
                 <!-- Single Product -->
@@ -165,12 +229,12 @@
 
             <div class="tm-pagination mt-50">
               <!-- <ul>
-                <li class="is-active"><a href="products.html">1</a></li>
-                <li><a href="products.html">2</a></li>
-                <li><a href="products.html">3</a></li>
-                <li><a href="products.html">4</a></li>
+                <li class="is-active"><a >1</a></li>
+                <li><a >2</a></li>
+                <li><a >3</a></li>
+                <li><a >4</a></li>
                 <li>
-                  <a href="products.html"><i class="ion-chevron-right"></i></a>
+                  <a ><i class="ion-chevron-right"></i></a>
                 </li>
               </ul> -->
 
@@ -190,12 +254,12 @@
               <div class="single-widget widget-categories">
                 <h6 class="widget-title">Categories</h6>
                 <ul>
-                  <li><a href="products.html">Make up</a></li>
-                  <li><a href="products.html">Leapstick</a></li>
-                  <li><a href="products.html">Face Powder</a></li>
-                  <li><a href="products.html">Eyeliner</a></li>
-                  <li><a href="products.html">Maskara</a></li>
-                  <li><a href="products.html">Foundation</a></li>
+                  <li><a>Make up</a></li>
+                  <li><a>Leapstick</a></li>
+                  <li><a>Face Powder</a></li>
+                  <li><a>Eyeliner</a></li>
+                  <li><a>Maskara</a></li>
+                  <li><a>Foundation</a></li>
                 </ul>
               </div>
               <!--// Single Widget -->
@@ -239,10 +303,7 @@
                 <h6 class="widget-title">Popular Product</h6>
                 <ul>
                   <li>
-                    <a
-                      href="product-details.html"
-                      class="widget-popularproduct-image"
-                    >
+                    <a class="widget-popularproduct-image">
                       <img
                         src="assets/images/products/product-image-1-thumb.jpg"
                         alt="product thumbnail"
@@ -250,16 +311,13 @@
                     </a>
                     <div class="widget-popularproduct-content">
                       <h6>
-                        <a href="product-details.html">Brown liquid inside</a>
+                        <a>Brown liquid inside</a>
                       </h6>
                       <span>$20.00</span>
                     </div>
                   </li>
                   <li>
-                    <a
-                      href="product-details.html"
-                      class="widget-popularproduct-image"
-                    >
+                    <a class="widget-popularproduct-image">
                       <img
                         src="assets/images/products/product-image-2-thumb.jpg"
                         alt="product thumbnail"
@@ -267,16 +325,13 @@
                     </a>
                     <div class="widget-popularproduct-content">
                       <h6>
-                        <a href="product-details.html">Top of amber bottle</a>
+                        <a>Top of amber bottle</a>
                       </h6>
                       <span>$35.99</span>
                     </div>
                   </li>
                   <li>
-                    <a
-                      href="product-details.html"
-                      class="widget-popularproduct-image"
-                    >
+                    <a class="widget-popularproduct-image">
                       <img
                         src="assets/images/products/product-image-3-thumb.jpg"
                         alt="product thumbnail"
@@ -284,7 +339,7 @@
                     </a>
                     <div class="widget-popularproduct-content">
                       <h6>
-                        <a href="product-details.html">Mario badescu bottle</a>
+                        <a>Mario badescu bottle</a>
                       </h6>
                       <span>$99.99</span>
                     </div>
@@ -297,10 +352,10 @@
               <div class="single-widget widget-sizes">
                 <h6 class="widget-title">Sizes</h6>
                 <ul>
-                  <li><a href="products.html">Small Size</a></li>
-                  <li><a href="products.html">Medium Size</a></li>
-                  <li><a href="products.html">Large Size</a></li>
-                  <li><a href="products.html">Extra Large Size</a></li>
+                  <li><a>Small Size</a></li>
+                  <li><a>Medium Size</a></li>
+                  <li><a>Large Size</a></li>
+                  <li><a>Extra Large Size</a></li>
                 </ul>
               </div>
               <!--// Single Widget -->

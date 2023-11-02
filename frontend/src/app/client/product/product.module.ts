@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule } from './product-routing.module';
-import { ProductComponent } from './product.component';
+// import { ProductComponent } from './ProductComponent';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({

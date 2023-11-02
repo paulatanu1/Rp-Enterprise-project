@@ -2,7 +2,7 @@ export interface IproductList {
   sort_by: string;
   order_by: string;
   page_number: string;
-  no_of_records: string;
+  no_of_records: number;
   search: string;
   search_by: string;
   color: string;
