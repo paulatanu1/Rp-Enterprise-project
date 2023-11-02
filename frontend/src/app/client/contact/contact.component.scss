@@ -64,14 +64,22 @@
     -o-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
 }
-
+.tm-contact-block:hover i {
+    color: #f2ba59;
+}
 .tm-contact-block h6 {
     font-weight: 700;
     margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 28px;
+    font-family: "Montserrat", sans-serif !important;
 }
 
 .tm-contact-block p {
     margin-bottom: 0;
+    font-size: 15px;
+    line-height: 26px;
+    color: #707070;
 }
 
 .tm-padding-section-top {
@@ -88,10 +96,15 @@
     margin-top: -5px;
     margin-bottom: 12px;
     font-weight: 700;
+    font-size: 30px;
+    line-height: 40px;
 }
 
 .tm-sectiontitle p {
     margin-bottom: 0;
+    color: #707070;
+    font-size: 15px;
+    line-height: 26px;
 }
 
 .form-messages,
@@ -115,14 +128,6 @@
     margin-top: -30px;
 }
 
-.tm-form-fieldhalf {
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 calc(50% - 15px);
-    -ms-flex: 0 0 calc(50% - 15px);
-    flex: 0 0 calc(50% - 15px);
-    max-width: calc(50% - 15px);
-}
-
 .tm-form-field {
     margin-top: 30px;
     -webkit-box-flex: 0;
@@ -131,7 +136,13 @@
     flex: 0 0 100%;
     max-width: 100%;
 }
-
+.tm-form-fieldhalf {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 calc(50% - 15px);
+    -ms-flex: 0 0 calc(50% - 15px);
+    flex: 0 0 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+}
 .tm-form label {
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
@@ -212,7 +223,11 @@ button.tm-button::before {
     -o-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
 }
-
+.tm-button:hover::before,
+a.tm-button:hover::before,
+button.tm-button:hover::before {
+    top: 0;
+}
 .tm-contact-block a {
     color: #707070;
 }
