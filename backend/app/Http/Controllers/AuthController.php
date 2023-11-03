@@ -323,4 +323,36 @@ class AuthController extends Controller
         }
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
+    public function newArrivel(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $productArr = Product::weight();
+
+        if (!empty($productArr)) {
+            $result_arr['dataset'] = $productArr;
+            $success_message = 'Data fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+    public function popularShapes(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $productArr = Product::popularShapes();
+
+        if (!empty($productArr)) {
+            $result_arr['dataset'] = $productArr;
+            $success_message = 'Data fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
 }

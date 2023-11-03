@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use DB;
+
 
 class Product extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -114,6 +116,19 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
 
     public static function deleteProduct($product_id){
         $result = Product::where('id', $product_id)->delete();
+        return $result;
+    }
+    public static function weight(){
+        
+        $result = Product::select(DB::raw("CONCAT('RP','stone_id') AS stone_id"), 'weight')->orderBy('weight', 'desc')->limit(10)->get();
+        return $result;
+    }
+    public static function popularShapes(){
+
+        $result = Product::select('shape', DB::raw('MAX(weight) as max_weight'), DB::raw("CONCAT('RP','stone_id') AS stone_id"))
+        ->groupBy('shape')
+        ->orderBy('max_weight', 'desc')
+        ->get();    
         return $result;
     }
     
