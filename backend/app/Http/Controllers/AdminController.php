@@ -212,9 +212,10 @@ class AdminController extends Controller
                 $weight = $items['weight'];
                 $system_amount = $discountedPrice * $weight;
                 $system_amount = number_format($system_amount, 2, '.', ',');
-
+                $stone_id = "RP".$items['stone_id'];
                 $productListArr[$key]['system_price'] = $discountedPrice;
                 $productListArr[$key]['system_amount'] = $system_amount;
+                $productListArr[$key]['stone_id'] = $stone_id;
             }
 
             if (!empty($productListArr)) {
@@ -373,5 +374,6 @@ class AdminController extends Controller
         }
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
+    
     
 }
