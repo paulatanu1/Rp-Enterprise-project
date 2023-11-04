@@ -17,6 +17,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-populer-shapes',
@@ -41,9 +42,7 @@ import {
     ]),
   ],
 })
-export class PopulerShapesComponent
-  implements OnInit, AfterViewInit, OnChanges
-{
+export class PopulerShapesComponent implements OnInit, AfterViewInit {
   private observer: IntersectionObserver | null = null;
   isInViewport = false;
   @ViewChild('slider') slider: ElementRef | undefined;
@@ -63,6 +62,31 @@ export class PopulerShapesComponent
   popularShapesItem: { shape: string; max_weight: string; stone_id: string }[] =
     [];
   fadeState = 'in';
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    autoplay: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 4,
+      },
+    },
+    nav: true,
+  };
 
   ngOnInit(): void {
     this.getPopularShapes();
@@ -82,17 +106,5 @@ export class PopulerShapesComponent
         });
       },
     });
-  }
-
-  onSlideChanged(event: Event): void {
-    console.log(event, 'ppp');
-    if (event instanceof CustomEvent) {
-      // Extract the active slide index from the event object
-      this.currentSlide = (event as CustomEvent).detail;
-      console.log(this.currentSlide, event);
-    }
-  }
-  ngOnChanges() {
-    console.log(this.slider, 'uuu');
   }
 }
