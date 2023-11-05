@@ -6,13 +6,25 @@ import { NewArrivalService } from '../../client-services/new-arrival.service';
 import { catchError, tap } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 
+interface IproductList {
+  shape: string;
+  max_weight: string;
+  stone_id: string;
+  clarity: string;
+  cut: string;
+  v360: string;
+  imgurl: string;
+  certi_pdf_url: string;
+  product_name: string;
+}
+
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.scss'],
 })
 export class NewProductComponent implements OnInit {
-  productList: IhomepageProduct[] = [];
+  productList: IproductList[] = [];
   constructor(
     private product: ClientProductService,
     private newArrival: NewArrivalService,
@@ -65,9 +77,9 @@ export class NewProductComponent implements OnInit {
       .subscribe();
   }
 
-  shareProductOnWhatsApp(item: IhomepageProduct) {
+  shareProductOnWhatsApp(item: IproductList) {
     const message = encodeURIComponent(
-      `I want to buy Product:- ${item.shape},color:- ${item.color},Product Id:- ${item.id},product URL:- ${item.imgurl}`
+      `I want to buy Product:- Clarity: ${item.clarity},weight: ${item.max_weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
     );
     const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
     console.log(whatsappURL);

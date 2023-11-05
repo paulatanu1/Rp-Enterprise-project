@@ -29,7 +29,11 @@
                   </div>
                   <ul class="tm-product-actions">
                     <li>
-                      <button data-fancybox data-src="#tm-product-quickview">
+                      <button
+                        (click)="shareProductOnWhatsApp(slide)"
+                        data-fancybox
+                        data-src="#tm-product-quickview"
+                      >
                         <i>Buy Now</i>
                       </button>
                     </li>
@@ -41,7 +45,7 @@
                 </div>
                 <div class="tm-product-bottomside">
                   <h6 class="tm-product-title">
-                    <a>{{ slide.stone_id }}</a>
+                    <a>{{ slide.product_name }}</a>
                   </h6>
                   <div class="tm-ratingbox">
                     <span class="is-active">

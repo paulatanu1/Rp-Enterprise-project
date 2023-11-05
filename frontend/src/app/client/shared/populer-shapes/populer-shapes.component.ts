@@ -18,6 +18,18 @@ import {
 } from '@angular/animations';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
+interface IpopularShapesItem {
+  shape: string;
+  max_weight: string;
+  stone_id: string;
+  clarity: string;
+  cut: string;
+  v360: string;
+  imgurl: string;
+  certi_pdf_url: string;
+  product_name: string;
+}
+
 @Component({
   selector: 'app-populer-shapes',
   templateUrl: './populer-shapes.component.html',
@@ -56,8 +68,7 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
   initialSlide = 0;
   currentSlide = 0;
 
-  popularShapesItem: { shape: string; max_weight: string; stone_id: string }[] =
-    [];
+  popularShapesItem: IpopularShapesItem[] = [];
   fadeState = 'in';
   customOptions: OwlOptions = {
     loop: true,
@@ -103,5 +114,18 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
         });
       },
     });
+  }
+
+  shareProductOnWhatsApp(item: IpopularShapesItem) {
+    const message = encodeURIComponent(
+      `I want to buy Product:- Clarity: ${item.clarity},weight: ${item.max_weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
+    );
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
+    console.log(whatsappURL);
+    // window.location.href = whatsappURL;
+
+    window.open(whatsappURL, '_blank');
+
+    // <a href="https://api.whatsapp.com/send?phone=1XXXXXXXXXX&text=I want to buy Product X. Price: $19.99">Buy Now</a>
   }
 }
