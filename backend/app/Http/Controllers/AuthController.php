@@ -241,8 +241,10 @@ class AuthController extends Controller
                 $system_amount = $discountedPrice * $weight;
                 $system_amount = number_format($system_amount, 2, '.', ',');
 
+                $stone_id = "RP" . $items['stone_id'];
                 $productListArr[$key]['system_price'] = $discountedPrice;
                 $productListArr[$key]['system_amount'] = $system_amount;
+                $productListArr[$key]['stone_id'] = $stone_id;
             }
 
             if (!empty($productListArr)) {
@@ -328,7 +330,7 @@ class AuthController extends Controller
         $result_arr = $post_array = array();
         $flag = true;
         $productArr = Product::weight();
-
+        
         if (!empty($productArr)) {
             $result_arr['dataset'] = $productArr;
             $success_message = 'Data fetch successfully';
@@ -344,7 +346,7 @@ class AuthController extends Controller
         $result_arr = $post_array = array();
         $flag = true;
         $productArr = Product::popularShapes();
-
+        
         if (!empty($productArr)) {
             $result_arr['dataset'] = $productArr;
             $success_message = 'Data fetch successfully';
