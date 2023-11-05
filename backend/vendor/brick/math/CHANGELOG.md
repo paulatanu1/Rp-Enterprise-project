@@ -239,7 +239,7 @@ The following deprecated methods have been removed. Use the new method name inst
 
 Thanks to @DASPRiD 👍
 
-## [0.7.3](https://github.com/brick/math/releases/tag/0.7.3) - 2018-08-20
+## [0.8.2](https://github.com/brick/math/releases/tag/0.8.2) - 2018-08-20
 
 **New method:** `BigDecimal::hasNonZeroFractionalPart()`
 

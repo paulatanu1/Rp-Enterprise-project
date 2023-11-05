@@ -53,7 +53,7 @@ final class GlobalState
      * @psalm-var array<string, array<string, true>>
      */
     private const DEPRECATED_INI_SETTINGS = [
-        '7.3' => [
+        '8.2' => [
             'iconv.input_encoding'       => true,
             'iconv.output_encoding'      => true,
             'iconv.internal_encoding'    => true,

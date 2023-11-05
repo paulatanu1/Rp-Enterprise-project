@@ -8,4 +8,5 @@ export const environment = {
   MSG_TIMEOUT: 2000,
   API_TIMEOUT: 300000,
   ERROR_REDIRECT: true,
+  WHATSAPP_NUMBER: 9867224941,
 };

@@ -20,6 +20,14 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('login', 'AuthController@login');
     $router->post('register', 'AuthController@register');
+    $router->post('contact', 'AuthController@contact');
+    $router->post('productList', 'AuthController@productList');
+    $router->post('stoneType', 'AuthController@stoneType');
+    $router->post('shape', 'AuthController@shape');
+    $router->post('color', 'AuthController@color');
+    $router->post('clarity', 'AuthController@clarity');
+    $router->post('newArrivel', 'AuthController@newArrivel');
+    $router->post('popularShapes', 'AuthController@popularShapes');
     
 });
 
@@ -32,6 +40,8 @@ $router->group(['middleware' => 'admin'], function () use ($router) {
     $router->post('/admin/shape', 'AdminController@shape');
     $router->post('/admin/color', 'AdminController@color');
     $router->post('/admin/clarity', 'AdminController@clarity');
+    $router->post('/admin/productDelete', 'AdminController@productDelete');
+    // $router->post('/admin/newArrivel', 'AdminController@newArrivel');
     $router->post('logout', 'AuthController@logout');
     $router->post('refresh', 'AuthController@refresh');
     $router->post('me', 'AuthController@me');

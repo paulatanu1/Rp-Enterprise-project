@@ -20,7 +20,7 @@ All notable changes in `sebastian/global-state` are documented in this file usin
 ### Removed
 
 * Removed `SebastianBergmann\GlobalState\Restorer::restoreFunctions()`
-* This component is no longer supported on PHP 7.3, PHP 7.4 and PHP 8.0
+* This component is no longer supported on PHP 8.2, PHP 7.4 and PHP 8.0
 
 ## [5.0.5] - 2022-02-14
 
@@ -50,7 +50,7 @@ All notable changes in `sebastian/global-state` are documented in this file usin
 
 ### Changed
 
-* Changed PHP version constraint in `composer.json` from `^7.3 || ^8.0` to `>=7.3`
+* Changed PHP version constraint in `composer.json` from `^8.2 || ^8.0` to `>=8.2`
 
 ## [5.0.0] - 2020-08-07
 

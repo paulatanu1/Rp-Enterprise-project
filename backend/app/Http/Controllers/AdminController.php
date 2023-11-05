@@ -212,9 +212,10 @@ class AdminController extends Controller
                 $weight = $items['weight'];
                 $system_amount = $discountedPrice * $weight;
                 $system_amount = number_format($system_amount, 2, '.', ',');
-
+                $stone_id = "RP".$items['stone_id'];
                 $productListArr[$key]['system_price'] = $discountedPrice;
                 $productListArr[$key]['system_amount'] = $system_amount;
+                $productListArr[$key]['stone_id'] = $stone_id;
             }
 
             if (!empty($productListArr)) {
@@ -350,4 +351,29 @@ class AdminController extends Controller
         }
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
+
+    public function productDelete(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        if ($request->input('product_id') == '') {
+            $post['product_id'] = "";
+        } else {
+            $post['product_id'] = $request->input('product_id');
+        }
+
+        $productArr = Product::fetchProductById($post);
+        
+        if (!empty($productArr)) {
+            $deleteProduct = Product::deleteProduct($post['product_id']);
+            $success_message = 'Data deleted successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+    
+    
 }

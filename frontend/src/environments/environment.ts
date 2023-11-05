@@ -13,6 +13,7 @@ export const environment = {
   API_TIMEOUT: 300000,
   ERROR_REDIRECT: true,
   AJAX_TIMEOUT: 3000,
+  WHATSAPP_NUMBER: 8918882380,
 };
 
 /*

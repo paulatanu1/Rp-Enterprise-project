@@ -6,11 +6,62 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use  App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use  App\Models\Contact;
+use  App\Models\Product;
+use App\Libraries\Helpers;
+
+
 
 
 class AuthController extends Controller
 {
 
+    public function contact(Request $request) {
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $this->validate($request, [
+            'name' => 'required|string',
+            'email' => 'required|email',
+        ]);
+
+        $product = new Contact();
+        $product->name = $request->input('name');
+        $product->email = $request->input('email');
+        $product->phone = $request->input('phone');
+        $product->subject = $request->input('subject');
+        $product->message = $request->input('message');
+        $product->save();
+
+        $user_data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'subject' => $request->input('subject'),
+            'message' => $request->input('message'),
+            'from_email' => env('SEND_MAIL_ADDRESS'),
+            'email_name' => env('MAIL_FROM_NAME'),
+        ];
+
+        try {
+            // $emailContent = View::make('mail', $user_data)->render();
+            // $textPart = new TextPart($emailContent);
+            Mail::send('mail', $user_data, function($message) use ($user_data) {
+            $message->to($user_data['email'], $user_data['name'])->subject($user_data['subject']);
+            $message->from($user_data['from_email'], $user_data['email_name']);           
+
+            });
+            $success_message = 'Email sent successfully';
+            $http_response = 'http_response_ok';
+            
+            return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+        } catch (\Exception $e) {
+            // Log or output the error message for debugging
+            dd($e->getMessage());
+        }
+        
+    }
 
     // public function __construct()
     // {
@@ -104,5 +155,206 @@ class AuthController extends Controller
             'role' => auth()->user()->role,
             'expires_in' => auth()->factory()->getTTL() * 60 * 24
         ]);
+    }
+
+    public function productList(Request $request)
+    {
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        if ($request->input('sort_by') == '') {
+            $post['sort_by'] = "";
+        } else {
+            $post['sort_by'] = $request->input('sort_by');
+        }
+        if ($request->input('order_by') == '') {
+            $post['order_by'] = "";
+        } else {
+            $post['order_by'] = $request->input('order_by');
+        }
+
+        if ($request->input('page_number') == '') {
+            $page_number = 1;
+        } else {
+            $page_number = $request->input('page_number');
+        }
+        if ($request->input('no_of_records') == '') {
+            $no_of_records = env('NO_OF_RECORDS');
+        } else {
+            $no_of_records = $request->input('no_of_records');
+        }
+        if ($request->input('search') == '') {
+            $post['search'] = "";
+        } else {
+            $post['search'] = $request->input('search');
+        }
+        if ($request->input('search_by') == '') {
+            $post['search_by'] = "";
+        } else {
+            $post['search_by'] = $request->input('search_by');
+        }
+        if ($request->input('stone_type') == '') {
+            $post['stone_type'] = '';
+        } else {
+            $post['stone_type'] = $request->input('stone_type');
+        }
+        if ($request->input('weight') == '') {
+            $post['weight'] = '';
+        } else {
+            $post['weight'] = $request->input('weight');
+        }
+        if ($request->input('shape') == '') {
+            $post['shape'] = '';
+        } else {
+            $post['shape'] = $request->input('shape');
+        }
+        if ($request->input('filter_by') == '') {
+            $post['filter_by'] = '';
+        } else {
+            $post['filter_by'] = $request->input('filter_by');
+        }
+        if ($request->input('clarity') == '') {
+            $post['clarity'] = '';
+        } else {
+            $post['clarity'] = $request->input('clarity');
+        }
+
+        $productListArrCount = Product::productList($post);
+        $productListArr = Product::productList($post, $page_number, $no_of_records);
+        if (!empty($productListArr)) {
+            foreach ($productListArr as $key => $items) {
+                // Original price
+                // $originalPrice = $items['rapnet_price']; // Replace this with your original price
+                $originalPrice = $items['rapnet_price']; // Replace this with your original price
+
+                // Discount percentage
+                $discountPercentage = $items['system_discount']; // Replace this with your discount percentage
+
+                // Calculate the discount amount
+                $discountAmount = ($originalPrice * $discountPercentage) / 100;
+
+                // Calculate the discounted price
+                $discountedPrice = $originalPrice - $discountAmount;
+                $discountedPrice = number_format($discountedPrice, 2, '.', ',');
+
+                $weight = $items['weight'];
+                $system_amount = $discountedPrice * $weight;
+                $system_amount = number_format($system_amount, 2, '.', ',');
+
+                $stone_id = "RP" . $items['stone_id'];
+                $productListArr[$key]['system_price'] = $discountedPrice;
+                $productListArr[$key]['system_amount'] = $system_amount;
+                $productListArr[$key]['stone_id'] = $stone_id;
+            }
+
+            if (!empty($productListArr)) {
+                $success_message = 'Fetch successfully';
+                $http_response = 'http_response_ok';
+                $result_arr['dataset'] = $productListArr;
+                $result_arr['total_count'] = count($productListArrCount);
+            } else {
+                $result_arr['dataset'] = array();
+                $result_arr['total_count'] = 0;
+                $error_message = 'Result not found';
+                $http_response = 'http_response_ok_no_content';
+            }
+        }
+
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+    public function stoneType(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $stoneType = Product::stoneType();
+        if (!empty($stoneType)) {
+            $result_arr['dataset'] = $stoneType;
+            $success_message = 'Data Fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+
+    public function shape(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $shape = Product::shape();
+        if (!empty($shape)) {
+            $result_arr['dataset'] = $shape;
+            $success_message = 'Data Fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+
+    public function color(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $color = Product::color();
+        if (!empty($color)) {
+            $result_arr['dataset'] = $color;
+            $success_message = 'Data Fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+
+    public function clarity(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $clarity = Product::clarity();
+        if (!empty($clarity)) {
+            $result_arr['dataset'] = $clarity;
+            $success_message = 'Data Fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+    public function newArrivel(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $productArr = Product::weight();
+        
+        if (!empty($productArr)) {
+            $result_arr['dataset'] = $productArr;
+            $success_message = 'Data fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+    public function popularShapes(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        $productArr = Product::popularShapes();
+        
+        if (!empty($productArr)) {
+            $result_arr['dataset'] = $productArr;
+            $success_message = 'Data fetch successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
 }

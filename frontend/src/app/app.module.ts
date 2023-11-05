@@ -7,6 +7,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { HighContrastModeDetector } from '@angular/cdk/a11y';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [HighContrastModeDetector],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
