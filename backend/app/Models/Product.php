@@ -119,27 +119,25 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
         return $result;
     }
     public static function weight(){
-        
-        $result = Product::select(DB::raw("CONCAT('RP','stone_id') AS stone_id"), 'weight')->orderBy('weight', 'desc')->limit(10)->get();
         $result = DB::table('product')
-        ->select('product.shape', 'weight as max_weight', 'product.stone_id', 'product.clarity', 'product.cut', 'product.v360', 'product.imgurl', 'product.certi_pdf_url', DB::raw('CONCAT("RP", product.stone_id) AS product_name'))
+        ->select('product.id', 'product.shape', 'weight as max_weight', 'product.stone_id', 'product.clarity', 'product.cut', 'product.v360', 'product.imgurl', 'product.certi_pdf_url', DB::raw('CONCAT("RP", product.stone_id) AS product_name'), 'product.rapnet_price', 'product.system_discount', 'product.weight')
         
         ->orderBy('max_weight', 'desc')
-        ->limit(10)->get();
+        ->limit(9)->get()->toArray();
 
         return $result;
     }
     public static function popularShapes(){
 
         $result = DB::table('product')
-        ->select('product.shape', 'subquery.max_weight', 'product.stone_id', 'product.clarity', 'product.cut', 'product.v360', 'product.imgurl', 'product.certi_pdf_url', DB::raw('CONCAT("RP", product.stone_id) AS product_name'))
+        ->select('product.shape', 'subquery.max_weight', 'product.stone_id', 'product.clarity', 'product.cut', 'product.v360', 'product.imgurl', 'product.certi_pdf_url', DB::raw('CONCAT("RP", product.stone_id) AS product_name'), 'product.rapnet_price', 'product.system_discount', 'product.weight')
         ->from(DB::raw('(SELECT shape, MAX(weight) as max_weight FROM product GROUP BY shape) as subquery'))
         ->join('product', function ($join) {
             $join->on('subquery.shape', '=', 'product.shape')
             ->on('subquery.max_weight', '=', 'product.weight');
         })
         ->orderBy('max_weight', 'desc')
-        ->get();
+        ->get()->toArray();
         return $result;
     }
     

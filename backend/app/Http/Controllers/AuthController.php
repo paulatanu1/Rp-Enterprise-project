@@ -330,11 +330,46 @@ class AuthController extends Controller
         $result_arr = $post_array = array();
         $flag = true;
         $productArr = Product::weight();
+        // dd($productArr);
         
         if (!empty($productArr)) {
-            $result_arr['dataset'] = $productArr;
-            $success_message = 'Data fetch successfully';
-            $http_response = 'http_response_ok';
+            foreach ($productArr as $key => $item) {
+                // dd($item); // Check the content of the item
+
+                // Original price
+                $originalPrice = $item->rapnet_price;
+
+                // Discount percentage
+                $discountPercentage = $item->system_discount;
+
+                // Calculate the discount amount
+                $discountAmount = ($originalPrice * $discountPercentage) / 100;
+
+                // Calculate the discounted price
+                $discountedPrice = $originalPrice - $discountAmount;
+                
+                // $discountedPrice = number_format($discountedPrice, 2, '.', ',');
+
+                // Calculate the system amount
+                $weight = $item->weight;
+                // dump($discountedPrice,$item->id);
+                $systemAmount = $discountedPrice * $weight;
+                $systemAmount = number_format($systemAmount, 2, '.', ',');
+                // dd($systemAmount);
+
+                // Update the object with the calculated values
+                $item->system_price = $discountedPrice;
+                $item->system_amount = $systemAmount;
+            }
+
+            if (!empty($productArr)) {
+                $result_arr['dataset'] = $productArr;
+                $success_message = 'Data fetch successfully';
+                $http_response = 'http_response_ok';
+            } else {
+                $error_message = 'Data not found';
+                $http_response = 'http_response_ok_no_content';
+            }
         } else {
             $error_message = 'Data not found';
             $http_response = 'http_response_bad_request';
@@ -346,15 +381,45 @@ class AuthController extends Controller
         $result_arr = $post_array = array();
         $flag = true;
         $productArr = Product::popularShapes();
-        
         if (!empty($productArr)) {
-            $result_arr['dataset'] = $productArr;
-            $success_message = 'Data fetch successfully';
-            $http_response = 'http_response_ok';
+            foreach ($productArr as $key => $item) {
+                // dd($item); // Check the content of the item
+
+                // Original price
+                $originalPrice = $item->rapnet_price;
+
+                // Discount percentage
+                $discountPercentage = $item->system_discount;
+
+                // Calculate the discount amount
+                $discountAmount = ($originalPrice * $discountPercentage) / 100;
+
+                // Calculate the discounted price
+                $discountedPrice = $originalPrice - $discountAmount;
+                // $discountedPrice = number_format($discountedPrice, 2, '.', ',');
+
+                // Calculate the system amount
+                $weight = $item->weight;
+                $systemAmount = $discountedPrice * $weight;
+                $systemAmount = number_format($systemAmount, 2, '.', ',');
+
+                // Update the object with the calculated values
+                $item->system_price = $discountedPrice;
+                $item->system_amount = $systemAmount;
+            }
+            if (!empty($productArr)) {
+                $result_arr['dataset'] = $productArr;
+                $success_message = 'Data fetch successfully';
+                $http_response = 'http_response_ok';
+            } else {
+                $error_message = 'Data not found';
+                $http_response = 'http_response_ok_no_content';
+            }
         } else {
             $error_message = 'Data not found';
             $http_response = 'http_response_bad_request';
         }
+        
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
 }
