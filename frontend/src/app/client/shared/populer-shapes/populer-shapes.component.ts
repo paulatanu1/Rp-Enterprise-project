@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  OnChanges,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -45,11 +44,9 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class PopulerShapesComponent implements OnInit, AfterViewInit {
   private observer: IntersectionObserver | null = null;
   isInViewport = false;
-  @ViewChild('slider') slider: ElementRef | undefined;
   constructor(
     private shapes: PopularShapesService,
-    private toastr: ToastrService,
-    private elementRef: ElementRef
+    private toastr: ToastrService
   ) {}
 
   itemsPerSlide = 4;

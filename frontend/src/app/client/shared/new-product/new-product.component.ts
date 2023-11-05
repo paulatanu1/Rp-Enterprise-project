@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ClientProductService } from '../../client-services/client-product.service';
 import { IhomepageProduct } from '../../client-model/client-model';
 import { environment } from 'src/environments/environment';
+import { NewArrivalService } from '../../client-services/new-arrival.service';
+import { catchError, tap } from 'rxjs';
 
 @Component({
   selector: 'app-new-product',
@@ -10,19 +12,48 @@ import { environment } from 'src/environments/environment';
 })
 export class NewProductComponent implements OnInit {
   productList: IhomepageProduct[] = [];
-  constructor(private product: ClientProductService) {}
+  constructor(
+    private product: ClientProductService,
+    private newArrival: NewArrivalService
+  ) {}
 
   ngOnInit(): void {
-    this.getProduct();
+    // this.getProduct();
+    this.getNewArrival();
   }
 
-  getProduct() {
-    this.product.getHomePageProducts().subscribe({
-      next: (res) => {
-        this.productList = res.response.raws.data.dataset;
-      },
-      error: (err) => {},
-    });
+  // getProduct() {
+  //   this.product.getHomePageProducts().subscribe({
+  //     next: (res) => {
+  //       this.productList = res.response.raws.data.dataset;
+  //     },
+  //     error: (err) => {},
+  //   });
+  // }
+
+  getNewArrival() {
+    this.newArrival
+      .newArrival()
+      .pipe(
+        tap(
+          ({
+            response: {
+              raws: {
+                data: { dataset },
+              },
+            },
+          }) => {
+            this.productList = dataset;
+            console.table(this.productList);
+          }
+        ),
+        catchError((err) => {
+          // Handle errors here, e.g., display an error message
+          console.error('An error occurred:', err);
+          return [];
+        })
+      )
+      .subscribe();
   }
 
   shareProductOnWhatsApp(item: IhomepageProduct) {
