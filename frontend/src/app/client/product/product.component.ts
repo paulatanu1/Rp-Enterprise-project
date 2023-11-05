@@ -4,6 +4,7 @@ import { IhomepageProduct } from '../client-model/client-model';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product',
@@ -21,6 +22,13 @@ export class ProductComponent implements OnInit {
   searchControl = new FormControl();
   options: string[] = ['Option 1', 'select 2', 'check 3', 'check 4', 'opp 5'];
   filteredOptions: Observable<string[]>;
+  totalItems!: number;
+  PageNo = 1;
+  clarity: string = '';
+  shape: string = '';
+  searchBy: string = '';
+  search: string = '';
+  displayedItems: number = 0;
   constructor(private product: ClientProductService, private router: Router) {
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
@@ -36,13 +44,27 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProductData();
+    this.getProductData(
+      this.PageNo,
+      this.clarity,
+      this.shape,
+      this.searchBy,
+      this.search
+    );
   }
 
-  getProductData() {
+  getProductData(
+    PageNo: number,
+    clarity: string,
+    shape: string,
+    searchBy: string,
+    search: string
+  ) {
     this.product.getHomePageProducts().subscribe({
       next: (res) => {
-        this.productList = res.response.raws.data.dataset;
+        this.totalItems = res.response.raws.data.total_count;
+        this.productList.push(...res.response.raws.data.dataset);
+        this.displayedItems++;
       },
       error: (err) => {},
     });
@@ -57,5 +79,33 @@ export class ProductComponent implements OnInit {
     return this.options.filter((option) =>
       option.toLowerCase().includes(filterValue)
     );
+  }
+
+  onScroll() {
+    // debugger;
+    console.log('rrr', this.totalItems > this.productList.length);
+    if (this.totalItems > this.productList.length) {
+      this.PageNo = this.PageNo + 1;
+      this.getProductData(
+        this.PageNo,
+        this.clarity,
+        this.shape,
+        this.searchBy,
+        this.search
+      );
+    }
+  }
+
+  shareProductOnWhatsApp(item: IhomepageProduct) {
+    const message = encodeURIComponent(
+      `I want to buy Product:- Clarity: ${item.clarity},weight: ${item.weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
+    );
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
+    console.log(whatsappURL);
+    // window.location.href = whatsappURL;
+
+    window.open(whatsappURL, '_blank');
+
+    // <a href="https://api.whatsapp.com/send?phone=1XXXXXXXXXX&text=I want to buy Product X. Price: $19.99">Buy Now</a>
   }
 }

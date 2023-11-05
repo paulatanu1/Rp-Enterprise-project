@@ -30,6 +30,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { CarouselModule as OwlCarouselModule } from 'ngx-owl-carousel-o';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { HighContrastModeDetector } from '@angular/cdk/a11y';
+
 @NgModule({
   declarations: [
     ClientComponent,
@@ -65,6 +68,7 @@ import { CarouselModule as OwlCarouselModule } from 'ngx-owl-carousel-o';
     MatAutocompleteModule,
     MatInputModule,
     OwlCarouselModule,
+    InfiniteScrollModule,
   ],
   exports: [
     TopContactBarComponent,
@@ -79,5 +83,6 @@ import { CarouselModule as OwlCarouselModule } from 'ngx-owl-carousel-o';
     BannerComponent,
     FrontpageComponent,
   ],
+  providers: [HighContrastModeDetector],
 })
 export class ClientModule {}

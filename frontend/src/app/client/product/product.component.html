@@ -30,9 +30,9 @@
     <div class="tm-products-area tm-section tm-padding-section bg-white">
       <div class="container">
         <div class="row">
-          <div class="col-lg-9 col-12">
+          <div class="col-lg-12 col-12">
             <form action="#" class="tm-shop-header">
-              <div class="tm-shop-productview">
+              <!-- <div class="tm-shop-productview">
                 <span>View:</span>
                 <button data-view="grid" class="active">
                   <i class="ion-android-apps"></i>
@@ -40,14 +40,18 @@
                 <button data-view="list">
                   <i class="ion-android-menu"></i>
                 </button>
-              </div>
-              <p class="tm-shop-countview">Showing 1 to 9 of 16</p>
+              </div> -->
+              <p class="tm-shop-countview">
+                Showing {{ displayedItems }} to
+                {{ displayedItems + productList.length - 1 }} of
+                {{ totalItems }}
+              </p>
               <select>
                 <option value="value">Default Sorting</option>
                 <option value="value">Name A-Z</option>
-                <option value="value">Date</option>
-                <option value="value">Best Sellers</option>
-                <option value="value">Trending</option>
+                <option value="value">Name Z-A</option>
+                <!-- <option value="value">Best Sellers</option>
+                <option value="value">Trending</option> -->
               </select>
             </form>
 
@@ -116,7 +120,13 @@
             </button>
 
             <div class="tm-shop-products">
-              <div class="row mt-30-reverse">
+              <div
+                class="row mt-30-reverse"
+                infiniteScroll
+                [infiniteScrollDistance]="2"
+                [infiniteScrollThrottle]="300"
+                (scrolled)="onScroll()"
+              >
                 <!-- Single Product -->
                 <div
                   class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 mt-50"
@@ -129,7 +139,7 @@
                           src="{{
                             item.imgurl
                               ? item.imgurl
-                              : '../../../../../assets/images/notavailable.jpg '
+                              : '../../../../../assets/images/9264822.jpg'
                           }}"
                           alt="product image"
                         />
@@ -137,14 +147,14 @@
                           src="{{
                             item.imgurl
                               ? item.imgurl
-                              : '../../../../../assets/images/notavailable.jpg '
+                              : '../../../../../assets/images/9264822.jpg'
                           }}"
                           alt="product image"
                         />
                       </div>
                       <ul class="tm-product-actions">
                         <li>
-                          <a href="#">
+                          <a (click)="shareProductOnWhatsApp(item)">
                             <i class="ion-android-cart"></i>
                             Add to cart
                           </a>
@@ -158,7 +168,9 @@
                           </button>
                         </li>
                         <li>
-                          <a href="#"><i class="ion-heart"></i></a>
+                          <a (click)="shareProductOnWhatsApp(item)">
+                            <i class="ion-heart"></i>
+                          </a>
                         </li>
                       </ul>
                       <div class="tm-product-badges">
@@ -169,7 +181,7 @@
                     <div class="tm-product-bottomside">
                       <h6 class="tm-product-title">
                         <a [routerLink]="['/product-details']">
-                          {{ item.shape }}
+                          {{ item.stone_id }}
                         </a>
                       </h6>
                       <div class="tm-ratingbox">
@@ -248,9 +260,8 @@
           </div>
 
           <!-- Widgets -->
-          <div class="col-lg-3 col-12">
+          <!-- <div class="col-lg-3 col-12">
             <div class="widgets">
-              <!-- Single Widget -->
               <div class="single-widget widget-categories">
                 <h6 class="widget-title">Categories</h6>
                 <ul>
@@ -262,9 +273,7 @@
                   <li><a>Foundation</a></li>
                 </ul>
               </div>
-              <!--// Single Widget -->
 
-              <!-- Single Widget -->
               <div class="single-widget widget-pricefilter">
                 <h6 class="widget-title">Filter by Price</h6>
                 <div class="widget-pricefilter-inner">
@@ -296,9 +305,7 @@
                   </div>
                 </div>
               </div>
-              <!--// Single Widget -->
 
-              <!-- Single Widget -->
               <div class="single-widget widget-popularproduct">
                 <h6 class="widget-title">Popular Product</h6>
                 <ul>
@@ -346,9 +353,7 @@
                   </li>
                 </ul>
               </div>
-              <!--// Single Widget -->
 
-              <!-- Single Widget -->
               <div class="single-widget widget-sizes">
                 <h6 class="widget-title">Sizes</h6>
                 <ul>
@@ -358,14 +363,11 @@
                   <li><a>Extra Large Size</a></li>
                 </ul>
               </div>
-              <!--// Single Widget -->
             </div>
-          </div>
-          <!--// Widgets -->
+          </div> -->
         </div>
       </div>
     </div>
-    <!--// Products Wrapper -->
   </main>
   <!--// Page Content -->
 
