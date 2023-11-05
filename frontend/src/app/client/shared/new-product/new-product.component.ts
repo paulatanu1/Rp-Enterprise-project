@@ -4,6 +4,7 @@ import { IhomepageProduct } from '../../client-model/client-model';
 import { environment } from 'src/environments/environment';
 import { NewArrivalService } from '../../client-services/new-arrival.service';
 import { catchError, tap } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-product',
@@ -14,8 +15,16 @@ export class NewProductComponent implements OnInit {
   productList: IhomepageProduct[] = [];
   constructor(
     private product: ClientProductService,
-    private newArrival: NewArrivalService
-  ) {}
+    private newArrival: NewArrivalService,
+    private router: Router
+  ) {
+    // this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     // Scroll to the top of the page
+    //     window.scrollTo(0, 0);
+    //   }
+    // });
+  }
 
   ngOnInit(): void {
     // this.getProduct();

@@ -3,6 +3,7 @@ import { ClientProductService } from '../client-services/client-product.service'
 import { IhomepageProduct } from '../client-model/client-model';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -20,11 +21,18 @@ export class ProductComponent implements OnInit {
   searchControl = new FormControl();
   options: string[] = ['Option 1', 'select 2', 'check 3', 'check 4', 'opp 5'];
   filteredOptions: Observable<string[]>;
-  constructor(private product: ClientProductService) {
+  constructor(private product: ClientProductService, private router: Router) {
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Scroll to the top of the page
+        window.scrollTo(0, 0);
+      }
+    });
   }
 
   ngOnInit(): void {
