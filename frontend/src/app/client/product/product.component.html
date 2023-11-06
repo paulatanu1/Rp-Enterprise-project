@@ -30,7 +30,7 @@
     <div class="tm-products-area tm-section tm-padding-section bg-white">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 col-12">
+          <div class="col-sm-12">
             <form action="#" class="tm-shop-header">
               <!-- <div class="tm-shop-productview">
                 <span>View:</span>
@@ -80,7 +80,6 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-
             <mat-form-field>
               <mat-label>Search By</mat-label>
               <mat-select [(value)]="searchByFilter">
@@ -118,7 +117,12 @@
             >
               Search
             </button>
+            <button mat-button type="button">Reset All Filter</button>
+          </div>
+        </div>
 
+        <div class="row">
+          <div class="col-lg-12 col-12">
             <div class="tm-shop-products">
               <div
                 class="row mt-30-reverse"

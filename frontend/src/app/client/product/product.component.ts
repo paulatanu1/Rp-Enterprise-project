@@ -29,11 +29,18 @@ export class ProductComponent implements OnInit {
   searchBy: string = '';
   search: string = '';
   displayedItems: number = 0;
+  no_of_reecord = '18';
+  sort_by: string = '';
+  order_by: string = '';
+  color: string = '';
+
   constructor(private product: ClientProductService, private router: Router) {
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
+
+    this.searchByOptions = ['clarity', 'shape', 'weight'];
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -49,7 +56,11 @@ export class ProductComponent implements OnInit {
       this.clarity,
       this.shape,
       this.searchBy,
-      this.search
+      this.search,
+      this.no_of_reecord,
+      this.sort_by,
+      this.order_by,
+      this.color
     );
   }
 
@@ -58,7 +69,11 @@ export class ProductComponent implements OnInit {
     clarity: string,
     shape: string,
     searchBy: string,
-    search: string
+    search: string,
+    no_of_records: string,
+    sort_by: string,
+    order_by: string,
+    color: string
   ) {
     this.product.getHomePageProducts().subscribe({
       next: (res) => {
@@ -91,7 +106,11 @@ export class ProductComponent implements OnInit {
         this.clarity,
         this.shape,
         this.searchBy,
-        this.search
+        this.search,
+        this.no_of_reecord,
+        this.sort_by,
+        this.order_by,
+        this.color
       );
     }
   }

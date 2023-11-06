@@ -979,3 +979,7 @@ button:not(:disabled) {
 .custom_scroll:hover::-webkit-scrollbar-thumb {
     background-color: #414042;
 }
+
+::ng-deep .mat-form-field {
+    padding: 0 20px;
+}
