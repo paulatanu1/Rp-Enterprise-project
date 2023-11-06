@@ -82,7 +82,10 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label>Search By</mat-label>
-              <mat-select [(value)]="searchByFilter">
+              <mat-select
+                [(value)]="searchByFilter"
+                (selectionChange)="onSearchByFilterChange()"
+              >
                 <mat-option value="All">All</mat-option>
                 <mat-option
                   *ngFor="let option of searchByOptions"
@@ -92,32 +95,25 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field class="example-form-field">
+
+            <mat-form-field>
               <input
                 matInput
-                placeholder="Search"
-                [formControl]="searchControl"
-                [matAutocomplete]="auto"
-                minlength="3"
+                placeholder="Search products"
+                [(ngModel)]="searchQuery"
+                [disabled]="searchByFilter == ''"
               />
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option
-                  *ngFor="let option of filteredOptions | async"
-                  [value]="option"
-                >
-                  {{ option }}
-                </mat-option>
-              </mat-autocomplete>
             </mat-form-field>
             <button
+              [disabled]="!searchQuery"
               mat-button
-              [disabled]="
-                searchControl.value ? searchControl.value.length < 3 : true
-              "
+              (click)="performSearch()"
             >
               Search
             </button>
-            <button mat-button type="button">Reset All Filter</button>
+            <button (click)="resetFilter()" mat-button type="button">
+              Reset All Filter
+            </button>
           </div>
         </div>
 

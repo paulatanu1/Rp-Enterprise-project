@@ -23,17 +23,19 @@ export class ProductComponent implements OnInit {
   options: string[] = ['Option 1', 'select 2', 'check 3', 'check 4', 'opp 5'];
   filteredOptions: Observable<string[]>;
   totalItems!: number;
-  PageNo = 1;
+  PageNo = '1';
   clarity: string = '';
   shape: string = '';
   searchBy: string = '';
   search: string = '';
   displayedItems: number = 0;
-  no_of_reecord = '18';
+  no_of_reecord = 18;
   sort_by: string = '';
-  order_by: string = '';
+  order_by: string = 'Asc';
   color: string = '';
-
+  SearchproductName: string[] = [];
+  searchQuery: string = '';
+  weight: string = '';
   constructor(private product: ClientProductService, private router: Router) {
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
@@ -60,29 +62,45 @@ export class ProductComponent implements OnInit {
       this.no_of_reecord,
       this.sort_by,
       this.order_by,
-      this.color
+      this.color,
+      this.weight
     );
   }
 
   getProductData(
-    PageNo: number,
+    PageNo: string,
     clarity: string,
     shape: string,
     searchBy: string,
     search: string,
-    no_of_records: string,
+    no_of_records: number,
     sort_by: string,
     order_by: string,
-    color: string
+    color: string,
+    weight: string
   ) {
-    this.product.getHomePageProducts().subscribe({
-      next: (res) => {
-        this.totalItems = res.response.raws.data.total_count;
-        this.productList.push(...res.response.raws.data.dataset);
-        this.displayedItems++;
-      },
-      error: (err) => {},
-    });
+    this.product
+      .getHomePageProducts(
+        PageNo,
+        clarity,
+        shape,
+        searchBy,
+        search,
+        no_of_records,
+        sort_by,
+        order_by,
+        color,
+        weight
+      )
+      .subscribe({
+        next: (res) => {
+          this.totalItems = res.response.raws.data.total_count;
+          this.productList.push(...res.response.raws.data.dataset);
+          this.displayedItems++;
+          this.SearchproductName = res.response.raws.data.dataset;
+        },
+        error: (err) => {},
+      });
   }
 
   private _filter(value: string): string[] {
@@ -110,7 +128,8 @@ export class ProductComponent implements OnInit {
         this.no_of_reecord,
         this.sort_by,
         this.order_by,
-        this.color
+        this.color,
+        this.weight
       );
     }
   }
@@ -126,5 +145,62 @@ export class ProductComponent implements OnInit {
     window.open(whatsappURL, '_blank');
 
     // <a href="https://api.whatsapp.com/send?phone=1XXXXXXXXXX&text=I want to buy Product X. Price: $19.99">Buy Now</a>
+  }
+
+  performSearch() {
+    const trimmedQuery = this.searchQuery.trim();
+    console.log(trimmedQuery, 'search');
+
+    if (trimmedQuery) {
+      this.search = trimmedQuery;
+      this.productList = [];
+      this.PageNo = '1';
+      this.getProductData(
+        this.PageNo,
+        this.clarity,
+        this.shape,
+        this.searchBy,
+        this.search,
+        this.no_of_reecord,
+        this.sort_by,
+        this.order_by,
+        this.color,
+        this.weight
+      );
+    }
+  }
+
+  onSearchByFilterChange() {
+    // console.log(this.searchByFilter, 'lll');
+    if (this.searchByFilter == 'All') {
+      this.searchByFilter = '';
+      this.searchBy = this.searchByFilter;
+    } else {
+      this.searchBy = this.searchByFilter;
+    }
+  }
+  resetFilter() {
+    (this.PageNo = '1'),
+      (this.clarity = ''),
+      (this.shape = ''),
+      (this.searchBy = ''),
+      (this.search = ''),
+      (this.no_of_reecord = 18),
+      (this.sort_by = ''),
+      (this.order_by = 'Asc'),
+      (this.color = ''),
+      (this.weight = '');
+    this.getProductData(
+      this.PageNo,
+      this.clarity,
+      this.shape,
+      this.searchBy,
+      this.search,
+      this.no_of_reecord,
+      this.sort_by,
+      this.order_by,
+      this.color,
+      this.weight
+    );
   }
 }
