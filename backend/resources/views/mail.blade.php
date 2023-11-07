@@ -2,12 +2,18 @@
 <html>
 
 <head>
-    <title>Your Email</title>
+    <title>Your Email Subject</title>
 </head>
 
 <body>
-    <p>Hello, <b>{{ $name }}</b></p>
-    <p>Sending test emails can help verify that there are no issues with an email before adding it to a campaign. Test emails appear in an inbox with "*TEST*" prepended to the subject line.</p>
+    <h2>Hello, {{ $name }}</h2>
+
+    <p>Here are the details:</p>
+    <p>Name: {{ $name }}</p>
+    <p>Email: {{ $body }}</p>
+    <p>Phone: {{ $mobile }}</p>
+    <p>Message:</p>
+    <p>{{ $mess }}</p>
 </body>
 
 </html>

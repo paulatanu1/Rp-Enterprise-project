@@ -45,12 +45,13 @@ class AuthController extends Controller
         ];
 
         try {
-            
 
+            $maildata = array('name' => (string)$request->input('name'), "body" => (string)$request->input('email'), "mess" => (string)$request->input('message'), "mobile" => (string)$request->input('phone'));
 
-            Mail::send('mail', $user_data, function($message) use ($user_data) {
-            $message->to($user_data['email'], $user_data['name'])->subject($user_data['subject']);
-            $message->from($user_data['from_email'], $user_data['email_name']);           
+            Mail::send('mail', $maildata, function ($message) use ($user_data) {
+                $message->to(env('SEND_MAIL_ADDRESS'), env('MAIL_FROM_NAME'))
+                ->subject($user_data['subject']);
+                $message->from(env('SEND_MAIL_ADDRESS'), env('MAIL_FROM_NAME'));
             });
 
             // Mail::send('mail', $user_data, function ($message) use ($user_data) {
