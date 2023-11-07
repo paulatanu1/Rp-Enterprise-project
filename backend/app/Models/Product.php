@@ -44,6 +44,7 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
         }
 
         if (!empty($post['search'])) {
+            
             $search_by = ["stone_type","weight", "shape", "color", "clarity"];
             if (!empty($post['search_by'])) {
                 $search_by = $post['search_by'];
@@ -52,9 +53,16 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
             $search_word = $post['search'];
 
             $productArr->where(function ($productArr) use ($search_by, $search_word) {
-                foreach ($search_by as $key => $val) {                    
+                
+                foreach ($search_by as $key => $val) {  
+                    
                     if ($key == 0) {
-                        $productArr->where($val, 'LIKE', '%' . $search_word . '%');
+                        if($val == "weight"){
+                            $productArr->where($val,'<=',$search_word);
+                        }else{
+                            $productArr->where($val, 'LIKE', '%' . $search_word . '%');
+                        }
+                        
                     } else {
                         $productArr->orWhere($val, 'LIKE', '%' . $search_word . '%');
                     }
@@ -62,19 +70,19 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
             });
         }
         if (!empty($post['stone_type'])) {
-            $productArr->whereIn('stone_type', $post['stone_type']);
+            $productArr->where('stone_type', $post['stone_type']);
         }
         if (!empty($post['weight'])) {
-            $productArr->whereIn('weight', $post['weight']);
+            $productArr->where('weight', $post['weight']);
         }
         if (!empty($post['shape'])) {
-            $productArr->whereIn('shape', $post['shape']);
+            $productArr->where('shape', $post['shape']);
         }
         if (!empty($post['color'])) {
-            $productArr->whereIn('color', $post['color']);
+            $productArr->where('color', $post['color']);
         }
         if (!empty($post['clarity'])) {
-            $productArr->whereIn('clarity', $post['clarity']);
+            $productArr->where('clarity', $post['clarity']);
         }
         
         if ($page_number && $no_of_records) {
@@ -119,27 +127,25 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
         return $result;
     }
     public static function weight(){
-        
-        $result = Product::select(DB::raw("CONCAT('RP','stone_id') AS stone_id"), 'weight')->orderBy('weight', 'desc')->limit(10)->get();
         $result = DB::table('product')
-        ->select('product.shape', 'weight as max_weight', 'product.stone_id', 'product.clarity', 'product.cut', 'product.v360', 'product.imgurl', 'product.certi_pdf_url', DB::raw('CONCAT("RP", product.stone_id) AS product_name'))
+        ->select('product.id', 'product.shape', 'weight as max_weight', 'product.stone_id', 'product.clarity', 'product.cut', 'product.v360', 'product.imgurl', 'product.certi_pdf_url', DB::raw('CONCAT("RP", product.stone_id) AS product_name'), 'product.rapnet_price', 'product.system_discount', 'product.weight')
         
         ->orderBy('max_weight', 'desc')
-        ->limit(10)->get();
+        ->limit(9)->get()->toArray();
 
         return $result;
     }
     public static function popularShapes(){
 
         $result = DB::table('product')
-        ->select('product.shape', 'subquery.max_weight', 'product.stone_id', 'product.clarity', 'product.cut', 'product.v360', 'product.imgurl', 'product.certi_pdf_url', DB::raw('CONCAT("RP", product.stone_id) AS product_name'))
+        ->select('product.shape', 'subquery.max_weight', 'product.stone_id', 'product.clarity', 'product.cut', 'product.v360', 'product.imgurl', 'product.certi_pdf_url', DB::raw('CONCAT("RP", product.stone_id) AS product_name'), 'product.rapnet_price', 'product.system_discount', 'product.weight')
         ->from(DB::raw('(SELECT shape, MAX(weight) as max_weight FROM product GROUP BY shape) as subquery'))
         ->join('product', function ($join) {
             $join->on('subquery.shape', '=', 'product.shape')
             ->on('subquery.max_weight', '=', 'product.weight');
         })
         ->orderBy('max_weight', 'desc')
-        ->get();
+        ->get()->toArray();
         return $result;
     }
     

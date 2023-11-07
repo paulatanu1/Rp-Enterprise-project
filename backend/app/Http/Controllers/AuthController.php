@@ -45,13 +45,19 @@ class AuthController extends Controller
         ];
 
         try {
-            // $emailContent = View::make('mail', $user_data)->render();
-            // $textPart = new TextPart($emailContent);
-            Mail::send('mail', $user_data, function($message) use ($user_data) {
-            $message->to($user_data['email'], $user_data['name'])->subject($user_data['subject']);
-            $message->from($user_data['from_email'], $user_data['email_name']);           
 
+            $maildata = array('name' => (string)$request->input('name'), "body" => (string)$request->input('email'), "mess" => (string)$request->input('message'), "mobile" => (string)$request->input('phone'));
+
+            Mail::send('mail', $maildata, function ($message) use ($user_data) {
+                $message->to(env('SEND_MAIL_ADDRESS'), env('MAIL_FROM_NAME'))
+                ->subject($user_data['subject']);
+                $message->from(env('SEND_MAIL_ADDRESS'), env('MAIL_FROM_NAME'));
             });
+
+            // Mail::send('mail', $user_data, function ($message) use ($user_data) {
+            //     $message->to($user_data['from_email'], $user_data['email_name'])->subject($user_data['subject']);
+            //     $message->from($user_data['from_email'], $user_data['email_name']);
+            // });
             $success_message = 'Email sent successfully';
             $http_response = 'http_response_ok';
             
@@ -208,6 +214,11 @@ class AuthController extends Controller
         } else {
             $post['shape'] = $request->input('shape');
         }
+        if ($request->input('color') == '') {
+            $post['color'] = '';
+        } else {
+            $post['color'] = $request->input('color');
+        }
         if ($request->input('filter_by') == '') {
             $post['filter_by'] = '';
         } else {
@@ -244,7 +255,7 @@ class AuthController extends Controller
                 $stone_id = "RP" . $items['stone_id'];
                 $productListArr[$key]['system_price'] = $discountedPrice;
                 $productListArr[$key]['system_amount'] = $system_amount;
-                $productListArr[$key]['stone_id'] = $stone_id;
+                $productListArr[$key]['product_name'] = $stone_id;
             }
 
             if (!empty($productListArr)) {
@@ -330,11 +341,46 @@ class AuthController extends Controller
         $result_arr = $post_array = array();
         $flag = true;
         $productArr = Product::weight();
+        // dd($productArr);
         
         if (!empty($productArr)) {
-            $result_arr['dataset'] = $productArr;
-            $success_message = 'Data fetch successfully';
-            $http_response = 'http_response_ok';
+            foreach ($productArr as $key => $item) {
+                // dd($item); // Check the content of the item
+
+                // Original price
+                $originalPrice = $item->rapnet_price;
+
+                // Discount percentage
+                $discountPercentage = $item->system_discount;
+
+                // Calculate the discount amount
+                $discountAmount = ($originalPrice * $discountPercentage) / 100;
+
+                // Calculate the discounted price
+                $discountedPrice = $originalPrice - $discountAmount;
+                
+                // $discountedPrice = number_format($discountedPrice, 2, '.', ',');
+
+                // Calculate the system amount
+                $weight = $item->weight;
+                // dump($discountedPrice,$item->id);
+                $systemAmount = $discountedPrice * $weight;
+                $systemAmount = number_format($systemAmount, 2, '.', ',');
+                // dd($systemAmount);
+
+                // Update the object with the calculated values
+                $item->system_price = $discountedPrice;
+                $item->system_amount = $systemAmount;
+            }
+
+            if (!empty($productArr)) {
+                $result_arr['dataset'] = $productArr;
+                $success_message = 'Data fetch successfully';
+                $http_response = 'http_response_ok';
+            } else {
+                $error_message = 'Data not found';
+                $http_response = 'http_response_ok_no_content';
+            }
         } else {
             $error_message = 'Data not found';
             $http_response = 'http_response_bad_request';
@@ -346,15 +392,45 @@ class AuthController extends Controller
         $result_arr = $post_array = array();
         $flag = true;
         $productArr = Product::popularShapes();
-        
         if (!empty($productArr)) {
-            $result_arr['dataset'] = $productArr;
-            $success_message = 'Data fetch successfully';
-            $http_response = 'http_response_ok';
+            foreach ($productArr as $key => $item) {
+                // dd($item); // Check the content of the item
+
+                // Original price
+                $originalPrice = $item->rapnet_price;
+
+                // Discount percentage
+                $discountPercentage = $item->system_discount;
+
+                // Calculate the discount amount
+                $discountAmount = ($originalPrice * $discountPercentage) / 100;
+
+                // Calculate the discounted price
+                $discountedPrice = $originalPrice - $discountAmount;
+                // $discountedPrice = number_format($discountedPrice, 2, '.', ',');
+
+                // Calculate the system amount
+                $weight = $item->weight;
+                $systemAmount = $discountedPrice * $weight;
+                $systemAmount = number_format($systemAmount, 2, '.', ',');
+
+                // Update the object with the calculated values
+                $item->system_price = $discountedPrice;
+                $item->system_amount = $systemAmount;
+            }
+            if (!empty($productArr)) {
+                $result_arr['dataset'] = $productArr;
+                $success_message = 'Data fetch successfully';
+                $http_response = 'http_response_ok';
+            } else {
+                $error_message = 'Data not found';
+                $http_response = 'http_response_ok_no_content';
+            }
         } else {
             $error_message = 'Data not found';
             $http_response = 'http_response_bad_request';
         }
+        
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
 }

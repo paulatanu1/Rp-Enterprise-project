@@ -36,7 +36,7 @@ class OldDataImport extends Command
                         }else{
                             $status = 0;
                         }
-
+                        // $formattedNumber = number_format($data[12], 2, '.', ''); 
                         if ($data[30] == "YES"){
                             $eye_clean = 1;
                         }else{
@@ -47,7 +47,7 @@ class OldDataImport extends Command
                         $add['lot_no'] = $data[1];
                         $add['stone_id'] = $data[2];
                         $add['location'] = $data[3];
-                        $add['weight'] = $data[4];
+                        $add['weight'] = number_format($data[4], 2, '.', '');
                         $add['shape'] = $data[5];
                         $add['color'] = $data[6];
                         $add['clarity'] = $data[7];
@@ -55,7 +55,7 @@ class OldDataImport extends Command
                         $add['polish'] = $data[9];
                         $add['symmetry'] = $data[10];
                         $add['rapnet_price'] = $data[11];
-                        $add['system_discount'] = $data[12];
+                        $add['system_discount'] = number_format($data[12], 2, '.', ''); 
                         // $add['system price'] = $data[13];
                         // $add['system amount'] = $data[14];
                         $add['lab'] = $data[15];
