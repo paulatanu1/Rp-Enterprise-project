@@ -180,6 +180,11 @@ class AdminController extends Controller
         } else {
             $post['shape'] = $request->input('shape');
         }
+        if ($request->input('color') == '') {
+            $post['color'] = '';
+        } else {
+            $post['color'] = $request->input('color');
+        }
         if ($request->input('filter_by') == '') {
             $post['filter_by'] = '';
         } else {
