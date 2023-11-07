@@ -45,13 +45,18 @@ class AuthController extends Controller
         ];
 
         try {
-            // $emailContent = View::make('mail', $user_data)->render();
-            // $textPart = new TextPart($emailContent);
+            
+
+
             Mail::send('mail', $user_data, function($message) use ($user_data) {
             $message->to($user_data['email'], $user_data['name'])->subject($user_data['subject']);
             $message->from($user_data['from_email'], $user_data['email_name']);           
-
             });
+
+            // Mail::send('mail', $user_data, function ($message) use ($user_data) {
+            //     $message->to($user_data['from_email'], $user_data['email_name'])->subject($user_data['subject']);
+            //     $message->from($user_data['from_email'], $user_data['email_name']);
+            // });
             $success_message = 'Email sent successfully';
             $http_response = 'http_response_ok';
             
@@ -249,7 +254,7 @@ class AuthController extends Controller
                 $stone_id = "RP" . $items['stone_id'];
                 $productListArr[$key]['system_price'] = $discountedPrice;
                 $productListArr[$key]['system_amount'] = $system_amount;
-                $productListArr[$key]['stone_id'] = $stone_id;
+                $productListArr[$key]['product_name'] = $stone_id;
             }
 
             if (!empty($productListArr)) {
