@@ -51,3 +51,10 @@
         }
     }
 }
+
+@media only screen and (min-width:375px) and (max-width:767px) {
+    .tm-heroslider .tm-heroslider-content h1 {
+        font-size: 30px;
+        line-height: 45px;
+    }
+}
