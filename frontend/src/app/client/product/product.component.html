@@ -46,41 +46,48 @@
                 {{ displayedItems + productList.length - 1 }} of
                 {{ totalItems }}
               </p>
-              <select>
-                <option value="value">Default Sorting</option>
-                <option value="value">Name A-Z</option>
-                <option value="value">Name Z-A</option>
-                <!-- <option value="value">Best Sellers</option>
-                <option value="value">Trending</option> -->
+              <select
+                [(ngModel)]="order_by"
+                (change)="onSortingFilterChange($event)"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option value="Asc">Name A-Z</option>
+                <option value="Desc">Name Z-A</option>
               </select>
             </form>
 
             <mat-form-field>
               <mat-label>Clarity</mat-label>
-              <mat-select [(value)]="clarityFilter">
+              <mat-select
+                [(value)]="clarityFilter"
+                (selectionChange)="onClarityFilterChange()"
+              >
                 <mat-option value="All">All</mat-option>
                 <mat-option
                   *ngFor="let option of clarityOptions"
-                  [value]="option"
+                  [value]="option.clarity"
                 >
-                  {{ option }}
+                  {{ option.clarity }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Shape</mat-label>
-              <mat-select [(value)]="shapeFilter">
+              <mat-select
+                [(value)]="shapeFilter"
+                (selectionChange)="onShapeFilterChange()"
+              >
                 <mat-option value="All">All</mat-option>
                 <mat-option
-                  *ngFor="let option of shapeOptions"
-                  [value]="option"
+                  *ngFor="let option of shapeOptions; let i = index"
+                  [value]="option.shape"
                 >
-                  {{ option }}
+                  {{ option.shape }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field>
+            <!-- <mat-form-field>
               <mat-label>Search By</mat-label>
               <mat-select
                 [(value)]="searchByFilter"
@@ -94,21 +101,16 @@
                   {{ option }}
                 </mat-option>
               </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-form-field>
               <input
                 matInput
                 placeholder="Search products"
                 [(ngModel)]="searchQuery"
-                [disabled]="searchByFilter == ''"
               />
             </mat-form-field>
-            <button
-              [disabled]="!searchQuery"
-              mat-button
-              (click)="performSearch()"
-            >
+            <button mat-button (click)="performSearch()">
               Search
             </button>
             <button (click)="resetFilter()" mat-button type="button">
@@ -181,7 +183,7 @@
                     <div class="tm-product-bottomside">
                       <h6 class="tm-product-title">
                         <a [routerLink]="['/product-details']">
-                          {{ item.stone_id }}
+                          {{ item.product_name }}
                         </a>
                       </h6>
                       <div class="tm-ratingbox">

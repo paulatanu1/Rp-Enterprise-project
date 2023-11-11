@@ -13,8 +13,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductComponent implements OnInit {
   productList: IhomepageProduct[] = [];
-  clarityOptions: string[] = [];
-  shapeOptions: string[] = [];
+  clarityOptions: { clarity: string }[] = [];
+  shapeOptions: { shape: string }[] = [];
   clarityFilter: string = '';
   shapeFilter: string = '';
   searchByFilter: string = '';
@@ -23,10 +23,10 @@ export class ProductComponent implements OnInit {
   options: string[] = ['Option 1', 'select 2', 'check 3', 'check 4', 'opp 5'];
   filteredOptions: Observable<string[]>;
   totalItems!: number;
-  PageNo = '1';
+  PageNo = 1;
   clarity: string = '';
   shape: string = '';
-  searchBy: string = '';
+  searchBy: string[] = [];
   search: string = '';
   displayedItems: number = 0;
   no_of_reecord = 18;
@@ -36,6 +36,7 @@ export class ProductComponent implements OnInit {
   SearchproductName: string[] = [];
   searchQuery: string = '';
   weight: string = '';
+  selectedSortingValue: string = 'Asc';
   constructor(private product: ClientProductService, private router: Router) {
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
@@ -65,13 +66,15 @@ export class ProductComponent implements OnInit {
       this.color,
       this.weight
     );
+    this.getShapesList();
+    this.getClarityList();
   }
 
   getProductData(
-    PageNo: string,
+    PageNo: number,
     clarity: string,
     shape: string,
-    searchBy: string,
+    searchBy: string[],
     search: string,
     no_of_records: number,
     sort_by: string,
@@ -150,11 +153,27 @@ export class ProductComponent implements OnInit {
   performSearch() {
     const trimmedQuery = this.searchQuery.trim();
     console.log(trimmedQuery, 'search');
+    console.log(this.shape, 'shape');
 
     if (trimmedQuery) {
       this.search = trimmedQuery;
       this.productList = [];
-      this.PageNo = '1';
+      this.PageNo = 1;
+      this.getProductData(
+        this.PageNo,
+        this.clarity,
+        this.shape,
+        this.searchBy,
+        this.search,
+        this.no_of_reecord,
+        this.sort_by,
+        this.order_by,
+        this.color,
+        this.weight
+      );
+    } else {
+      this.productList = [];
+      this.PageNo = 1;
       this.getProductData(
         this.PageNo,
         this.clarity,
@@ -170,20 +189,33 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  onSearchByFilterChange() {
-    // console.log(this.searchByFilter, 'lll');
-    if (this.searchByFilter == 'All') {
-      this.searchByFilter = '';
-      this.searchBy = this.searchByFilter;
+  // Initialize variables to store selected values
+
+  onShapeFilterChange() {
+    if (this.shapeFilter === 'All') {
+      this.shape = '';
     } else {
-      this.searchBy = this.searchByFilter;
+      this.shape = this.shapeFilter;
     }
   }
+
+  onClarityFilterChange() {
+    if (this.clarityFilter === 'All') {
+      this.clarity = '';
+    } else {
+      this.clarity = this.clarityFilter;
+    }
+  }
+
+  onSortingFilterChange(ev: Event) {
+    console.log(ev.target, 'ev');
+    console.log(this.selectedSortingValue, 'selectedSortingValue');
+  }
   resetFilter() {
-    (this.PageNo = '1'),
+    (this.PageNo = 1),
       (this.clarity = ''),
       (this.shape = ''),
-      (this.searchBy = ''),
+      (this.searchBy = []),
       (this.search = ''),
       (this.no_of_reecord = 18),
       (this.sort_by = ''),
@@ -202,5 +234,31 @@ export class ProductComponent implements OnInit {
       this.color,
       this.weight
     );
+  }
+
+  getShapesList() {
+    this.product.shapesList().subscribe({
+      next: (res) => {
+        console.log(res.response.raws.data.dataset, 'rss shapes');
+        this.shapeOptions = res.response.raws.data.dataset;
+        console.log(this.shapeOptions, 'list');
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  getClarityList() {
+    this.product.clarityList().subscribe({
+      next: (res) => {
+        console.log(res.response.raws.data.dataset, 'rss shapes');
+        this.clarityOptions = res.response.raws.data.dataset;
+        console.log(this.shapeOptions, 'list');
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }
