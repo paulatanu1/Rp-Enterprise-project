@@ -321,8 +321,11 @@ button.tm-button::before {
         width: 300px;
         height: 300px;
     }
+    .tm-offer-content {
+        padding: 0 20px;   
+    }
     .tm-offer-content h1 {
-        font-size: 40px;
-        line-height: 60px;
+        font-size: 30px !important;
+        line-height: 35px;
     }
 }
