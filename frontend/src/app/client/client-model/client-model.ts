@@ -1,10 +1,10 @@
 export interface IproductList {
   sort_by: string;
   order_by: string;
-  page_number: string;
+  page_number: number;
   no_of_records: number;
   search: string;
-  search_by: string;
+  search_by: string[];
   color: string;
   clarity: string;
   weight: string;
@@ -45,4 +45,5 @@ export interface IhomepageProduct {
   eye_clean: number;
   system_price: number;
   system_amount: string;
+  product_name: string;
 }

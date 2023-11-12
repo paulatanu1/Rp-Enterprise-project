@@ -5,10 +5,10 @@ import { IproductList } from '../client-model/client-model';
 interface Payload {
   sort_by: string;
   order_by: string;
-  page_number: string;
+  page_number: number;
   no_of_records: number;
   search: string;
-  search_by: string;
+  search_by: string[];
   color: string;
   clarity: string;
   weight: string;
@@ -22,10 +22,10 @@ export class ClientProductService {
   constructor(private api: ApiService) {}
 
   getHomePageProducts(
-    PageNo: string,
+    PageNo: number,
     clarity: string,
     shape: string,
-    searchBy: string,
+    searchBy: string[],
     search: string,
     no_of_records: number,
     sort_by: string,
@@ -69,10 +69,10 @@ export class ClientProductService {
     const payload: IproductList = {
       sort_by: '',
       order_by: '',
-      page_number: '',
+      page_number: 1,
       no_of_records: 20,
       search: '',
-      search_by: '',
+      search_by: [],
       color: '',
       clarity: '',
       weight: '',
@@ -81,7 +81,7 @@ export class ClientProductService {
     };
     (payload.sort_by = data.sort_by),
       (payload.order_by = data.order_by || 'Asc'),
-      (payload.page_number = data.page_number || '1'),
+      (payload.page_number = data.page_number || 0),
       (payload.no_of_records = data.no_of_records || 20),
       (payload.search = data.search),
       (payload.search_by = data.search_by),
@@ -93,5 +93,15 @@ export class ClientProductService {
 
     let url: string = '/api/productList';
     return this.api.ApiCallWithLocalization(payload, url, 'post');
+  }
+
+  shapesList() {
+    let url: string = 'api/shape';
+    return this.api.ApiCallWithLocalization('', url, 'post');
+  }
+
+  clarityList() {
+    let url: string = 'api/clarity';
+    return this.api.ApiCallWithLocalization('', url, 'post');
   }
 }

@@ -33,4 +33,6 @@ export class ProductListComponent implements OnInit {
       },
     });
   }
+
+  onScroll() {}
 }

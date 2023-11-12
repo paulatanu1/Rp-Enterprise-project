@@ -4,7 +4,13 @@
     <div class="row tm-content-row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
         <div class="tm-bg-primary-dark tm-block tm-block-products">
-          <div class="tm-product-table-container">
+          <div
+            class="tm-product-table-container"
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="300"
+            (scrolled)="onScroll()"
+          >
             <table class="table table-hover tm-table-small tm-product-table">
               <thead>
                 <tr>
@@ -43,7 +49,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngIf="productItems.length == 0">
+                <!-- <tr *ngIf="productItems.length == 0">
                   <td colspan="32">
                     No Record Found
                   </td>
@@ -59,7 +65,6 @@
     <a href=" certi_pdf_url " target="_blank">
        certi_pdf_url
     </a>
-    <!-- <p *ngIf="!certi_pdf_url">Not Available</p> -->
   </td>
   <td class="tm-product-name">
      certificate ? certificate : 'NA'
@@ -80,7 +85,6 @@
     <a  href=" imgurl" target="_blank">
        imgurl
     </a>
-    <!-- <p *ngIf="!imgurl">Not Available</p> -->
   </td>
   <td class="tm-product-name"> lab</td>
   <td class="tm-product-name"> location</td>
@@ -101,15 +105,12 @@
   <td class="tm-product-name"> table</td>
   <td class="tm-product-name"> v360</td>
   <td class="tm-product-name"> weight</td>
-</tr>
+</tr> -->
 
-
-
-
-                <!-- <tr *ngFor="let item of productItems">
+                <tr *ngFor="let item of productItems">
                   <td>
-                    <a href="#" class="tm-product-delete-link">
-                      Del
+                    <a class="tm-product-delete-link">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                   </td>
                   <td class="tm-product-name">
@@ -166,7 +167,7 @@
                   <td class="tm-product-name">{{ item.table }}</td>
                   <td class="tm-product-name">{{ item.v360 }}</td>
                   <td class="tm-product-name">{{ item.weight }}</td>
-                </tr> -->
+                </tr>
               </tbody>
             </table>
           </div>
@@ -176,7 +177,6 @@
           >
             Add new product
           </a>
-          
         </div>
       </div>
     </div>
