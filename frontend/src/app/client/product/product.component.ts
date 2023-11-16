@@ -119,7 +119,6 @@ export class ProductComponent implements OnInit {
 
   onScroll() {
     // debugger;
-    console.log('rrr', this.totalItems > this.productList.length);
     if (this.totalItems > this.productList.length) {
       this.PageNo = this.PageNo + 1;
       this.getProductData(
@@ -142,7 +141,6 @@ export class ProductComponent implements OnInit {
       `I want to buy Product:- Clarity: ${item.clarity},weight: ${item.weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
     );
     const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
-    console.log(whatsappURL);
     // window.location.href = whatsappURL;
 
     window.open(whatsappURL, '_blank');
@@ -152,8 +150,6 @@ export class ProductComponent implements OnInit {
 
   performSearch() {
     const trimmedQuery = this.searchQuery.trim();
-    console.log(trimmedQuery, 'search');
-    console.log(this.shape, 'shape');
 
     if (trimmedQuery) {
       this.search = trimmedQuery;
@@ -207,10 +203,7 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  onSortingFilterChange(ev: Event) {
-    console.log(ev.target, 'ev');
-    console.log(this.selectedSortingValue, 'selectedSortingValue');
-  }
+  onSortingFilterChange(ev: Event) {}
   resetFilter() {
     (this.PageNo = 1),
       (this.clarity = ''),
@@ -239,26 +232,18 @@ export class ProductComponent implements OnInit {
   getShapesList() {
     this.product.shapesList().subscribe({
       next: (res) => {
-        console.log(res.response.raws.data.dataset, 'rss shapes');
         this.shapeOptions = res.response.raws.data.dataset;
-        console.log(this.shapeOptions, 'list');
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => {},
     });
   }
 
   getClarityList() {
     this.product.clarityList().subscribe({
       next: (res) => {
-        console.log(res.response.raws.data.dataset, 'rss shapes');
         this.clarityOptions = res.response.raws.data.dataset;
-        console.log(this.shapeOptions, 'list');
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => {},
     });
   }
 }

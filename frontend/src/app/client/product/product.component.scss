@@ -983,3 +983,19 @@ button:not(:disabled) {
 ::ng-deep .mat-form-field {
     padding: 0 20px;
 }
+
+.search-area {
+    margin: 0 5px;
+}
+
+.reset-area {
+    margin: 0 5px;
+}
+
+.input-section .mat-form-field {
+    width: 100%;
+}
+
+.input-section ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0;
+}

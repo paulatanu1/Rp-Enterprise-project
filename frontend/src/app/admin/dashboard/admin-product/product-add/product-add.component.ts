@@ -73,11 +73,9 @@ export class ProductAddComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.productAdd.value);
     if (this.productAdd.valid) {
       const formData = this.productAdd.value;
       // Handle form submission or make an API request here
-      console.log(formData);
       this.addProduct.productAdd(formData).subscribe({
         next: (res) => {
           this.isSubmited = true;
@@ -107,7 +105,6 @@ export class ProductAddComponent implements OnInit {
   getShapes() {
     this.addProduct.shapesList().subscribe({
       next: (res) => {
-        console.log('getShapes', res);
         this.shapesItem = res.response.raws.data.dataset;
 
         this.productAdd.patchValue({
@@ -121,7 +118,6 @@ export class ProductAddComponent implements OnInit {
   getStoneType() {
     this.addProduct.stoneType().subscribe({
       next: (res) => {
-        console.log('getStoneType', res);
         this.stoneType = res.response.raws.data.dataset;
         this.productAdd.patchValue({
           stone_type: this.stoneType[1].stone_type,
@@ -134,7 +130,6 @@ export class ProductAddComponent implements OnInit {
   getClarity() {
     this.addProduct.clarity().subscribe({
       next: (res) => {
-        console.log('getClarity', res);
         this.clarity = res.response.raws.data.dataset;
         this.productAdd.patchValue({
           clarity: this.clarity[0].clarity,
@@ -147,7 +142,6 @@ export class ProductAddComponent implements OnInit {
   getColor() {
     this.addProduct.color().subscribe({
       next: (res) => {
-        console.log('getColor', res);
         this.color = res.response.raws.data.dataset;
         this.productAdd.patchValue({
           color: this.color[0].color,

@@ -53,24 +53,18 @@ export class ApiService {
         .pipe(
           timeout(environment.API_TIMEOUT),
           catchError((error) => {
-            console.log(error, 'errr');
-            console.error('HTTP request failed:', error);
             return throwError('Something went wrong. Please try again later.');
           }),
           map((response: any) => {
-            // console.log(response, '-----', response.body, 'resss');
             const responseObj = response.body;
             responseObj.status = response.status;
-            console.log(responseObj.access_token, 'responseObj');
             if (responseObj.access_token !== undefined) {
               ls.set('login_token', responseObj.access_token);
-              console.log(responseObj.access_token, 'token 12');
             }
             return responseObj;
           })
         );
     } else if (method == 'get') {
-      console.log(httpHeaderValue, 'http');
       return this.http
         .get(url, { headers: httpHeaderValue, observe: 'response' })
         .pipe(
@@ -79,7 +73,6 @@ export class ApiService {
             return throwError(e);
           }),
           map((response: any) => {
-            console.log(response, 'response');
             var responseobj = JSON.parse(JSON.stringify(response.body));
             responseobj.status = response.status;
             if (responseobj.token != undefined) {
@@ -89,7 +82,6 @@ export class ApiService {
           })
         );
     } else if (method == 'put') {
-      console.log(httpHeaderValue);
       return this.http
         .put(url, data, { headers: httpHeaderValue, observe: 'response' })
         .pipe(
@@ -99,7 +91,6 @@ export class ApiService {
           })
         );
     } else {
-      console.log(httpHeaderValue);
       return this.http
         .post(url, data, { headers: httpHeaderValue, observe: 'response' })
         .pipe(

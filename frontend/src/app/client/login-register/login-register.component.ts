@@ -43,7 +43,6 @@ export class LoginRegisterComponent implements OnInit {
         }
       },
       error: (err: any) => {
-        console.log(err, 'rrr');
         this.toastr.error(`${err}`, 'OOOPS !', {
           timeOut: 3000,
           closeButton: true,
@@ -55,10 +54,8 @@ export class LoginRegisterComponent implements OnInit {
     //   .post('http://localhost:8000/api/login', this.loginForm.value)
     //   .subscribe({
     //     next: (res) => {
-    //       console.log(res, 'resss111');
     //     },
     //     error: (err) => {
-    //       console.log(err, 'errr');
     //     },
     //   });
   }

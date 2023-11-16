@@ -32,15 +32,6 @@
         <div class="row">
           <div class="col-sm-12">
             <form action="#" class="tm-shop-header">
-              <!-- <div class="tm-shop-productview">
-                <span>View:</span>
-                <button data-view="grid" class="active">
-                  <i class="ion-android-apps"></i>
-                </button>
-                <button data-view="list">
-                  <i class="ion-android-menu"></i>
-                </button>
-              </div> -->
               <p class="tm-shop-countview">
                 Showing {{ displayedItems }} to
                 {{ displayedItems + productList.length - 1 }} of
@@ -55,67 +46,67 @@
                 <option value="Desc">Name Z-A</option>
               </select>
             </form>
-
-            <mat-form-field>
-              <mat-label>Clarity</mat-label>
-              <mat-select
-                [(value)]="clarityFilter"
-                (selectionChange)="onClarityFilterChange()"
-              >
-                <mat-option value="All">All</mat-option>
-                <mat-option
-                  *ngFor="let option of clarityOptions"
-                  [value]="option.clarity"
-                >
-                  {{ option.clarity }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Shape</mat-label>
-              <mat-select
-                [(value)]="shapeFilter"
-                (selectionChange)="onShapeFilterChange()"
-              >
-                <mat-option value="All">All</mat-option>
-                <mat-option
-                  *ngFor="let option of shapeOptions; let i = index"
-                  [value]="option.shape"
-                >
-                  {{ option.shape }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <!-- <mat-form-field>
-              <mat-label>Search By</mat-label>
-              <mat-select
-                [(value)]="searchByFilter"
-                (selectionChange)="onSearchByFilterChange()"
-              >
-                <mat-option value="All">All</mat-option>
-                <mat-option
-                  *ngFor="let option of searchByOptions"
-                  [value]="option"
-                >
-                  {{ option }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field> -->
-
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Search products"
-                [(ngModel)]="searchQuery"
-              />
-            </mat-form-field>
-            <button mat-button (click)="performSearch()">
-              Search
-            </button>
-            <button (click)="resetFilter()" mat-button type="button">
-              Reset All Filter
-            </button>
+            <div class="row">
+              <div class="col-sm-4">
+                <mat-form-field>
+                  <mat-label>Clarity</mat-label>
+                  <mat-select
+                    [(value)]="clarityFilter"
+                    (selectionChange)="onClarityFilterChange()"
+                  >
+                    <mat-option value="All">All</mat-option>
+                    <mat-option
+                      *ngFor="let option of clarityOptions"
+                      [value]="option.clarity"
+                    >
+                      {{ option.clarity }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-4">
+                <mat-form-field>
+                  <mat-label>Shape</mat-label>
+                  <mat-select
+                    [(value)]="shapeFilter"
+                    (selectionChange)="onShapeFilterChange()"
+                  >
+                    <mat-option value="All">All</mat-option>
+                    <mat-option
+                      *ngFor="let option of shapeOptions; let i = index"
+                      [value]="option.shape"
+                    >
+                      {{ option.shape }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row justify-content-between align-items-center">
+              <div class="col-sm-7">
+                <div class="input-section">
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Search products"
+                      [(ngModel)]="searchQuery"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-4 d-flex">
+                <div class="search-area">
+                  <button mat-button (click)="performSearch()">
+                    Search
+                  </button>
+                </div>
+                <div class="reset-area">
+                  <button (click)="resetFilter()" mat-button type="button">
+                    Reset All Filter
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

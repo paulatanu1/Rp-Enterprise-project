@@ -88,7 +88,6 @@ export class NewProductComponent implements OnInit {
       `I want to buy Product:- Clarity: ${item.clarity},weight: ${item.max_weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
     );
     const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
-    console.log(whatsappURL);
     // window.location.href = whatsappURL;
 
     window.open(whatsappURL, '_blank');
