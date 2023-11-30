@@ -112,6 +112,7 @@ class Product extends Model implements
             $productArr->where(function ($result) use ($post) {
                 $result->where('shape', 'LIKE', '%' . $post['search'] . '%')
                 ->orWhere('clarity', 'LIKE', '%' . $post['search'] . '%')
+                ->orWhere('stone_id', 'LIKE', '%' . $post['search'] . '%')
                 ->orWhere('color', 'LIKE', '%' . $post['search'] . '%');
             });
             // $search_by = ['stone_type', 'weight', 'shape', 'color', 'clarity'];
