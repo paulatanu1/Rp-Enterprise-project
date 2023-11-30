@@ -249,7 +249,7 @@ class AuthController extends Controller
                 $discountedPrice = number_format($discountedPrice, 2, '.', ',');
 
                 $weight = $items['weight'];
-                $system_amount = $discountedPrice * $weight;
+                $system_amount = (int)$discountedPrice * (int)$weight;
                 $system_amount = number_format($system_amount, 2, '.', ',');
 
                 $stone_id = "RP" . $items['stone_id'];
