@@ -109,37 +109,42 @@ class Product extends Model implements
         }
 
         if (!empty($post['search'])) {
-            $search_by = ['stone_type', 'weight', 'shape', 'color', 'clarity'];
-            if (!empty($post['search_by'])) {
-                $search_by = $post['search_by'];
-            }
-
-            $search_word = $post['search'];
-
-            $productArr->where(function ($productArr) use (
-                $search_by,
-                $search_word
-            ) {
-                foreach ($search_by as $key => $val) {
-                    if ($key == 0) {
-                        if ($val == 'weight') {
-                            $productArr->where($val, '<=', $search_word);
-                        } else {
-                            $productArr->where(
-                                $val,
-                                'LIKE',
-                                '%' . $search_word . '%'
-                            );
-                        }
-                    } else {
-                        $productArr->orWhere(
-                            $val,
-                            'LIKE',
-                            '%' . $search_word . '%'
-                        );
-                    }
-                }
+            $productArr->where(function ($result) use ($post) {
+                $result->where('shape', 'LIKE', '%' . $post['search'] . '%')
+                ->orWhere('clarity', 'LIKE', '%' . $post['search'] . '%')
+                ->orWhere('color', 'LIKE', '%' . $post['search'] . '%');
             });
+            // $search_by = ['stone_type', 'weight', 'shape', 'color', 'clarity'];
+            // if (!empty($post['search_by'])) {
+            //     $search_by = $post['search_by'];
+            // }
+
+            // $search_word = $post['search'];
+
+            // $productArr->where(function ($productArr) use (
+            //     $search_by,
+            //     $search_word
+            // ) {
+            //     foreach ($search_by as $key => $val) {
+            //         if ($key == 0) {
+            //             if ($val == 'weight') {
+            //                 $productArr->where($val, '<=', $search_word);
+            //             } else {
+            //                 $productArr->where(
+            //                     $val,
+            //                     'LIKE',
+            //                     '%' . $search_word . '%'
+            //                 );
+            //             }
+            //         } else {
+            //             $productArr->orWhere(
+            //                 $val,
+            //                 'LIKE',
+            //                 '%' . $search_word . '%'
+            //             );
+            //         }
+            //     }
+            // });
         }
         if (!empty($post['stone_type'])) {
             $productArr->where('stone_type', $post['stone_type']);
