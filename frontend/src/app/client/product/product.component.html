@@ -182,6 +182,18 @@
                       <span class="tm-product-price">
                         Rs:- {{ (item.system_price * item.weight).toFixed(2) }}
                       </span>
+                      <span class="">
+                        <b>Clarity -</b>
+                        {{ item.clarity }}
+                      </span>
+                      <span class="">
+                        <b>Color -</b>
+                        {{ item.color }}
+                      </span>
+                      <span class="">
+                        <b>Shape -</b>
+                        {{ item.shape }}
+                      </span>
                       <div class="tm-product-content">
                         <p>
                           Lorem Ipsum is simply dummy text of the printing and
@@ -214,6 +226,17 @@
                       </div>
                     </div>
                   </div>
+                </div>
+                <div
+                  style="
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-top: 50px;
+                  "
+                  *ngIf="productList.length == 0"
+                >
+                  No Product Found
                 </div>
                 <!--// Single Product -->
               </div>

@@ -71,7 +71,6 @@ export class NewProductComponent implements OnInit {
             },
           }) => {
             this.productList = dataset;
-            console.table(this.productList);
           }
         ),
         catchError((err) => {
