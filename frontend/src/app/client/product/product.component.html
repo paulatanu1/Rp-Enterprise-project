@@ -39,7 +39,7 @@
               </p>
               <select
                 [(ngModel)]="order_by"
-                (change)="onSortingFilterChange($event)"
+                (change)="onSortingFilterChange($event, order_by)"
                 [ngModelOptions]="{ standalone: true }"
               >
                 <option value="Asc">Name A-Z</option>

@@ -203,7 +203,22 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  onSortingFilterChange(ev: Event) {}
+  onSortingFilterChange(ev: Event, value: string) {
+    this.order_by = value;
+    this.productList = [];
+    this.getProductData(
+      this.PageNo,
+      this.clarity,
+      this.shape,
+      this.searchBy,
+      this.search,
+      this.no_of_reecord,
+      this.sort_by,
+      this.order_by,
+      this.color,
+      this.weight
+    );
+  }
   resetFilter() {
     (this.PageNo = 1),
       (this.clarity = ''),
@@ -215,6 +230,9 @@ export class ProductComponent implements OnInit {
       (this.order_by = 'Asc'),
       (this.color = ''),
       (this.weight = '');
+    this.searchQuery = '';
+    this.clarity = '';
+    this.shape = '';
     this.getProductData(
       this.PageNo,
       this.clarity,
