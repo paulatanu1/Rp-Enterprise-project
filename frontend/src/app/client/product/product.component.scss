@@ -981,7 +981,7 @@ button:not(:disabled) {
 }
 
 ::ng-deep .mat-form-field {
-    padding: 0 20px;
+    // padding: 0 20px;
 }
 
 .search-area {
@@ -998,4 +998,9 @@ button:not(:disabled) {
 
 .input-section ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0;
+}
+
+.lable-product {
+    display: block;
+    font-weight: 600;
 }

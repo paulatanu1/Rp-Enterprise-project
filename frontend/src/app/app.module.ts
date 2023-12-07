@@ -20,10 +20,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [
-    HighContrastModeDetector,
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-  ],
+  providers: [HighContrastModeDetector],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
