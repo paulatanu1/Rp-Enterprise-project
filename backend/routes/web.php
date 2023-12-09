@@ -28,6 +28,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('clarity', 'AuthController@clarity');
     $router->post('newArrivel', 'AuthController@newArrivel');
     $router->post('popularShapes', 'AuthController@popularShapes');
+    $router->get('productView', 'AuthController@productView');
     
 });
 
