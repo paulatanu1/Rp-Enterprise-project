@@ -28,8 +28,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('clarity', 'AuthController@clarity');
     $router->post('newArrivel', 'AuthController@newArrivel');
     $router->post('popularShapes', 'AuthController@popularShapes');
-    $router->get('productView', 'AuthController@productView');
-    
+    $router->post('productView', 'AuthController@productView');
 });
 
 $router->group(['middleware' => 'admin'], function () use ($router) {
@@ -51,4 +50,3 @@ $router->group(['middleware' => 'admin'], function () use ($router) {
 $router->group(['middleware' => 'user'], function () use ($router) {
     $router->post('/user/profile', 'UserController@dashboard');
 });
-
