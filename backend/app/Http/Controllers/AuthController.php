@@ -433,4 +433,49 @@ class AuthController extends Controller
         
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
+    public function productView(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        if ($request->input('product_id') == '') {
+            $post['product_id'] = "";
+        } else {
+            $post['product_id'] = $request->input('product_id');
+        }
+
+        $productArr = Product::fetchProductById($post);
+
+        if (!empty($productArr)) {
+            // Original price
+            // $originalPrice = $items['rapnet_price']; // Replace this with your original price
+            $originalPrice = $productArr['rapnet_price']; // Replace this with your original price
+
+            // Discount percentage
+            $discountPercentage = $productArr['system_discount']; // Replace this with your discount percentage
+
+            // Calculate the discount amount
+            $discountAmount = ($originalPrice * $discountPercentage) / 100;
+
+            // Calculate the discounted price
+            $discountedPrice = $originalPrice - $discountAmount;
+            $discountedPrice = number_format($discountedPrice, 2, '.', ',');
+
+            $weight = $productArr['weight'];
+            $system_amount = (int)$discountedPrice * (int)$weight;
+            $system_amount = number_format($system_amount, 2, '.', ',');
+
+            $stone_id = "RP" . $productArr['stone_id'];
+            $productArr['system_price'] = $discountedPrice;
+            $productArr['system_amount'] = $system_amount;
+            $productArr['product_name'] = $stone_id;
+            
+            $result_arr['dataset'] = $productArr;
+            $success_message = 'Data update successfully';
+            $http_response = 'http_response_ok';
+        } else {
+            $error_message = 'Data not found';
+            $http_response = 'http_response_bad_request';
+        }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
 }
