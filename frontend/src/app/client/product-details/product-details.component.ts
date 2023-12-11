@@ -86,7 +86,6 @@ export class ProductDetailsComponent implements OnInit {
     this._router.params.subscribe({
       next: (res) => {
         this.productId = res['id'];
-        console.log(this.productId, typeof this.productId);
       },
     });
   }
@@ -98,12 +97,9 @@ export class ProductDetailsComponent implements OnInit {
   getProduct() {
     this._porductService.getProductDetails(this.productId).subscribe({
       next: (res) => {
-        console.log(res, 'ress');
         this.productDetails = res.response.raws.data.dataset;
       },
-      error: (err) => {
-        console.log(err, 'errr');
-      },
+      error: (err) => {},
     });
   }
 }

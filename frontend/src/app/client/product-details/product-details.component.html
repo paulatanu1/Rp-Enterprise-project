@@ -39,7 +39,11 @@
                     data-caption="Product Zoom Image 1"
                   >
                     <img
-                      src="{{ productDetails.imgurl }}"
+                      src="{{
+                        productDetails.imgurl
+                          ? productDetails.imgurl
+                          : '../../../../../assets/images/9264822.jpg'
+                      }}"
                       alt="product image"
                     />
                   </a>
