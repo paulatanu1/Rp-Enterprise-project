@@ -386,11 +386,12 @@ select {
     // bottom: 0;
     width: 100px;
     background: transparent;
-    padding: 25px 0;
+    padding: 5px 0;
     text-align: center;
     font-size: 0;
     z-index: 2;
     display: block;
+    margin: 0 auto;
 }
 
 .tm-product-actions li:first-child {
@@ -1004,4 +1005,18 @@ button:not(:disabled) {
 .lable-product {
     display: block;
     font-weight: 600;
+}
+
+.cs-width {
+    min-width: 170px !important;
+}
+
+.cs-width2 {
+    width: 100%;
+
+    button {
+        line-height: 30px;
+        height: 30px;
+        // width: 100%;
+    }
 }

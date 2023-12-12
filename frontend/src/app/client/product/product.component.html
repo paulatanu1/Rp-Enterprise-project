@@ -164,7 +164,21 @@
                           {{ item.product_name }}
                         </a>
                       </h6>
-                      <div class="tm-ratingbox">
+                      <div>
+                        <span class="">
+                          <b>Clarity -</b>
+                          {{ item.clarity }}
+                        </span>
+                        <span class="">
+                          <b>Color -</b>
+                          {{ item.color }}
+                        </span>
+                        <span class="">
+                          <b>Shape -</b>
+                          {{ item.shape }}
+                        </span>
+                      </div>
+                      <!-- <div class="tm-ratingbox">
                         <span class="is-active">
                           <i class="ion-android-star-outline"></i>
                         </span>
@@ -178,23 +192,12 @@
                           <i class="ion-android-star-outline"></i>
                         </span>
                         <span><i class="ion-android-star-outline"></i></span>
-                      </div>
+                      </div> -->
                       <span class="tm-product-price">
-                        Rs:- {{ (item.system_price * item.weight).toFixed(2) }}
+                        $ {{ (item.system_price * item.weight).toFixed(2) }}
                       </span>
-                      <span class="">
-                        <b>Clarity -</b>
-                        {{ item.clarity }}
-                      </span>
-                      <span class="">
-                        <b>Color -</b>
-                        {{ item.color }}
-                      </span>
-                      <span class="">
-                        <b>Shape -</b>
-                        {{ item.shape }}
-                      </span>
-                      <div class="tm-product-actions">
+
+                      <div class="tm-product-actions cs-width2">
                         <!-- <a (click)="shareProductOnWhatsApp(item)">
                           <i class="ion-android-cart"></i>
                           Add to cart
@@ -203,9 +206,14 @@
                           (click)="shareProductOnWhatsApp(item)"
                           id="mc-submit"
                           type="submit"
-                          class="tm-button"
+                          class="tm-button cs-width"
                         >
-                          Add to cart
+                          Buy Now
+                          <img
+                            style="width: 20px; height: 20px;"
+                            src="../../../assets/images/fast-buy-3048.svg"
+                            alt="buy"
+                          />
                         </button>
                       </div>
                     </div>

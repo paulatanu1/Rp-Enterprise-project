@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDetailsService } from '../client-services/product-details.service';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 interface IproductDetails {
   id: number;
   status: number;
@@ -101,5 +102,18 @@ export class ProductDetailsComponent implements OnInit {
       },
       error: (err) => {},
     });
+  }
+
+  shareProductOnWhatsApp(item: any) {
+    console.log(item);
+    const message = encodeURIComponent(
+      `I want to buy Product:- Clarity: ${item.clarity},Weight: ${item.weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
+    );
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
+    // window.location.href = whatsappURL;
+
+    window.open(whatsappURL, '_blank');
+
+    // <a href="https://api.whatsapp.com/send?phone=1XXXXXXXXXX&text=I want to buy Product X. Price: $19.99">Buy Now</a>
   }
 }

@@ -322,6 +322,29 @@ button.tm-button {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    padding-right: 7px;
+    position: relative;
+}
+
+// .tm-prodetails-singleinfo::before {
+//     content: '';
+//     width: 2px;
+//     height: 20px;
+//     background-color: #f2ba59;
+//     position: absolute;
+//     left: 0;
+// }
+
+.tm-prodetails-content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.tm-prodetails-infos .details {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 25px;
 }
 
 .tm-prodetails-singleinfo b {
@@ -475,14 +498,15 @@ button.tm-button {
 }
 
 .btn-view {
-    border: 1px solid #e0b01b;
-    background: #ffc103;
+    border: 1px solid #f2ba59;
+    background: #f2ba59;
     border-radius: 3px;
     padding: 5px 10px;
     color: #fff;
     font-size: 16px;
     font-weight: 700;
     margin: 0 10px;
+    font-style: oblique;
 }
 
 .view-part {
@@ -497,6 +521,8 @@ button.tm-button {
 
 .description-area {
     margin-top: 15px;
+    color: #4a4a4a;
+    line-height: 26px;
 }
 
 @media only screen and (max-width: 767px) {

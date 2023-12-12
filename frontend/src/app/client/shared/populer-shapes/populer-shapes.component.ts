@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -61,6 +62,8 @@ interface IpopularShapesItem {
 export class PopulerShapesComponent implements OnInit, AfterViewInit {
   private observer: IntersectionObserver | null = null;
   isInViewport = false;
+  @Input() background!: boolean;
+  @Input() title!: boolean;
   constructor(
     private shapes: PopularShapesService,
     private toastr: ToastrService
@@ -77,8 +80,8 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
   fadeState = 'in';
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
+    mouseDrag: true,
+    touchDrag: true,
     pullDrag: false,
     dots: false,
     navSpeed: 700,

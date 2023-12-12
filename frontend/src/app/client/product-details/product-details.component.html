@@ -50,28 +50,6 @@
                 </div>
               </div>
             </div>
-            <p class="description-area">
-              <b>More Product Details:</b>
-              Discover the allure of our diamonds with an immersive V360
-              experience, offering a
-              <a href="{{ productDetails.v360 }}" target="_blank">
-                360-degree
-              </a>
-              view for a comprehensive exploration of every facet. Navigate the
-              brilliance effortlessly on our
-              <a href="{{ productDetails.v360 }}" target="_blank">V360</a>
-              URL, ensuring confidence in your selection. Each purchase includes
-              a certificate of authenticity, providing detailed insights into
-              the diamond's quality. For added convenience, access the
-              <a href="{{ productDetails.certi_pdf_url }}" target="_blank">
-                certificate
-              </a>
-              in PDF format. Embrace the perfect blend of technology and
-              tradition, ensuring that your choice is not just a purchase but a
-              celebration of authenticity and elegance. Choose brilliance,
-              transparency, and an unparalleled journey into the heart of your
-              exquisite diamond.
-            </p>
           </div>
 
           <div class="col-lg-6 col-md-6 col-12">
@@ -82,7 +60,7 @@
               <span class="tm-prodetails-price">
                 <!-- <del>{{ (productDetails.system_price * productDetails.weight) as number | any).toFixed(2) }}
                   </del> -->
-                RS.
+                $
                 {{
                   (
                     +productDetails.system_price * +productDetails.weight
@@ -90,150 +68,159 @@
                 }}
               </span>
               <div class="tm-prodetails-infos">
-                <div class="tm-prodetails-singleinfo">
-                  <b>STONE ID :</b>
-                  {{ productDetails.stone_id }}
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>clarity :</b>
-                  <a>
-                    {{ productDetails.clarity ? productDetails.clarity : 'NA' }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Color :</b>
-                  <a>
-                    {{ productDetails.color ? productDetails.color : 'NA' }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Weight :</b>
-                  <a>
-                    {{ productDetails.weight ? productDetails.weight : 'NA' }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Crown Angle :</b>
-                  <a>
-                    {{
-                      productDetails.crown_angle
-                        ? productDetails.crown_angle
-                        : 'NA'
-                    }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Cut :</b>
-                  <a>{{ productDetails.cut ? productDetails.cut : 'NA' }}</a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Depth :</b>
-                  <a>
-                    {{ productDetails.depth ? productDetails.depth : 'NA' }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Eye Clean :</b>
-                  <a>
-                    {{
-                      productDetails.eye_clean ? productDetails.eye_clean : 'NA'
-                    }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Fluor Int :</b>
-                  <a>
-                    {{
-                      productDetails.fluor_int ? productDetails.fluor_int : 'NA'
-                    }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Lab :</b>
-                  <a>{{ productDetails.lab ? productDetails.lab : 'NA' }}</a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Location :</b>
-                  <a>
-                    {{
-                      productDetails.location ? productDetails.location : 'NA'
-                    }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Lot No :</b>
-                  <a>
-                    {{ productDetails.lot_no ? productDetails.lot_no : 'NA' }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Measurements :</b>
-                  <a>{{ productDetails.measurements }}</a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Pavilion_an :</b>
-                  <a>
-                    {{
-                      productDetails.pavilion_an
-                        ? productDetails.pavilion_an
-                        : 'NA'
-                    }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Pavilion_dep :</b>
-                  <a>
-                    {{
-                      productDetails.pavilion_dep
-                        ? productDetails.pavilion_dep
-                        : 'NA'
-                    }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Polish :</b>
-                  <a>
-                    {{ productDetails.polish ? productDetails.polish : 'NA' }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Ratio :</b>
-                  <a>
-                    {{ productDetails.ratio ? productDetails.ratio : 'NA' }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Shape :</b>
-                  <a>
-                    {{ productDetails.shape ? productDetails.shape : 'NA' }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Stone Type :</b>
-                  <a>
-                    {{
-                      productDetails.stone_type
-                        ? productDetails.stone_type
-                        : 'NA'
-                    }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Symmetry :</b>
-                  <a>
-                    {{
-                      productDetails.symmetry ? productDetails.symmetry : 'NA'
-                    }}
-                  </a>
-                </div>
-                <div class="tm-prodetails-singleinfo">
-                  <b>Table :</b>
-                  <a>
-                    {{ productDetails.table ? productDetails.table : 'NA' }}
-                  </a>
+                <h4>Stone Details :</h4>
+                <div class="details">
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Stone Id :</b>
+                    {{ productDetails.stone_id }}
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Clarity :</b>
+                    <a>
+                      {{
+                        productDetails.clarity ? productDetails.clarity : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Color :</b>
+                    <a>
+                      {{ productDetails.color ? productDetails.color : 'NA' }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Weight :</b>
+                    <a>
+                      {{ productDetails.weight ? productDetails.weight : 'NA' }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Crown Angle :</b>
+                    <a>
+                      {{
+                        productDetails.crown_angle
+                          ? productDetails.crown_angle
+                          : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Cut :</b>
+                    <a>{{ productDetails.cut ? productDetails.cut : 'NA' }}</a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Depth :</b>
+                    <a>
+                      {{ productDetails.depth ? productDetails.depth : 'NA' }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Eye Clean :</b>
+                    <a>
+                      {{
+                        productDetails.eye_clean
+                          ? productDetails.eye_clean
+                          : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Fluor Int :</b>
+                    <a>
+                      {{
+                        productDetails.fluor_int
+                          ? productDetails.fluor_int
+                          : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Lab :</b>
+                    <a>{{ productDetails.lab ? productDetails.lab : 'NA' }}</a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Location :</b>
+                    <a>
+                      {{
+                        productDetails.location ? productDetails.location : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Lot No :</b>
+                    <a>
+                      {{ productDetails.lot_no ? productDetails.lot_no : 'NA' }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Measurements :</b>
+                    <a>{{ productDetails.measurements }}</a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Pavilion_an :</b>
+                    <a>
+                      {{
+                        productDetails.pavilion_an
+                          ? productDetails.pavilion_an
+                          : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Pavilion_dep :</b>
+                    <a>
+                      {{
+                        productDetails.pavilion_dep
+                          ? productDetails.pavilion_dep
+                          : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Polish :</b>
+                    <a>
+                      {{ productDetails.polish ? productDetails.polish : 'NA' }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Ratio :</b>
+                    <a>
+                      {{ productDetails.ratio ? productDetails.ratio : 'NA' }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Shape :</b>
+                    <a>
+                      {{ productDetails.shape ? productDetails.shape : 'NA' }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Stone Type :</b>
+                    <a>
+                      {{
+                        productDetails.stone_type
+                          ? productDetails.stone_type
+                          : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Symmetry :</b>
+                    <a>
+                      {{
+                        productDetails.symmetry ? productDetails.symmetry : 'NA'
+                      }}
+                    </a>
+                  </div>
+                  <div class="tm-prodetails-singleinfo">
+                    <b>Table :</b>
+                    <a>
+                      {{ productDetails.table ? productDetails.table : 'NA' }}
+                    </a>
+                  </div>
                 </div>
 
-                <div class="tm-prodetails-singleinfo">
+                <div class="tm-prodetails-singleinfo mt-3">
                   <b>Available :</b>
                   <span
                     class="color-theme"
@@ -244,6 +231,29 @@
                     }}
                   </span>
                 </div>
+                <p class="description-area">
+                  <b>More Product Details:</b>
+                  Discover the allure of our diamonds with an immersive V360
+                  experience, offering a
+                  <a href="{{ productDetails.v360 }}" target="_blank">
+                    360-degree
+                  </a>
+                  view for a comprehensive exploration of every facet. Navigate
+                  the brilliance effortlessly on our
+                  <a href="{{ productDetails.v360 }}" target="_blank">V360</a>
+                  URL, ensuring confidence in your selection. Each purchase
+                  includes a certificate of authenticity, providing detailed
+                  insights into the diamond's quality. For added convenience,
+                  access the
+                  <a href="{{ productDetails.certi_pdf_url }}" target="_blank">
+                    certificate
+                  </a>
+                  in PDF format. Embrace the perfect blend of technology and
+                  tradition, ensuring that your choice is not just a purchase
+                  but a celebration of authenticity and elegance. Choose
+                  brilliance, transparency, and an unparalleled journey into the
+                  heart of your exquisite diamond.
+                </p>
                 <div class="view-part">
                   <a
                     class="btn-view"
@@ -260,8 +270,11 @@
                     Certificate
                   </a>
                 </div>
-                <div class="tm-prodetails-quantitycart">
-                  <a class="tm-button tm-button-dark">Add To Cart</a>
+                <div
+                  class="tm-prodetails-quantitycart"
+                  (click)="shareProductOnWhatsApp(productDetails)"
+                >
+                  <a class="tm-button tm-button-dark">Buy Now</a>
                 </div>
               </div>
               <!-- <p>
@@ -289,6 +302,12 @@
               </p> -->
             </div>
           </div>
+        </div>
+        <div class="row">
+          <app-populer-shapes
+            [background]="false"
+            [title]="false"
+          ></app-populer-shapes>
         </div>
       </div>
     </div>
