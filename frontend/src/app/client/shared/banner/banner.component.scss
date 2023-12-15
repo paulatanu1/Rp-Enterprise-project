@@ -7,7 +7,7 @@
         z-index: 10;
     }
     .carousel-item {
-        height: 754px;
+        max-height: 754px;
         position: relative;
         img {
             position: absolute;
@@ -53,13 +53,18 @@
 }
 
 @media only screen and (min-width:320px) and (max-width:767px) {
-    .tm-heroslider .tm-heroslider-content h1 {
-        font-size: 18px;
-        line-height: 22px;
+    .tm-heroslider {
         margin-top: 0;
+    }
+    .tm-heroslider .tm-heroslider-content h1 {
+        font-size: 16px;
+        line-height: 18px;
+        margin-top: 0;
+        margin-bottom: 5px;
     }
     .tm-heroslider .tm-heroslider-content {
         padding: 0;
+        margin-top: 5px;
     }
     .tm-heroslider .carousel-item {
         height: auto;
@@ -69,31 +74,90 @@
         z-index: 5;
     }
     .tm-heroslider .tm-heroslider-content p {
-        font-size: 15px;
-        line-height: 20px;
-        margin-top: 10px;
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 5px;
+        margin-bottom: 0;
     }
     .tm-heroslider .carousel-indicators {
         display: none !important;
     }
     .tm-heroslider .tm-heroslider-content .tm-button {
-        margin-top: 10px;
+        margin-top: 5px;
         min-width: inherit;
         padding:0 15px;
-        font-size: 14px;
-        height: 35px;
-        line-height: 35px;
+        font-size: 12px;
+        height: 28px;
+        line-height: 28px;
     }
 }
 @media only screen and (min-width:768px) and (max-width:979px) {
+    .tm-heroslider {
+            margin-top: 0;
+        }
     .tm-heroslider .tm-heroslider-content h1 {
-        font-size: 34px;
-        line-height: 36px;
+        font-size: 25px;
+        line-height: 28px;
         margin-top: 0;
     }
     .tm-heroslider .tm-heroslider-content {
         padding: 0;
+        margin-top:20px;
     }
+    .tm-heroslider .tm-heroslider-content p {
+        font-size: 18px;
+        line-height: 25px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+    .tm-heroslider .carousel-item {
+        height: auto;
+    }
+    .tm-heroslider .tm-heroslider-content .tm-button {
+        margin-top: 15px;
+        min-width: inherit;
+        padding: 0 15px;
+        font-size: 13px;
+        height: 32px;
+        line-height:32px;
+    }
+    .carousel-indicators {
+        display: none !important;
+    }
+}
+@media only screen and (min-width:980px) and (max-width:1023px) {
+    .tm-heroslider {
+            margin-top: 0;
+    }
+    .tm-heroslider .tm-heroslider-content h1 {
+        font-size: 40px;
+        line-height: 46px;
+        margin-top: 0;
+    }
+    .tm-heroslider .tm-heroslider-content {
+        padding: 0;
+        margin-top: 20px;
+    }
+    .tm-heroslider .carousel-item {
+        height: auto;
+    }
+}
+@media only screen and (min-width:1024px) and (max-width:1600px) {
+    // .tm-heroslider {
+    //     margin-top: 0;
+    // }
+
+    .tm-heroslider .tm-heroslider-content h1 {
+        font-size: 40px;
+        line-height: 46px;
+        margin-top: 0;
+    }
+
+    .tm-heroslider .tm-heroslider-content {
+        padding: 30px 0 0;
+        margin-top: 0;
+    }
+
     .tm-heroslider .carousel-item {
         height: auto;
     }
