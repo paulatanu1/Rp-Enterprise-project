@@ -226,6 +226,17 @@
     &-nav {
         text-align: center;
     }
+    &-options {
+        button {
+            font-size: 15px;
+            i {
+                margin-right: 8px;
+                font-size: 18px;
+                line-height: 1;
+                vertical-align: text-bottom;
+            }
+        }
+    }
 
     @media only screen and (min-width: 768px) and (max-width: 991px) {
         &-options {
