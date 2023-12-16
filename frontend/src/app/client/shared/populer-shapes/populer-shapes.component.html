@@ -16,7 +16,7 @@
       </div>
       <div class="col-lg-6 col-12" *ngIf="!title">
         <div class="tm-sectiontitle text-center">
-          <h3>Similer Products</h3>
+          <h3>Similar Products</h3>
           <p>
             Our popular Shapes are so beautyful to see that the shoppers are
             easily attracted to them.
@@ -28,7 +28,7 @@
       <owl-carousel-o [options]="customOptions">
         <ng-container *ngFor="let slide of popularShapesItem; let i = index">
           <ng-template carouselSlide [id]="i.toString()">
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-12">
               <div class="tm-product tm-scrollanim">
                 <div class="tm-product-topside">
                   <div class="tm-product-images">
