@@ -110,10 +110,11 @@ class Product extends Model implements
 
         if (!empty($post['search'])) {
             $productArr->where(function ($result) use ($post) {
-                $result->where('shape', 'LIKE', '%' . $post['search'] . '%')
-                ->orWhere('clarity', 'LIKE', '%' . $post['search'] . '%')
-                ->orWhere('stone_id', 'LIKE', '%' . $post['search'] . '%')
-                ->orWhere('color', 'LIKE', '%' . $post['search'] . '%');
+                $result
+                    ->where('shape', 'LIKE', '%' . $post['search'] . '%')
+                    ->orWhere('clarity', 'LIKE', '%' . $post['search'] . '%')
+                    ->orWhere('stone_id', 'LIKE', '%' . $post['search'] . '%')
+                    ->orWhere('color', 'LIKE', '%' . $post['search'] . '%');
             });
             // $search_by = ['stone_type', 'weight', 'shape', 'color', 'clarity'];
             // if (!empty($post['search_by'])) {
@@ -241,7 +242,7 @@ class Product extends Model implements
             )
 
             ->orderBy('max_weight', 'desc')
-            ->limit(9)
+            ->limit(8)
             ->get()
             ->toArray();
 

@@ -32,11 +32,11 @@
         <div class="row">
           <div class="col-sm-12">
             <form action="#" class="tm-shop-header">
-              <p class="tm-shop-countview">
+              <!-- <p class="tm-shop-countview">
                 Showing {{ displayedItems }} to
                 {{ displayedItems + productList.length - 1 }} of
                 {{ totalItems }}
-              </p>
+              </p> -->
               <select
                 [(ngModel)]="order_by"
                 (change)="onSortingFilterChange($event, order_by)"
@@ -46,11 +46,11 @@
                 <option value="Desc">Name Z-A</option>
               </select>
             </form>
-            <div class="row">
+            <div class="row align-items-center">
               <div class="col-lg-3 col-md-6 col-sm-12">
                 <label class="lable-product">Product Clarity</label>
                 <mat-form-field>
-                  <mat-label>Clarity</mat-label>
+                  <mat-label>Select Clarity</mat-label>
                   <mat-select
                     [(value)]="clarityFilter"
                     (selectionChange)="onClarityFilterChange()"
@@ -68,7 +68,7 @@
               <div class="col-lg-3 col-md-6 col-sm-12">
                 <label class="lable-product">Product Shapes</label>
                 <mat-form-field>
-                  <mat-label>Shape</mat-label>
+                  <mat-label>Select Shape</mat-label>
                   <mat-select
                     [(value)]="shapeFilter"
                     (selectionChange)="onShapeFilterChange()"
@@ -86,7 +86,24 @@
               <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="input-section">
                   <mat-form-field>
-                    <input matInput placeholder="Search products" [(ngModel)]="searchQuery" />
+                    <input
+                      matInput
+                      placeholder="Search products"
+                      [(ngModel)]="searchQuery"
+                    />
+                    <!-- @if (searchQuery) { -->
+                    <button
+                      *ngIf="searchQuery"
+                      matSuffix
+                      mat-icon-button
+                      aria-label="Clear"
+                      (click)="searchClear()"
+                      class="clear-btn"
+                    >
+                      <!-- <mat-icon>close</mat-icon> -->
+                      X
+                    </button>
+                    <!-- } -->
                   </mat-form-field>
                 </div>
               </div>
@@ -103,7 +120,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 

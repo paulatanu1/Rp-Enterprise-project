@@ -3,7 +3,7 @@ import { ClientProductService } from '../client-services/client-product.service'
 import { IhomepageProduct } from '../client-model/client-model';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -37,7 +37,12 @@ export class ProductComponent implements OnInit {
   searchQuery: string = '';
   weight: string = '';
   selectedSortingValue: string = 'Asc';
-  constructor(private product: ClientProductService, private router: Router) {
+  isNoQueryParam = false;
+  constructor(
+    private product: ClientProductService,
+    private router: Router,
+    private activatedRouter: ActivatedRoute
+  ) {
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
@@ -54,18 +59,45 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProductData(
-      this.PageNo,
-      this.clarity,
-      this.shape,
-      this.searchBy,
-      this.search,
-      this.no_of_reecord,
-      this.sort_by,
-      this.order_by,
-      this.color,
-      this.weight
-    );
+    this.activatedRouter.queryParams.subscribe({
+      next: (params) => {
+        // console.log(params['Shapes'], 'params');
+        console.log(params['Shapes'], 'query');
+        if (params['Shapes'] == undefined) {
+          this.isNoQueryParam = true;
+        }
+        this.shapeFilter = this.shape = params['Shapes'];
+        this.productList = [];
+        if (this.isNoQueryParam == false) {
+          this.getProductData(
+            this.PageNo,
+            this.clarity,
+            this.shape,
+            this.searchBy,
+            this.search,
+            this.no_of_reecord,
+            this.sort_by,
+            this.order_by,
+            this.color,
+            this.weight
+          );
+        }
+      },
+    });
+    if (this.isNoQueryParam == true) {
+      this.getProductData(
+        this.PageNo,
+        this.clarity,
+        this.shape,
+        this.searchBy,
+        this.search,
+        this.no_of_reecord,
+        this.sort_by,
+        this.order_by,
+        this.color,
+        this.weight
+      );
+    }
     this.getShapesList();
     this.getClarityList();
   }
@@ -190,16 +222,81 @@ export class ProductComponent implements OnInit {
   onShapeFilterChange() {
     if (this.shapeFilter === 'All') {
       this.shape = '';
+      this.PageNo = 1;
+      this.productList = [];
+      this.removeQueryParams();
+      this.getProductData(
+        this.PageNo,
+        this.clarity,
+        this.shape,
+        this.searchBy,
+        this.search,
+        this.no_of_reecord,
+        this.sort_by,
+        this.order_by,
+        this.color,
+        this.weight
+      );
     } else {
       this.shape = this.shapeFilter;
+      const urlTree = this.router.createUrlTree([], {
+        queryParams: { Shapes: this.shape },
+        queryParamsHandling: 'merge',
+        preserveFragment: true,
+      });
+      this.router.navigateByUrl(urlTree);
+      this.productList = [];
+      this.PageNo = 1;
+      this.getProductData(
+        this.PageNo,
+        this.clarity,
+        this.shape,
+        this.searchBy,
+        this.search,
+        this.no_of_reecord,
+        this.sort_by,
+        this.order_by,
+        this.color,
+        this.weight
+      );
     }
   }
 
   onClarityFilterChange() {
+    console.log(this.clarityFilter);
     if (this.clarityFilter === 'All') {
       this.clarity = '';
+      this.PageNo = 1;
+      this.productList = [];
+      this.getProductData(
+        this.PageNo,
+        this.clarity,
+        this.shape,
+        this.searchBy,
+        this.search,
+        this.no_of_reecord,
+        this.sort_by,
+        this.order_by,
+        this.color,
+        this.weight
+      );
     } else {
+      console.log(this.clarityFilter);
       this.clarity = this.clarityFilter;
+      this.PageNo = 1;
+      this.productList = [];
+      this.getProductData(
+        this.PageNo,
+        this.clarity,
+        this.shape,
+        this.searchBy,
+        this.search,
+        this.no_of_reecord,
+        this.sort_by,
+        this.order_by,
+        this.color,
+        this.weight
+      );
     }
   }
 
@@ -220,6 +317,10 @@ export class ProductComponent implements OnInit {
     );
   }
   resetFilter() {
+    this.removeQueryParams();
+    this.clarityFilter = '';
+    this.shapeFilter = '';
+    this.searchQuery = '';
     (this.PageNo = 1),
       (this.clarity = ''),
       (this.shape = ''),
@@ -263,5 +364,33 @@ export class ProductComponent implements OnInit {
       },
       error: (err) => {},
     });
+  }
+
+  removeQueryParams() {
+    this.router.navigate([], {
+      queryParams: {
+        Shapes: null, // Remove category query param
+        // priceRange: null, // Remove priceRange query param
+      },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  searchClear() {
+    this.searchQuery = '';
+    this.search = '';
+    this.PageNo = 1;
+    this.getProductData(
+      this.PageNo,
+      this.clarity,
+      this.shape,
+      this.searchBy,
+      this.search,
+      this.no_of_reecord,
+      this.sort_by,
+      this.order_by,
+      this.color,
+      this.weight
+    );
   }
 }

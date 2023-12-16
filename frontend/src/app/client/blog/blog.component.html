@@ -47,20 +47,20 @@
                   </div>
                   <div class="tm-blog-content">
                     <h6 class="tm-blog-title">
-                      <a href="blog-details.html">
+                      <a [routerLink]="['/product']">
                         Lab Grown Diamonds vs. Natural Diamonds: Exploring the
                         Differences
                       </a>
                     </h6>
                     <ul class="tm-blog-meta">
                       <li>
-                        <a href="blog.html">
+                        <a [routerLink]="['/product']">
                           <i class="fa fa-user" aria-hidden="true"></i>
                           Anderson
                         </a>
                       </li>
                       <li>
-                        <a href="blog-details.html">
+                        <a [routerLink]="['/product']">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           3 Comments
                         </a>
@@ -72,7 +72,7 @@
                       manufacturer and exporter of lab-grown diamonds, RP
                       Enterprise India aims.[....]
                     </p>
-                    <a href="blog-details.html" class="tm-readmore">
+                    <a [routerLink]="['/product']" class="tm-readmore">
                       Read more
                     </a>
                   </div>
@@ -97,20 +97,20 @@
                   </div>
                   <div class="tm-blog-content">
                     <h6 class="tm-blog-title">
-                      <a href="blog-details.html">
+                      <a [routerLink]="['/product']">
                         Unveiling the Brilliance: Unique Shapes in Lab-Grown
                         Diamonds
                       </a>
                     </h6>
                     <ul class="tm-blog-meta">
                       <li>
-                        <a href="blog.html">
+                        <a [routerLink]="['/product']">
                           <i class="fa fa-user" aria-hidden="true"></i>
                           Anderson
                         </a>
                       </li>
                       <li>
-                        <a href="blog-details.html">
+                        <a [routerLink]="['/product']">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           3 Comments
                         </a>
@@ -121,7 +121,7 @@
                       when it comes to diamond shapes. With advanced technology
                       and craftsmanship, RP Enterprise [....]
                     </p>
-                    <a href="blog-details.html" class="tm-readmore">
+                    <a [routerLink]="['/product']" class="tm-readmore">
                       Read more
                     </a>
                   </div>
@@ -146,20 +146,20 @@
                   </div>
                   <div class="tm-blog-content">
                     <h6 class="tm-blog-title">
-                      <a href="blog-details.html">
+                      <a [routerLink]="['/product']">
                         The Ever-Growing Sparkle: The Increasing Demand for
                         Lab-Grown Diamonds
                       </a>
                     </h6>
                     <ul class="tm-blog-meta">
                       <li>
-                        <a href="blog.html">
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <a [routerLink]="['/product']">
+                          <i class="fa fa-user" aria-hidden="true"></i>
                           Anderson
                         </a>
                       </li>
                       <li>
-                        <a href="blog-details.html">
+                        <a [routerLink]="['/product']">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           3 Comments
                         </a>
@@ -170,25 +170,13 @@
                       demand for lab-grown diamonds. As a leading manufacturer
                       and exporter [....]
                     </p>
-                    <a href="blog-details.html" class="tm-readmore">
+                    <a [routerLink]="['/product']" class="tm-readmore">
                       Read more
                     </a>
                   </div>
                 </div>
               </div>
               <!--// Blog Single Item -->
-            </div>
-
-            <div class="tm-pagination mt-50">
-              <ul>
-                <li class="is-active"><a href="blog.html">1</a></li>
-                <li><a href="blog.html">2</a></li>
-                <li><a href="blog.html">3</a></li>
-                <li><a href="blog.html">4</a></li>
-                <li>
-                  <a href="blog.html"><i class="ion-chevron-right"></i></a>
-                </li>
-              </ul>
             </div>
           </div>
           <div class="col-lg-4 col-12">
@@ -207,13 +195,13 @@
               <div class="single-widget widget-categories">
                 <h6 class="widget-title">Categories</h6>
                 <ul>
-                  <li><a href="blog.html">Wedding Jewelry</a></li>
-                  <li><a href="blog.html">Rings</a></li>
-                  <li><a href="blog.html">Earrings</a></li>
-                  <li><a href="blog.html">Bracelets</a></li>
-                  <li><a href="blog.html">Nacklaces</a></li>
-                  <li><a href="blog.html">Children’s Jewelry</a></li>
-                  <li><a href="blog.html">Expression Jewelry</a></li>
+                  <li><a [routerLink]="['/product']">Wedding Jewelry</a></li>
+                  <li><a [routerLink]="['/product']">Rings</a></li>
+                  <li><a [routerLink]="['/product']">Earrings</a></li>
+                  <li><a [routerLink]="['/product']">Bracelets</a></li>
+                  <li><a [routerLink]="['/product']">Nacklaces</a></li>
+                  <li><a [routerLink]="['/product']">Children’s Jewelry</a></li>
+                  <li><a [routerLink]="['/product']">Expression Jewelry</a></li>
                 </ul>
               </div>
               <!--// Single Widget -->
@@ -223,38 +211,44 @@
                 <h6 class="widget-title">Recent Posts</h6>
                 <ul>
                   <li>
-                    <a href="blog-details.html" class="widget-recentpost-image">
+                    <a
+                      [routerLink]="['/product']"
+                      class="widget-recentpost-image"
+                    >
                       <img
                         src="../../../../../../assets/images/blog-thumbnail-1.jpg"
                         alt="blog thumbnail"
                       />
                     </a>
                     <div class="widget-recentpost-content">
-                      <h6><a href="blog-details.html">Diamond Ring</a></h6>
+                      <h6><a [routerLink]="['/product']">Diamond Ring</a></h6>
                       <span>January 15, 2019</span>
                     </div>
                   </li>
                   <li>
-                    <a href="blog-details.html" class="widget-recentpost-image">
+                    <a
+                      [routerLink]="['/product']"
+                      class="widget-recentpost-image"
+                    >
                       <img
                         src="../../../assets/images/blog/blog-thumbnail-2.jpg"
                         alt="blog thumbnail"
                       />
                     </a>
                     <div class="widget-recentpost-content">
-                      <h6><a href="blog-details.html">Couple Ring</a></h6>
+                      <h6><a [routerLink]="['/product']">Couple Ring</a></h6>
                       <span>Janury 14, 2019</span>
                     </div>
                   </li>
                   <li>
-                    <a href="blog-details.html" class="widget-recentpost-image">
+                    <a class="widget-recentpost-image">
                       <img
                         src="../../../assets/images/blog/blog-thumbnail-3.jpg"
                         alt="blog thumbnail"
                       />
                     </a>
                     <div class="widget-recentpost-content">
-                      <h6><a href="#blog-details.html">Diamon Bracelets</a></h6>
+                      <h6><a>Diamon Bracelets</a></h6>
                       <span>January 13, 2019</span>
                     </div>
                   </li>
@@ -266,12 +260,12 @@
               <div class="single-widget widget-archives">
                 <h6 class="widget-title">Archives</h6>
                 <ul>
-                  <li><a href="#">December 2018</a></li>
-                  <li><a href="#">Septemper 2018</a></li>
-                  <li><a href="#">June 2018</a></li>
-                  <li><a href="#">April 2018</a></li>
-                  <li><a href="#">February 2018</a></li>
-                  <li><a href="#">January 2018</a></li>
+                  <li><a>December 2018</a></li>
+                  <li><a>Septemper 2018</a></li>
+                  <li><a>June 2018</a></li>
+                  <li><a>April 2018</a></li>
+                  <li><a>February 2018</a></li>
+                  <li><a>January 2018</a></li>
                 </ul>
               </div>
               <!--// Single Widget -->
@@ -280,13 +274,13 @@
               <div class="single-widget widget-tags">
                 <h6 class="widget-title">Popular Tags</h6>
                 <ul>
-                  <li><a href="#">Make up</a></li>
-                  <li><a href="#">Facial</a></li>
-                  <li><a href="#">Hair Treatment</a></li>
-                  <li><a href="#">Skin Care</a></li>
-                  <li><a href="#">Hair Remove</a></li>
-                  <li><a href="#">Spa</a></li>
-                  <li><a href="#">Body Massage</a></li>
+                  <li><a>Make up</a></li>
+                  <li><a>Facial</a></li>
+                  <li><a>Hair Treatment</a></li>
+                  <li><a>Skin Care</a></li>
+                  <li><a>Hair Remove</a></li>
+                  <li><a>Spa</a></li>
+                  <li><a>Body Massage</a></li>
                 </ul>
               </div>
               <!--// Popular Tags -->

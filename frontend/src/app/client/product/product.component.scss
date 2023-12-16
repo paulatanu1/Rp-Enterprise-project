@@ -994,12 +994,17 @@ button:not(:disabled) {
     margin: 0 5px;
 }
 
+// .input-section {
+//     position: relative;
+// }
+
 .input-section .mat-form-field {
     width: 100%;
 }
 
 .input-section ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0;
+    position: relative;
 }
 
 .lable-product {
@@ -1023,4 +1028,14 @@ button:not(:disabled) {
 
 ::ng-deep .mat-form-field {
     width: 100%;
+}
+
+.clear-btn {
+    padding: 5px;
+    border: none;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: -30px;
+    color: red;
 }

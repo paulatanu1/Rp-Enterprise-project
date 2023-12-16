@@ -48,7 +48,6 @@
           <a class="nav-link" [routerLink]="['/about']">About</a>
         </li>
         <li class="nav-item dropdown">
-          <!-- Add 'dropdown' class here -->
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -61,8 +60,71 @@
             Shop
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/product']">Products</a>
-            <!-- Add more submenu items if needed -->
+            <a class="dropdown-item" [routerLink]="['/product']">
+              All Products
+            </a>
+            <div class="dropdown-divider"></div>
+            <!-- Add a divider between main items and submenus -->
+
+            <!-- Submenu items -->
+            <p class="sub-menu-heading">Category</p>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Round' }"
+            >
+              Round
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Oval' }"
+            >
+              Oval
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Cushion' }"
+            >
+              Cushion
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Princess' }"
+            >
+              Princess
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Radiant' }"
+            >
+              Radiant
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Marquise' }"
+            >
+              Pear
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Marquise' }"
+            >
+              Marquise
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Emerald' }"
+            >
+              Emerald
+            </a>
+            <!-- Add more submenu items as needed -->
           </div>
         </li>
         <li class="nav-item">

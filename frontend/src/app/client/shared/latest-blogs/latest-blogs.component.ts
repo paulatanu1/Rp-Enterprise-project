@@ -23,7 +23,7 @@ export class LatestBlogsComponent implements OnInit {
   noWrap = false;
   private innerWidth: number | undefined;
   private mobileBreakpoint = 767;
-  constructor() { }
+  constructor() {}
   ngOnInit(): void {
     this.adjustsItemsPerSlide();
   }
@@ -35,5 +35,4 @@ export class LatestBlogsComponent implements OnInit {
       this.itemsPerSlide = 3;
     }
   }
-
 }
