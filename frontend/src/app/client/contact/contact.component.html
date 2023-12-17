@@ -42,8 +42,11 @@
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <h6 style="color: #ffa700ef;">Mumbai Address</h6>
                 <p>
-                  JE-5060, Bharat Diamond Bourse, Bandra <br/>Kurla Complex, Bandra
-                  East Mumbai <br/>400051
+                  JE-5060, Bharat Diamond Bourse, Bandra
+                  <br />
+                  Kurla Complex, Bandra East Mumbai
+                  <br />
+                  400051
                 </p>
               </div>
             </div>
@@ -55,8 +58,11 @@
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <h6 style="color: #ffa700ef;">Surat Address</h6>
                 <p>
-                  202 J tower, Lalita Estate, Vasta Devdi Road,<br/> Next to
-                  Pansuriya Impex, Katargam Surat, <br/>395004
+                  202 J tower, Lalita Estate, Vasta Devdi Road,
+                  <br />
+                  Next to Pansuriya Impex, Katargam Surat,
+                  <br />
+                  395004
                 </p>
               </div>
             </div>
@@ -98,8 +104,10 @@
               <div class="tm-contact-block text-center">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <h6 style="color: #ffa700ef;">Email</h6>
-                <p><a href="mailto:surose@gmail.com">surose@gmail.com</a></p>
-                <p><a href="mailto:info@surose.com">info@surose.com</a></p>
+                <p>
+                  <a href="mailto:surose@gmail.com">surose&#64;gmail.com</a>
+                </p>
+                <p><a href="mailto:info@surose.com">info&#64;surose.com</a></p>
               </div>
             </div>
             <!--// Contact block -->
@@ -123,7 +131,8 @@
             <div class="col-lg-8">
               <form
                 id="tm-contactform"
-                action="assets/php/mailer.php"
+                [formGroup]="contactForm"
+                (ngSubmit)="onSubmit()"
                 class="tm-contact-forminner tm-form"
                 method="POST"
               >
@@ -135,8 +144,17 @@
                       id="contact-form-name"
                       placeholder="Your name here"
                       name="name"
-                      required
+                      formControlName="name"
                     />
+                    <div
+                      *ngIf="
+                        contactForm.get('name')?.touched &&
+                        contactForm.get('name')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      {{ getFormControlError('name') }}
+                    </div>
                   </div>
                   <div class="tm-form-field tm-form-fieldhalf">
                     <label for="contact-form-email">Email</label>
@@ -145,8 +163,17 @@
                       id="contact-form-email"
                       placeholder="surose@example.com"
                       name="email"
-                      required
+                      formControlName="email"
                     />
+                    <div
+                      *ngIf="
+                        contactForm.get('email')?.touched &&
+                        contactForm.get('email')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      {{ getFormControlError('email') }}
+                    </div>
                   </div>
                   <div class="tm-form-field tm-form-fieldhalf">
                     <label for="contact-form-phone">Phone</label>
@@ -155,8 +182,17 @@
                       id="contact-form-phone"
                       placeholder="Your phone number here"
                       name="phone"
-                      required
+                      formControlName="phone"
                     />
+                    <div
+                      *ngIf="
+                        contactForm.get('phone')?.touched &&
+                        contactForm.get('phone')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      {{ getFormControlError('phone') }}
+                    </div>
                   </div>
                   <div class="tm-form-field tm-form-fieldhalf">
                     <label for="contact-form-subject">Subject</label>
@@ -165,7 +201,17 @@
                       id="contact-form-subject"
                       placeholder="Your subjert"
                       name="subject"
+                      formControlName="subject"
                     />
+                    <div
+                      *ngIf="
+                        contactForm.get('subject')?.touched &&
+                        contactForm.get('subject')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      {{ getFormControlError('subject') }}
+                    </div>
                   </div>
                   <div class="tm-form-field">
                     <label for="contact-form-message">Message</label>
@@ -175,10 +221,24 @@
                       id="contact-form-message"
                       placeholder="Write your message"
                       name="message"
+                      formControlName="message"
                     ></textarea>
+                    <div
+                      *ngIf="
+                        contactForm.get('message')?.touched &&
+                        contactForm.get('message')?.invalid
+                      "
+                      class="error-message"
+                    >
+                      {{ getFormControlError('message') }}
+                    </div>
                   </div>
                   <div class="tm-form-field text-center">
-                    <button type="submit" class="tm-button tm-button-block">
+                    <button
+                      [disabled]="isDisable"
+                      type="submit"
+                      class="tm-button tm-button-block"
+                    >
                       Send Message
                     </button>
                   </div>

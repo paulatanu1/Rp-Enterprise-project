@@ -1,12 +1,22 @@
 <div
   id="tm-popular-products-area"
   class="tm-section tm-popular-products-area tm-padding-section bg-grey"
+  [class.no-bg]="!background"
 >
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-6 col-12" *ngIf="title">
         <div class="tm-sectiontitle text-center">
           <h3>POPULAR SHAPES</h3>
+          <p>
+            Our popular Shapes are so beautyful to see that the shoppers are
+            easily attracted to them.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12" *ngIf="!title">
+        <div class="tm-sectiontitle text-center">
+          <h3>Similar Products</h3>
           <p>
             Our popular Shapes are so beautyful to see that the shoppers are
             easily attracted to them.
@@ -18,16 +28,20 @@
       <owl-carousel-o [options]="customOptions">
         <ng-container *ngFor="let slide of popularShapesItem; let i = index">
           <ng-template carouselSlide [id]="i.toString()">
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-12">
               <div class="tm-product tm-scrollanim">
                 <div class="tm-product-topside">
                   <div class="tm-product-images">
                     <img
-                      src="../../../../assets/images/products/Trapezoid.jpg"
+                      [src]="
+                        slide.imgurl
+                          ? slide.imgurl
+                          : '../../../../assets/images/9264822.jpg'
+                      "
                       alt="product image"
                     />
                   </div>
-                  <ul class="tm-product-actions">
+                  <!-- <ul class="tm-product-actions">
                     <li>
                       <button
                         (click)="shareProductOnWhatsApp(slide)"
@@ -37,12 +51,13 @@
                         <i>Buy Now</i>
                       </button>
                     </li>
-                  </ul>
+                  </ul> -->
                   <div class="tm-product-badges">
                     <span class="tm-product-badges-new">New</span>
                     <span class="tm-product-badges-sale">Sale</span>
                   </div>
                 </div>
+
                 <div class="tm-product-bottomside">
                   <h6 class="tm-product-title">
                     <a>{{ slide.product_name }}</a>
@@ -62,7 +77,9 @@
                     </span>
                     <span><i class="fa fa-star-o" aria-hidden="true"></i></span>
                   </div>
-                  <span class="tm-product-price">$29.99</span>
+                  <span class="tm-product-price">
+                    $ {{ slide.system_price.toFixed(2) }}
+                  </span>
                   <div class="tm-product-content">
                     <p>
                       Lorem Ipsum is simply dummy text of the printing and
@@ -72,11 +89,11 @@
                       specimen book. It has survived not only five centuries,
                       but also the leap into electronic typesetting.
                     </p>
-                    <ul class="tm-product-actions">
+                    <!-- <ul class="tm-product-actions">
                       <li>
-                        <a href="#">
+                        <a>
                           <i class="ion-android-cart"></i>
-                          Add to cart
+                          Buy Now
                         </a>
                       </li>
                       <li>
@@ -85,10 +102,18 @@
                         </button>
                       </li>
                       <li>
-                        <a href="#"><i class="ion-heart"></i></a>
+                        <a><i class="ion-heart"></i></a>
                       </li>
-                    </ul>
+                    </ul> -->
                   </div>
+                </div>
+                <div class="action-area">
+                  <button
+                    class="tm-button mt-2 mx-auto"
+                    (click)="shareProductOnWhatsApp(slide)"
+                  >
+                    <i>Buy Now</i>
+                  </button>
                 </div>
               </div>
             </div>

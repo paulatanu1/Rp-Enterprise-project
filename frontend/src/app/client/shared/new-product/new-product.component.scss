@@ -70,7 +70,7 @@ h3,
 
 .tm-product {
     position: relative;
-    width: 300px;
+    width: 100%;
 }
 
 .tm-product-badges {
@@ -260,4 +260,10 @@ h3,
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
+}
+
+@media only screen and (min-width:320px) and (max-width:767px) {
+    .tm-product {
+        width: 100%;
+    }
 }

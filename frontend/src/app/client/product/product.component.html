@@ -30,95 +30,101 @@
     <div class="tm-products-area tm-section tm-padding-section bg-white">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 col-12">
+          <div class="col-sm-12">
             <form action="#" class="tm-shop-header">
-              <!-- <div class="tm-shop-productview">
-                <span>View:</span>
-                <button data-view="grid" class="active">
-                  <i class="ion-android-apps"></i>
-                </button>
-                <button data-view="list">
-                  <i class="ion-android-menu"></i>
-                </button>
-              </div> -->
-              <p class="tm-shop-countview">
+              <!-- <p class="tm-shop-countview">
                 Showing {{ displayedItems }} to
                 {{ displayedItems + productList.length - 1 }} of
                 {{ totalItems }}
-              </p>
-              <select>
-                <option value="value">Default Sorting</option>
-                <option value="value">Name A-Z</option>
-                <option value="value">Name Z-A</option>
-                <!-- <option value="value">Best Sellers</option>
-                <option value="value">Trending</option> -->
+              </p> -->
+              <select
+                [(ngModel)]="order_by"
+                (change)="onSortingFilterChange($event, order_by)"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option value="Asc">Name A-Z</option>
+                <option value="Desc">Name Z-A</option>
               </select>
             </form>
+            <div class="row align-items-center">
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <label class="lable-product">Product Clarity</label>
+                <mat-form-field>
+                  <mat-label>Select Clarity</mat-label>
+                  <mat-select
+                    [(value)]="clarityFilter"
+                    (selectionChange)="onClarityFilterChange()"
+                  >
+                    <mat-option value="All">All</mat-option>
+                    <mat-option
+                      *ngFor="let option of clarityOptions"
+                      [value]="option.clarity"
+                    >
+                      {{ option.clarity }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <label class="lable-product">Product Shapes</label>
+                <mat-form-field>
+                  <mat-label>Select Shape</mat-label>
+                  <mat-select
+                    [(value)]="shapeFilter"
+                    (selectionChange)="onShapeFilterChange()"
+                  >
+                    <mat-option value="All">All</mat-option>
+                    <mat-option
+                      *ngFor="let option of shapeOptions; let i = index"
+                      [value]="option.shape"
+                    >
+                      {{ option.shape }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="input-section">
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Search products"
+                      [(ngModel)]="searchQuery"
+                    />
+                    <!-- @if (searchQuery) { -->
+                    <button
+                      *ngIf="searchQuery"
+                      matSuffix
+                      mat-icon-button
+                      aria-label="Clear"
+                      (click)="searchClear()"
+                      class="clear-btn"
+                    >
+                      <!-- <mat-icon>close</mat-icon> -->
+                      X
+                    </button>
+                    <!-- } -->
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 d-flex">
+                <div class="search-area">
+                  <button mat-button (click)="performSearch()">
+                    Search
+                  </button>
+                </div>
+                <div class="reset-area">
+                  <button (click)="resetFilter()" mat-button type="button">
+                    Reset All Filter
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <mat-form-field>
-              <mat-label>Clarity</mat-label>
-              <mat-select [(value)]="clarityFilter">
-                <mat-option value="All">All</mat-option>
-                <mat-option
-                  *ngFor="let option of clarityOptions"
-                  [value]="option"
-                >
-                  {{ option }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Shape</mat-label>
-              <mat-select [(value)]="shapeFilter">
-                <mat-option value="All">All</mat-option>
-                <mat-option
-                  *ngFor="let option of shapeOptions"
-                  [value]="option"
-                >
-                  {{ option }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Search By</mat-label>
-              <mat-select [(value)]="searchByFilter">
-                <mat-option value="All">All</mat-option>
-                <mat-option
-                  *ngFor="let option of searchByOptions"
-                  [value]="option"
-                >
-                  {{ option }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="example-form-field">
-              <input
-                matInput
-                placeholder="Search"
-                [formControl]="searchControl"
-                [matAutocomplete]="auto"
-                minlength="3"
-              />
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option
-                  *ngFor="let option of filteredOptions | async"
-                  [value]="option"
-                >
-                  {{ option }}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-            <button
-              mat-button
-              [disabled]="
-                searchControl.value ? searchControl.value.length < 3 : true
-              "
-            >
-              Search
-            </button>
-
+        <div class="row">
+          <div class="col-lg-12 col-12">
             <div class="tm-shop-products">
               <div
                 class="row mt-30-reverse"
@@ -132,7 +138,10 @@
                   class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 mt-50"
                   *ngFor="let item of productList"
                 >
-                  <div class="tm-product tm-scrollanim">
+                  <div
+                    class="tm-product tm-scrollanim"
+                    [routerLink]="['details/', item.id]"
+                  >
                     <div class="tm-product-topside">
                       <div class="tm-product-images">
                         <img
@@ -153,25 +162,7 @@
                         />
                       </div>
                       <ul class="tm-product-actions">
-                        <li>
-                          <a (click)="shareProductOnWhatsApp(item)">
-                            <i class="ion-android-cart"></i>
-                            Add to cart
-                          </a>
-                        </li>
-                        <li>
-                          <button
-                            data-fancybox
-                            data-src="#tm-product-quickview"
-                          >
-                            <i class="ion-eye"></i>
-                          </button>
-                        </li>
-                        <li>
-                          <a (click)="shareProductOnWhatsApp(item)">
-                            <i class="ion-heart"></i>
-                          </a>
-                        </li>
+                        <li></li>
                       </ul>
                       <div class="tm-product-badges">
                         <span class="tm-product-badges-new">New</span>
@@ -180,11 +171,25 @@
                     </div>
                     <div class="tm-product-bottomside">
                       <h6 class="tm-product-title">
-                        <a [routerLink]="['/product-details']">
-                          {{ item.stone_id }}
+                        <a [routerLink]="['/product']">
+                          {{ item.product_name }}
                         </a>
                       </h6>
-                      <div class="tm-ratingbox">
+                      <div>
+                        <span class="">
+                          <b>Clarity -</b>
+                          {{ item.clarity }}
+                        </span>
+                        <span class="">
+                          <b>Color -</b>
+                          {{ item.color }}
+                        </span>
+                        <span class="">
+                          <b>Shape -</b>
+                          {{ item.shape }}
+                        </span>
+                      </div>
+                      <!-- <div class="tm-ratingbox">
                         <span class="is-active">
                           <i class="ion-android-star-outline"></i>
                         </span>
@@ -198,173 +203,50 @@
                           <i class="ion-android-star-outline"></i>
                         </span>
                         <span><i class="ion-android-star-outline"></i></span>
-                      </div>
+                      </div> -->
                       <span class="tm-product-price">
-                        Rs:- {{ (item.system_price * item.weight).toFixed(2) }}
+                        $ {{ (item.system_price * item.weight).toFixed(2) }}
                       </span>
-                      <div class="tm-product-content">
-                        <p>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the when an
-                          unknown printer took a galley of type and scrambled it
-                          to make a type specimen book. It has survived not only
-                          five centuries, but also the leap into electronic
-                          typesetting.
-                        </p>
-                        <ul class="tm-product-actions">
-                          <li>
-                            <a href="#">
-                              <i class="ion-android-cart"></i>
-                              Add to cart
-                            </a>
-                          </li>
-                          <li>
-                            <button
-                              data-fancybox
-                              data-src="#tm-product-quickview"
-                            >
-                              <i class="ion-eye"></i>
-                            </button>
-                          </li>
-                          <li>
-                            <a href="#"><i class="ion-heart"></i></a>
-                          </li>
-                        </ul>
+
+                      <div class="tm-product-actions cs-width2">
+                        <!-- <a (click)="shareProductOnWhatsApp(item)">
+                          <i class="ion-android-cart"></i>
+                          Add to cart
+                        </a> -->
+                        <button
+                          (click)="shareProductOnWhatsApp(item)"
+                          id="mc-submit"
+                          type="submit"
+                          class="tm-button cs-width"
+                        >
+                          Buy Now
+                          <img
+                            style="width: 20px; height: 20px;"
+                            src="../../../assets/images/fast-buy-3048.svg"
+                            alt="buy"
+                          />
+                        </button>
                       </div>
                     </div>
                   </div>
+                </div>
+                <div
+                  style="
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-top: 50px;
+                  "
+                  *ngIf="productList.length == 0"
+                >
+                  No Product Found
                 </div>
                 <!--// Single Product -->
               </div>
             </div>
 
-            <div class="tm-pagination mt-50">
-              <!-- <ul>
-                <li class="is-active"><a >1</a></li>
-                <li><a >2</a></li>
-                <li><a >3</a></li>
-                <li><a >4</a></li>
-                <li>
-                  <a ><i class="ion-chevron-right"></i></a>
-                </li>
-              </ul> -->
-
-              <!-- <mat-paginator
-                [length]="totalItems"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="[5, 10, 25, 100]"
-                (page)="onPageChange($event)"
-              ></mat-paginator> -->
-            </div>
+            <div class="tm-pagination mt-50"></div>
           </div>
-
-          <!-- Widgets -->
-          <!-- <div class="col-lg-3 col-12">
-            <div class="widgets">
-              <div class="single-widget widget-categories">
-                <h6 class="widget-title">Categories</h6>
-                <ul>
-                  <li><a>Make up</a></li>
-                  <li><a>Leapstick</a></li>
-                  <li><a>Face Powder</a></li>
-                  <li><a>Eyeliner</a></li>
-                  <li><a>Maskara</a></li>
-                  <li><a>Foundation</a></li>
-                </ul>
-              </div>
-
-              <div class="single-widget widget-pricefilter">
-                <h6 class="widget-title">Filter by Price</h6>
-                <div class="widget-pricefilter-inner">
-                  <div
-                    class="tm-rangeslider"
-                    data-range_min="0"
-                    data-range_max="800"
-                    data-cur_min="200"
-                    data-cur_max="550"
-                  >
-                    <div class="tm-rangeslider-bar nst-animating"></div>
-                    <span
-                      class="tm-rangeslider-leftgrip nst-animating"
-                      tabindex="0"
-                    ></span>
-                    <span
-                      class="tm-rangeslider-rightgrip nst-animating"
-                      tabindex="0"
-                    ></span>
-                  </div>
-                  <div class="widget-pricefilter-actions">
-                    <p class="widget-pricefilter-price">
-                      Price: $
-                      <span class="tm-rangeslider-leftlabel">308</span>
-                      - $
-                      <span class="tm-rangeslider-rightlabel">798</span>
-                    </p>
-                    <button class="widget-pricefilter-button">Filter</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="single-widget widget-popularproduct">
-                <h6 class="widget-title">Popular Product</h6>
-                <ul>
-                  <li>
-                    <a class="widget-popularproduct-image">
-                      <img
-                        src="assets/images/products/product-image-1-thumb.jpg"
-                        alt="product thumbnail"
-                      />
-                    </a>
-                    <div class="widget-popularproduct-content">
-                      <h6>
-                        <a>Brown liquid inside</a>
-                      </h6>
-                      <span>$20.00</span>
-                    </div>
-                  </li>
-                  <li>
-                    <a class="widget-popularproduct-image">
-                      <img
-                        src="assets/images/products/product-image-2-thumb.jpg"
-                        alt="product thumbnail"
-                      />
-                    </a>
-                    <div class="widget-popularproduct-content">
-                      <h6>
-                        <a>Top of amber bottle</a>
-                      </h6>
-                      <span>$35.99</span>
-                    </div>
-                  </li>
-                  <li>
-                    <a class="widget-popularproduct-image">
-                      <img
-                        src="assets/images/products/product-image-3-thumb.jpg"
-                        alt="product thumbnail"
-                      />
-                    </a>
-                    <div class="widget-popularproduct-content">
-                      <h6>
-                        <a>Mario badescu bottle</a>
-                      </h6>
-                      <span>$99.99</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="single-widget widget-sizes">
-                <h6 class="widget-title">Sizes</h6>
-                <ul>
-                  <li><a>Small Size</a></li>
-                  <li><a>Medium Size</a></li>
-                  <li><a>Large Size</a></li>
-                  <li><a>Extra Large Size</a></li>
-                </ul>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -373,3 +255,4 @@
 
   <app-footer></app-footer>
 </div>
+<!-- <router-outlet></router-outlet> -->

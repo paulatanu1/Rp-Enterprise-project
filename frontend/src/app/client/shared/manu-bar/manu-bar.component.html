@@ -1,5 +1,5 @@
 <!-- Header Bottom Area -->
-<div class="tm-header-bottomarea bg-white">
+<!-- <div class="tm-header-bottomarea bg-white">
   <div class="container">
     <nav class="tm-header-nav">
       <ul>
@@ -17,5 +17,123 @@
       </ul>
     </nav>
   </div>
-</div>
+</div> -->
 <!--// Header Bottom Area -->
+
+<!-- responsive-header.component.html -->
+<header class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light container">
+    <!-- <a class="navbar-brand" [routerLink]="['/']">Your Logo</a> -->
+
+    <!-- Toggle button for mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/about']">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Shop
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/product']">
+              All Products
+            </a>
+            <div class="dropdown-divider"></div>
+            <!-- Add a divider between main items and submenus -->
+
+            <!-- Submenu items -->
+            <p class="sub-menu-heading">Category</p>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Round' }"
+            >
+              Round
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Oval' }"
+            >
+              Oval
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Cushion' }"
+            >
+              Cushion
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Princess' }"
+            >
+              Princess
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Radiant' }"
+            >
+              Radiant
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Marquise' }"
+            >
+              Pear
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Marquise' }"
+            >
+              Marquise
+            </a>
+            <a
+              class="dropdown-item-sub"
+              [routerLink]="['/product']"
+              [queryParams]="{ Shapes: 'Emerald' }"
+            >
+              Emerald
+            </a>
+            <!-- Add more submenu items as needed -->
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/blog']">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact']">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

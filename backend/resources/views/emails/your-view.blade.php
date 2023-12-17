@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <h1>Hello, {{ $data['name'] }}</h1>
+    <p>Hello, {{ $data['name'] }}</p>
     <p>{{ $data['message'] }}</p>
 </body>
 

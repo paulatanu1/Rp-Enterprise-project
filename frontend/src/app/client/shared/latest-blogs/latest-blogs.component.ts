@@ -18,12 +18,21 @@ import { environment } from 'src/environments/environment';
   ],
 })
 export class LatestBlogsComponent implements OnInit {
-
-  constructor() { }
   itemsPerSlide = 3;
   singleSlideOffset = true;
   noWrap = false;
+  private innerWidth: number | undefined;
+  private mobileBreakpoint = 767;
+  constructor() {}
   ngOnInit(): void {
+    this.adjustsItemsPerSlide();
   }
-
+  private adjustsItemsPerSlide() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth < this.mobileBreakpoint) {
+      this.itemsPerSlide = 1;
+    } else {
+      this.itemsPerSlide = 3;
+    }
+  }
 }

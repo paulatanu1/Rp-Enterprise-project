@@ -369,7 +369,7 @@ select {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    max-height: 240px;
+    max-height: 300px;
 }
 
 .tm-product-images {
@@ -379,17 +379,19 @@ select {
 .tm-product-actions {
     padding-left: 0;
     margin-bottom: 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: auto;
-    bottom: 0;
-    width: 100%;
+    // position: absolute;
+    // left: 0;
+    // right: 0;
+    // top: auto;
+    // bottom: 0;
+    width: 100px;
     background: transparent;
-    padding: 25px 0;
+    padding: 5px 0;
     text-align: center;
     font-size: 0;
     z-index: 2;
+    display: block;
+    margin: 0 auto;
 }
 
 .tm-product-actions li:first-child {
@@ -551,21 +553,21 @@ select {
     display: none;
 }
 
-.tm-product-actions {
-    padding-left: 0;
-    margin-bottom: 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: auto;
-    bottom: 0;
-    width: 100%;
-    background: transparent;
-    padding: 25px 0;
-    text-align: center;
-    font-size: 0;
-    z-index: 2;
-}
+// .tm-product-actions {
+//     padding-left: 0;
+//     margin-bottom: 0;
+//     position: absolute;
+//     left: 0;
+//     right: 0;
+//     top: auto;
+//     bottom: 0;
+//     width: 100%;
+//     background: transparent;
+//     padding: 25px 0;
+//     text-align: center;
+//     font-size: 0;
+//     z-index: 2;
+// }
 
 .tm-product:hover .tm-product-actions li {
     visibility: visible;
@@ -978,4 +980,62 @@ button:not(:disabled) {
 
 .custom_scroll:hover::-webkit-scrollbar-thumb {
     background-color: #414042;
+}
+
+::ng-deep .mat-form-field {
+    // padding: 0 20px;
+}
+
+.search-area {
+    margin: 0 5px;
+}
+
+.reset-area {
+    margin: 0 5px;
+}
+
+// .input-section {
+//     position: relative;
+// }
+
+.input-section .mat-form-field {
+    width: 100%;
+}
+
+.input-section ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0;
+    position: relative;
+}
+
+.lable-product {
+    display: block;
+    font-weight: 600;
+}
+
+.cs-width {
+    min-width: 170px !important;
+}
+
+.cs-width2 {
+    width: 100%;
+
+    button {
+        line-height: 30px;
+        height: 30px;
+        // width: 100%;
+    }
+}
+
+::ng-deep .mat-form-field {
+    width: 100%;
+}
+
+.clear-btn {
+    padding: 5px;
+    border: none;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: -30px;
+    color: red;
 }

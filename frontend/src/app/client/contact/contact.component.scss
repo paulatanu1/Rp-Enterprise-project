@@ -64,9 +64,11 @@
     -o-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
 }
+
 .tm-contact-block:hover i {
     color: #f2ba59;
 }
+
 .tm-contact-block h6 {
     font-weight: 700;
     margin-bottom: 10px;
@@ -136,6 +138,7 @@
     flex: 0 0 100%;
     max-width: 100%;
 }
+
 .tm-form-fieldhalf {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 calc(50% - 15px);
@@ -143,6 +146,7 @@
     flex: 0 0 calc(50% - 15px);
     max-width: calc(50% - 15px);
 }
+
 .tm-form label {
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
@@ -223,11 +227,13 @@ button.tm-button::before {
     -o-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
 }
+
 .tm-button:hover::before,
 a.tm-button:hover::before,
 button.tm-button:hover::before {
     top: 0;
 }
+
 .tm-contact-block a {
     color: #707070;
 }
@@ -240,4 +246,15 @@ a {
 
 .mt-30 {
     margin-top: 30px;
+}
+
+.error-message {
+    color: rgb(229, 41, 41);
+    padding: 5px 0;
+    font-style: italic;
+    font-weight: 600;
+}
+
+textarea {
+    resize: none;
 }

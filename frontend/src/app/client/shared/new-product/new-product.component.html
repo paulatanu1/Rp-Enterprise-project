@@ -64,7 +64,7 @@
                 </div>
                 <div class="tm-product-bottomside">
                   <h6 class="tm-product-title">
-                    <a>{{ item.stone_id }}</a>
+                    <a>{{ item.product_name }}</a>
                   </h6>
                   <div class="tm-ratingbox">
                     <span class="is-active">
@@ -82,7 +82,7 @@
                     <span><i class="fa fa-star-o" aria-hidden="true"></i></span>
                   </div>
                   <span class="tm-product-price">
-                    <!-- Rs.- {{ item.system_price * item.weight }} -->
+                    $ {{ item.system_price.toFixed(2) }}
                   </span>
                   <div class="tm-product-content">
                     <p>

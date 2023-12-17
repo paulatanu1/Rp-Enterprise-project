@@ -33,35 +33,35 @@ export class ProductAddComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.productAdd = this.formBuilder.group({
-      status: ['1', Validators.required],
-      lot_no: ['', Validators.required],
-      stone_id: ['', Validators.required],
-      location: ['', Validators.required],
-      weight: ['', Validators.required],
-      shape: ['', Validators.required],
-      color: [this.color[0], Validators.required],
-      clarity: [this.clarity[0], Validators.required],
-      cut: ['', Validators.required],
-      polish: ['', Validators.required],
-      symmetry: ['', Validators.required],
-      rapnet_price: ['', Validators.required],
-      system_discount: ['', Validators.required],
-      lab: ['', Validators.required],
-      certificate: ['', Validators.required],
-      certi_pdf_url: ['', Validators.required],
-      ratio: ['', Validators.required],
-      measurements: ['', Validators.required],
-      fluor_int: ['', Validators.required],
-      table: ['', Validators.required],
-      depth: ['', Validators.required],
-      crown_ht: ['', Validators.required],
-      crown_angle: ['', Validators.required],
-      pavilion_dep: ['', Validators.required],
-      pavilion_an: ['', Validators.required],
-      stone_type: [this.stoneType[1], Validators.required],
-      v360: ['', Validators.required],
-      imgurl: ['', Validators.required],
-      eye_clean: ['1', Validators.required],
+      status: ['1'],
+      lot_no: [''],
+      stone_id: [''],
+      location: [''],
+      weight: [''],
+      shape: [''],
+      color: [this.color[0]],
+      clarity: [this.clarity[0]],
+      cut: [''],
+      polish: [''],
+      symmetry: [''],
+      rapnet_price: [''],
+      system_discount: [''],
+      lab: [''],
+      certificate: [''],
+      certi_pdf_url: [''],
+      ratio: [''],
+      measurements: [''],
+      fluor_int: [''],
+      table: [''],
+      depth: [''],
+      crown_ht: [''],
+      crown_angle: [''],
+      pavilion_dep: [''],
+      pavilion_an: [''],
+      stone_type: [this.stoneType[1]],
+      v360: [''],
+      imgurl: [''],
+      eye_clean: ['1'],
     });
   }
 
@@ -73,11 +73,9 @@ export class ProductAddComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.productAdd.value);
     if (this.productAdd.valid) {
       const formData = this.productAdd.value;
       // Handle form submission or make an API request here
-      console.log(formData);
       this.addProduct.productAdd(formData).subscribe({
         next: (res) => {
           this.isSubmited = true;
@@ -107,7 +105,6 @@ export class ProductAddComponent implements OnInit {
   getShapes() {
     this.addProduct.shapesList().subscribe({
       next: (res) => {
-        console.log('getShapes', res);
         this.shapesItem = res.response.raws.data.dataset;
 
         this.productAdd.patchValue({
@@ -121,7 +118,6 @@ export class ProductAddComponent implements OnInit {
   getStoneType() {
     this.addProduct.stoneType().subscribe({
       next: (res) => {
-        console.log('getStoneType', res);
         this.stoneType = res.response.raws.data.dataset;
         this.productAdd.patchValue({
           stone_type: this.stoneType[1].stone_type,
@@ -134,7 +130,6 @@ export class ProductAddComponent implements OnInit {
   getClarity() {
     this.addProduct.clarity().subscribe({
       next: (res) => {
-        console.log('getClarity', res);
         this.clarity = res.response.raws.data.dataset;
         this.productAdd.patchValue({
           clarity: this.clarity[0].clarity,
@@ -147,7 +142,6 @@ export class ProductAddComponent implements OnInit {
   getColor() {
     this.addProduct.color().subscribe({
       next: (res) => {
-        console.log('getColor', res);
         this.color = res.response.raws.data.dataset;
         this.productAdd.patchValue({
           color: this.color[0].color,

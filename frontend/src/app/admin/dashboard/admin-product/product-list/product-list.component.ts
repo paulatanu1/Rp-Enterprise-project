@@ -22,9 +22,7 @@ export class ProductListComponent implements OnInit {
   productList() {
     this.adminProduct.getProductList().subscribe({
       next: (res) => {
-        console.log(res, 'resss');
         this.productItems = res.response.raws.data.dataset;
-        console.log('productItems', this.productItems);
         this.toastr.success('Loading Successful', 'Yeah !', {
           timeOut: 3000,
           closeButton: true,
@@ -33,4 +31,6 @@ export class ProductListComponent implements OnInit {
       },
     });
   }
+
+  onScroll() {}
 }

@@ -7,6 +7,7 @@ import { catchError, tap } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 
 interface IproductList {
+  id: number;
   shape: string;
   max_weight: string;
   stone_id: string;
@@ -16,6 +17,11 @@ interface IproductList {
   imgurl: string;
   certi_pdf_url: string;
   product_name: string;
+  rapnet_price: string;
+  system_discount: string;
+  weight: string;
+  system_price: number;
+  system_amount: string;
 }
 
 @Component({
@@ -65,7 +71,6 @@ export class NewProductComponent implements OnInit {
             },
           }) => {
             this.productList = dataset;
-            console.table(this.productList);
           }
         ),
         catchError((err) => {
@@ -82,7 +87,6 @@ export class NewProductComponent implements OnInit {
       `I want to buy Product:- Clarity: ${item.clarity},weight: ${item.max_weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
     );
     const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
-    console.log(whatsappURL);
     // window.location.href = whatsappURL;
 
     window.open(whatsappURL, '_blank');

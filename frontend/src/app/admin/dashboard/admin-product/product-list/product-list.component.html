@@ -4,7 +4,13 @@
     <div class="row tm-content-row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
         <div class="tm-bg-primary-dark tm-block tm-block-products">
-          <div class="tm-product-table-container">
+          <div
+            class="tm-product-table-container"
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="300"
+            (scrolled)="onScroll()"
+          >
             <table class="table table-hover tm-table-small tm-product-table">
               <thead>
                 <tr>
@@ -43,18 +49,68 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngIf="productItems.length == 0">
-                  <p>No Record Found</p>
-                  <td>
-                    <p>No Record Found</p>
+                <!-- <tr *ngIf="productItems.length == 0">
+                  <td colspan="32">
+                    No Record Found
                   </td>
                 </tr>
 
+<tr >
+  <td>
+    <a  class="tm-product-delete-link">
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    </a>
+  </td>
+  <td class="tm-product-name">
+    <a href=" certi_pdf_url " target="_blank">
+       certi_pdf_url
+    </a>
+  </td>
+  <td class="tm-product-name">
+     certificate ? certificate : 'NA'
+  </td>
+  <td class="tm-product-name">
+     clarity ? clarity : 'NA'
+  </td>
+  <td class="tm-product-name">
+     color ? color : 'NA'
+  </td>
+  <td class="tm-product-name"> crown_angle</td>
+  <td class="tm-product-name"> crown_ht</td>
+  <td class="tm-product-name"> cut</td>
+  <td class="tm-product-name"> depth</td>
+  <td class="tm-product-name"> eye_clean</td>
+  <td class="tm-product-name"> fluor_int</td>
+  <td class="tm-product-name">
+    <a  href=" imgurl" target="_blank">
+       imgurl
+    </a>
+  </td>
+  <td class="tm-product-name"> lab</td>
+  <td class="tm-product-name"> location</td>
+  <td class="tm-product-name"> lot_no</td>
+  <td class="tm-product-name"> measurements</td>
+  <td class="tm-product-name"> pavilion_an</td>
+  <td class="tm-product-name"> pavilion_dep</td>
+  <td class="tm-product-name"> polish</td>
+  <td class="tm-product-name"> rapnet_price</td>
+  <td class="tm-product-name"> ratio</td>
+  <td class="tm-product-name"> shape</td>
+  <td class="tm-product-name"> status</td>
+  <td class="tm-product-name"> stone_id</td>
+  <td class="tm-product-name"> stone_type</td>
+  <td class="tm-product-name"> symmetry</td>
+  <td class="tm-product-name"> system_amount</td>
+  <td class="tm-product-name"> system_discount</td>
+  <td class="tm-product-name"> table</td>
+  <td class="tm-product-name"> v360</td>
+  <td class="tm-product-name"> weight</td>
+</tr> -->
+
                 <tr *ngFor="let item of productItems">
-                  <!-- <th scope="row"><input type="checkbox" /></th> -->
                   <td>
-                    <a href="#" class="tm-product-delete-link">
-                      Del
+                    <a class="tm-product-delete-link">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                   </td>
                   <td class="tm-product-name">
@@ -82,7 +138,6 @@
                   <td class="tm-product-name">{{ item.depth }}</td>
                   <td class="tm-product-name">{{ item.eye_clean }}</td>
                   <td class="tm-product-name">{{ item.fluor_int }}</td>
-                  <!-- <td class="tm-product-name">{{item.id}}</td> -->
                   <td class="tm-product-name">
                     <a
                       *ngIf="item.imgurl"
@@ -116,23 +171,14 @@
               </tbody>
             </table>
           </div>
-          <!-- table container -->
           <a
             [routerLink]="['/admin/admin-product/add']"
             class="btn btn-primary btn-block text-uppercase mb-3"
           >
             Add new product
           </a>
-          <button class="btn btn-primary btn-block text-uppercase">
-            Delete selected products
-          </button>
         </div>
       </div>
-      <!-- <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
-          <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
-            <h2 class="tm-block-title">Product Filter</h2>
-          </div>
-        </div> -->
     </div>
   </div>
 </div>

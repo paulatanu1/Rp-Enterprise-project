@@ -22,11 +22,13 @@
     margin-bottom: 12px;
     font-weight: 700;
 }
+
 .tm-sectiontitle p {
     color: #707070;
     line-height: 26px;
     font-size: 15px;
 }
+
 h3,
 .h3 {
     font-size: 30px;
@@ -37,15 +39,18 @@ h3,
 .tm-sectiontitle p {
     margin-bottom: 0;
 }
+
 .tm-product {
     position: relative;
     width: 300px;
 }
+
 .tm-product-badges {
     position: absolute;
     left: 10px;
     top: 10px;
     width: calc(100% - 20px);
+
     span {
         position: absolute;
         left: 0;
@@ -57,30 +62,34 @@ h3,
         padding: 0 10px;
         font-size: 14px;
         display: inline-block;
+
         &.tm-product-badges-sale {
             top: 25px;
         }
     }
 }
+
 .tm-product-topside {
     position: relative;
     overflow: hidden;
     z-index: 1;
 }
+
 .tm-product-actions {
-    padding-left: 0;
-    margin-bottom: 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: auto;
-    bottom: 0;
-    width: 100%;
+    // padding-left: 0;
+    // margin-bottom: 0;
+    // position: absolute;
+    // left: 0;
+    // right: 0;
+    // top: auto;
+    // bottom: 0;
+    // width: 100%;
     background: transparent;
     padding: 25px 0;
     text-align: center;
     font-size: 0;
     z-index: 2;
+
     li {
         list-style: none;
         display: inline-block;
@@ -95,16 +104,22 @@ h3,
         -o-transition: all 0.4s ease-in-out;
         transition: all 0.4s ease-in-out;
         margin: 0 4px;
+
         &:first-child {
             margin-left: 0;
-            a, button {
+
+            a,
+            button {
                 padding: 0 15px;
             }
         }
+
         &:last-child {
             margin-right: 0;
         }
-        a, button {
+
+        a,
+        button {
             display: inline-block;
             height: 40px;
             min-width: 40px;
@@ -118,6 +133,7 @@ h3,
             font-size: 15px;
             vertical-align: middle;
             border-color: #f2ba59;
+
             i {
                 font-size: 18px;
                 line-height: 37px;
@@ -125,17 +141,22 @@ h3,
         }
     }
 }
+
 .tm-product-bottomside {
     padding-top: 25px;
+
     .tm-ratingbox {
         float: right;
+
         span {
             font-size: 18px;
             display: inline-block;
             vertical-align: middle;
+
             &:not(:last-child) {
                 margin-right: 4px;
             }
+
             &.is-active {
                 color: #fdc716;
             }
@@ -161,6 +182,7 @@ h3,
 .tm-product-bottomside .tm-ratingbox {
     float: right;
 }
+
 .tm-product-content {
     display: none;
 }
@@ -185,10 +207,64 @@ h3,
     opacity: 1;
 }
 
+.tm-product-images {
+    min-height: 237px;
+}
+
 .tm-product:hover .tm-product-actions li {
     visibility: visible;
     opacity: 1;
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0);
+}
+
+.tm-product-actions button {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+
+@media only screen and (min-width:320px) and (max-width:767px) {
+    .tm-product {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+.no-bg {
+    background-color: #ffffff;
+}
+
+.tm-product-actions-cs button {
+    display: inline-block;
+    height: 40px;
+    min-width: 40px;
+    padding: 0;
+    line-height: 40px;
+    border-radius: 4px;
+    background: #f2ba59;
+    outline: none;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    vertical-align: middle;
+    border-color: #f2ba59;
+
+    i {
+        font-size: 18px;
+        line-height: 37px;
+    }
+}
+
+.action-area {
+    width: 50%;
+    margin: 0 auto;
+
+    button {
+        width: 100%;
+        min-width:unset
+    }
 }

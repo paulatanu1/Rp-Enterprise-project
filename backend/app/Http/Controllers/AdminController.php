@@ -180,6 +180,11 @@ class AdminController extends Controller
         } else {
             $post['shape'] = $request->input('shape');
         }
+        if ($request->input('color') == '') {
+            $post['color'] = '';
+        } else {
+            $post['color'] = $request->input('color');
+        }
         if ($request->input('filter_by') == '') {
             $post['filter_by'] = '';
         } else {
@@ -215,7 +220,7 @@ class AdminController extends Controller
                 $stone_id = "RP".$items['stone_id'];
                 $productListArr[$key]['system_price'] = $discountedPrice;
                 $productListArr[$key]['system_amount'] = $system_amount;
-                $productListArr[$key]['stone_id'] = $stone_id;
+                $productListArr[$key]['product_name'] = $stone_id;
             }
 
             if (!empty($productListArr)) {

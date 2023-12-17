@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -28,6 +29,11 @@ interface IpopularShapesItem {
   imgurl: string;
   certi_pdf_url: string;
   product_name: string;
+  rapnet_price: string;
+  system_discount: string;
+  weight: string;
+  system_price: number;
+  system_amount: string;
 }
 
 @Component({
@@ -56,6 +62,8 @@ interface IpopularShapesItem {
 export class PopulerShapesComponent implements OnInit, AfterViewInit {
   private observer: IntersectionObserver | null = null;
   isInViewport = false;
+  @Input() background!: boolean;
+  @Input() title!: boolean;
   constructor(
     private shapes: PopularShapesService,
     private toastr: ToastrService
@@ -72,8 +80,8 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
   fadeState = 'in';
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
+    mouseDrag: true,
+    touchDrag: true,
     pullDrag: false,
     dots: false,
     navSpeed: 700,
@@ -121,7 +129,6 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
       `I want to buy Product:- Clarity: ${item.clarity},weight: ${item.max_weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
     );
     const whatsappURL = `https://api.whatsapp.com/send?phone=${environment.WHATSAPP_NUMBER}&text= ${message}`;
-    console.log(whatsappURL);
     // window.location.href = whatsappURL;
 
     window.open(whatsappURL, '_blank');
