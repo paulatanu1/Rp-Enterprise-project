@@ -61,7 +61,7 @@ export class ClientProductService {
       stone_type: [],
     };
 
-    let url: string = '/api/productList';
+    let url: string = 'api/productList';
     return this.api.ApiCallWithLocalization(payload, url, 'post');
   }
 
