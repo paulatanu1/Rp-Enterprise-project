@@ -380,6 +380,7 @@ export class ProductComponent implements OnInit {
     this.searchQuery = '';
     this.search = '';
     this.PageNo = 1;
+    this.productList = [];
     this.getProductData(
       this.PageNo,
       this.clarity,
