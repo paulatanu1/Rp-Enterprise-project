@@ -46,7 +46,7 @@
             <tbody>
               <tr>
                 <td>
-                  <a href="product-details.html" class="tm-cart-productimage">
+                  <a [routerLink]="['/product']" class="tm-cart-productimage">
                     <img
                       src="assets/images/products/product-image-1-thumb.jpg"
                       alt="product image"
@@ -54,7 +54,7 @@
                   </a>
                 </td>
                 <td>
-                  <a href="product-details.html" class="tm-cart-productname">
+                  <a [routerLink]="['/product']" class="tm-cart-productname">
                     Stylist daimond earring
                   </a>
                 </td>
@@ -75,7 +75,7 @@
               </tr>
               <tr>
                 <td>
-                  <a href="product-details.html" class="tm-cart-productimage">
+                  <a [routerLink]="['/product']" class="tm-cart-productimage">
                     <img
                       src="assets/images/products/product-image-2-thumb.jpg"
                       alt="product image"
@@ -83,7 +83,7 @@
                   </a>
                 </td>
                 <td>
-                  <a href="product-details.html" class="tm-cart-productname">
+                  <a [routerLink]="['/product']" class="tm-cart-productname">
                     Stylist daimond earring
                   </a>
                 </td>
@@ -112,8 +112,10 @@
           <div class="row">
             <div class="col-lg-8 col-md-6">
               <div class="tm-buttongroup">
-                <a href="#" class="tm-button">Continue Shopping</a>
-                <a href="#" class="tm-button">Update Cart</a>
+                <a href="javascript:void(0)" class="tm-button">
+                  Continue Shopping
+                </a>
+                <a href="javascript:void(0)" class="tm-button">Update Cart</a>
               </div>
               <form action="#" class="tm-cart-coupon">
                 <label for="coupon-field">Have a coupon code?</label>
@@ -147,7 +149,9 @@
                     </tbody>
                   </table>
                 </div>
-                <a href="#" class="tm-button">Proceed To Checkout</a>
+                <a href="javascript:void(0)" class="tm-button">
+                  Proceed To Checkout
+                </a>
               </div>
             </div>
           </div>
