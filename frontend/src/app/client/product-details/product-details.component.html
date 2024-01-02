@@ -71,154 +71,170 @@
               <div class="tm-prodetails-infos">
                 <h4>Stone Details :</h4>
                 <div class="details">
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Stone Id :</b>
-                    {{ productDetails.stone_id }}
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Clarity :</b>
-                    <a>
-                      {{
-                        productDetails.clarity ? productDetails.clarity : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Color :</b>
-                    <a>
-                      {{ productDetails.color ? productDetails.color : 'NA' }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Weight :</b>
-                    <a>
-                      {{ productDetails.weight ? productDetails.weight : 'NA' }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Crown Angle :</b>
-                    <a>
-                      {{
-                        productDetails.crown_angle
-                          ? productDetails.crown_angle
-                          : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Cut :</b>
-                    <a>{{ productDetails.cut ? productDetails.cut : 'NA' }}</a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Depth :</b>
-                    <a>
-                      {{ productDetails.depth ? productDetails.depth : 'NA' }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Eye Clean :</b>
-                    <a>
-                      {{
-                        productDetails.eye_clean
-                          ? productDetails.eye_clean
-                          : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Fluor Int :</b>
-                    <a>
-                      {{
-                        productDetails.fluor_int
+                  <table class="prodetails-info-table">
+                    <tr>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Stone Id :</b>
+                        {{ productDetails.stone_id }}
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Clarity :</b>
+                        <a>
+                          {{
+                          productDetails.clarity ? productDetails.clarity : 'NA'
+                          }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Color :</b>
+                        <a>
+                          {{ productDetails.color ? productDetails.color : 'NA' }}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Weight :</b>
+                        <a>
+                          {{ productDetails.weight ? productDetails.weight : 'NA' }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Crown Angle :</b>
+                        <a>
+                          {{
+                            productDetails.crown_angle
+                              ? productDetails.crown_angle
+                              : 'NA'
+                          }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Cut :</b>
+                        <a>{{ productDetails.cut ? productDetails.cut : 'NA' }}</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Depth :</b>
+                        <a>
+                          {{ productDetails.depth ? productDetails.depth : 'NA' }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Eye Clean :</b>
+                        <a>
+                          {{
+                            productDetails.eye_clean
+                              ? productDetails.eye_clean
+                              : 'NA'
+                          }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Fluor Int :</b>
+                        <a>
+                          {{
+                          productDetails.fluor_int
                           ? productDetails.fluor_int
                           : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Lab :</b>
-                    <a>{{ productDetails.lab ? productDetails.lab : 'NA' }}</a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Location :</b>
-                    <a>
-                      {{
-                        productDetails.location ? productDetails.location : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Lot No :</b>
-                    <a>
-                      {{ productDetails.lot_no ? productDetails.lot_no : 'NA' }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Measurements :</b>
-                    <a>{{ productDetails.measurements }}</a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Pavilion_an :</b>
-                    <a>
-                      {{
-                        productDetails.pavilion_an
+                          }}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Lab :</b>
+                        <a>{{ productDetails.lab ? productDetails.lab : 'NA' }}</a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Location :</b>
+                        <a>
+                          {{
+                          productDetails.location ? productDetails.location : 'NA'
+                          }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Lot No :</b>
+                        <a>
+                          {{ productDetails.lot_no ? productDetails.lot_no : 'NA' }}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Measurements :</b>
+                        <a>{{ productDetails.measurements }}</a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Pavilion_an :</b>
+                        <a>
+                          {{
+                          productDetails.pavilion_an
                           ? productDetails.pavilion_an
                           : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Pavilion_dep :</b>
-                    <a>
-                      {{
-                        productDetails.pavilion_dep
+                          }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Pavilion_dep :</b>
+                        <a>
+                          {{
+                          productDetails.pavilion_dep
                           ? productDetails.pavilion_dep
                           : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Polish :</b>
-                    <a>
-                      {{ productDetails.polish ? productDetails.polish : 'NA' }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Ratio :</b>
-                    <a>
-                      {{ productDetails.ratio ? productDetails.ratio : 'NA' }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Shape :</b>
-                    <a>
-                      {{ productDetails.shape ? productDetails.shape : 'NA' }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Stone Type :</b>
-                    <a>
-                      {{
-                        productDetails.stone_type
+                          }}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Polish :</b>
+                        <a>
+                          {{ productDetails.polish ? productDetails.polish : 'NA' }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Ratio :</b>
+                        <a>
+                          {{ productDetails.ratio ? productDetails.ratio : 'NA' }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Shape :</b>
+                        <a>
+                          {{ productDetails.shape ? productDetails.shape : 'NA' }}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Stone Type :</b>
+                        <a>
+                          {{
+                          productDetails.stone_type
                           ? productDetails.stone_type
                           : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Symmetry :</b>
-                    <a>
-                      {{
-                        productDetails.symmetry ? productDetails.symmetry : 'NA'
-                      }}
-                    </a>
-                  </div>
-                  <div class="tm-prodetails-singleinfo">
-                    <b>Table :</b>
-                    <a>
-                      {{ productDetails.table ? productDetails.table : 'NA' }}
-                    </a>
-                  </div>
+                          }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Symmetry :</b>
+                        <a>
+                          {{
+                          productDetails.symmetry ? productDetails.symmetry : 'NA'
+                          }}
+                        </a>
+                      </td>
+                      <td class="tm-prodetails-singleinfo">
+                        <b>Table :</b>
+                        <a>
+                          {{ productDetails.table ? productDetails.table : 'NA' }}
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
                 </div>
 
                 <div class="tm-prodetails-singleinfo mt-3">
