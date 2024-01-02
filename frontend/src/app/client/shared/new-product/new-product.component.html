@@ -50,7 +50,7 @@
                   <ul class="tm-product-actions">
                     <li>
                       <button
-                        (click)="shareProductOnWhatsApp(item)"
+                        [routerLink]="['product/details', item.id]"
                         data-fancybox
                       >
                         <i>Buy Now</i>

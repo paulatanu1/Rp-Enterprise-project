@@ -34,6 +34,7 @@ interface IpopularShapesItem {
   weight: string;
   system_price: number;
   system_amount: string;
+  id: number;
 }
 
 @Component({

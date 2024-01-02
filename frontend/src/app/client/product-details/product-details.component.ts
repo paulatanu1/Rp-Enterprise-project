@@ -105,7 +105,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   shareProductOnWhatsApp(item: any) {
-    console.log(item);
     const message = encodeURIComponent(
       `I want to buy Product:- Clarity: ${item.clarity},Weight: ${item.weight},Stone Id: ${item.stone_id},Cut: ${item.cut},Shape: ${item.shape}`
     );
