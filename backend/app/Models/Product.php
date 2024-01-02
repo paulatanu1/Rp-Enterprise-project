@@ -252,6 +252,7 @@ class Product extends Model implements
     {
         $result = DB::table('product')
             ->select(
+                'product.id',
                 'product.shape',
                 'subquery.max_weight',
                 'product.stone_id',
