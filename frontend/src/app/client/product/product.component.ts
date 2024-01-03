@@ -61,8 +61,6 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRouter.queryParams.subscribe({
       next: (params) => {
-        // console.log(params['Shapes'], 'params');
-        console.log(params['Shapes'], 'query');
         if (params['Shapes'] == undefined) {
           this.isNoQueryParam = true;
         }
@@ -263,7 +261,6 @@ export class ProductComponent implements OnInit {
   }
 
   onClarityFilterChange() {
-    console.log(this.clarityFilter);
     if (this.clarityFilter === 'All') {
       this.clarity = '';
       this.PageNo = 1;
@@ -281,7 +278,6 @@ export class ProductComponent implements OnInit {
         this.weight
       );
     } else {
-      console.log(this.clarityFilter);
       this.clarity = this.clarityFilter;
       this.PageNo = 1;
       this.productList = [];

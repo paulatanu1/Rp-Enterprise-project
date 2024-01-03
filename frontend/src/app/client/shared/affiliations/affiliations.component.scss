@@ -26,12 +26,14 @@
     margin-bottom: 12px;
     font-weight: 700;
 }
+
 .tm-sectiontitle p {
     color: #707070;
     font-size: 15px;
     line-height: 26px;
     font-weight: 400;
 }
+
 h3,
 .h3 {
     font-size: 30px;
@@ -41,4 +43,14 @@ h3,
 
 .tm-sectiontitle p {
     margin-bottom: 0;
+}
+
+.tm-brandlogo a {
+    width: 35%;
+    display: block;
+}
+
+.tm-brandlogo {
+    display: flex;
+    justify-content: center;
 }
