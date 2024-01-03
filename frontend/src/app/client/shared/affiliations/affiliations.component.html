@@ -14,13 +14,12 @@
       </div>
     </div>
     <div class="row tm-brandlogo-slider">
-      <carousel
+      <!-- <carousel
         [isAnimated]="true"
         [itemsPerSlide]="itemsPerSlide"
         [singleSlideOffset]="singleSlideOffset"
         [noWrap]="noWrap"
       >
-        <!-- Brang Logo Single -->
         <slide>
           <div class="col-12 tm-brandlogo">
             <a href="javascript:void(0)">
@@ -28,9 +27,6 @@
             </a>
           </div>
         </slide>
-        <!--// Brang Logo Single -->
-
-        <!-- Brang Logo Single -->
         <slide>
           <div class="col-12 tm-brandlogo">
             <a href="javascript:void(0)">
@@ -38,9 +34,6 @@
             </a>
           </div>
         </slide>
-        <!--// Brang Logo Single -->
-
-        <!-- Brang Logo Single -->
         <slide>
           <div class="col-12 tm-brandlogo">
             <a href="javascript:void(0)">
@@ -48,9 +41,6 @@
             </a>
           </div>
         </slide>
-        <!--// Brang Logo Single -->
-
-        <!-- Brang Logo Single -->
         <slide>
           <div class="col-12 tm-brandlogo">
             <a href="javascript:void(0)">
@@ -58,9 +48,6 @@
             </a>
           </div>
         </slide>
-        <!--// Brang Logo Single -->
-
-        <!-- Brang Logo Single -->
         <slide>
           <div class="col-12 tm-brandlogo">
             <a href="javascript:void(0)">
@@ -68,9 +55,6 @@
             </a>
           </div>
         </slide>
-        <!--// Brang Logo Single -->
-
-        <!-- Brang Logo Single -->
         <slide>
           <div class="col-12 tm-brandlogo">
             <a href="javascript:void(0)">
@@ -78,9 +62,22 @@
             </a>
           </div>
         </slide>
-        <!--// Brang Logo Single -->
-      </carousel>
+      </carousel> -->
+
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let slide of affiliation; let i = index">
+          <ng-template carouselSlide [id]="i.toString()">
+            <!-- Brang Logo Single -->
+            <div class="tm-brandlogo">
+              <a href="javascript:void(0)">
+                <img [src]="slide.productImg" alt="brand-logo" />
+              </a>
+            </div>
+            <!-- Brang Logo Single -->
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
     </div>
   </div>
+  <!--// Brand Logos -->
 </div>
-<!--// Brand Logos -->
