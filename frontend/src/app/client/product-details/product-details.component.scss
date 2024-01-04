@@ -456,6 +456,9 @@ button.tm-button {
     .tm-prodetails-content {
         margin-top: 40px;
     }
+    .tm-prodetails-infos .details {
+        overflow-x: scroll;
+    }
 }
 
 .tm-similliar-products h4 {
@@ -545,5 +548,13 @@ button.tm-button {
                 border-right: 2px solid #000;
             }
         }
+    }
+}
+@media only screen and (min-width: 768px) and (max-width:900px) {
+    .tm-prodetails .container {
+        max-width: unset;
+    }
+    .tm-prodetails-infos .details {
+        overflow-x: scroll;
     }
 }
