@@ -38,6 +38,7 @@ export class ProductComponent implements OnInit {
   weight: string = '';
   selectedSortingValue: string = 'Asc';
   isNoQueryParam = false;
+  loaderEnable: boolean = true;
   constructor(
     private product: ClientProductService,
     private router: Router,
@@ -112,6 +113,7 @@ export class ProductComponent implements OnInit {
     color: string,
     weight: string
   ) {
+    this.loaderEnable = true;
     this.product
       .getHomePageProducts(
         PageNo,
@@ -127,6 +129,7 @@ export class ProductComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
+          this.loaderEnable = false;
           this.totalItems = res.response.raws.data.total_count;
           this.productList.push(...res.response.raws.data.dataset);
           this.displayedItems++;
