@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  App\Models\Product;
 use App\Libraries\Helpers;
+use  App\Models\Newsletter;
 
 
 
@@ -377,6 +378,39 @@ class AdminController extends Controller
             $error_message = 'Data not found';
             $http_response = 'http_response_bad_request';
         }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+
+    public function newsLetterList(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        if ($request->input('page_number') == '') {
+            $page_number = 1;
+        } else {
+            $page_number = $request->input('page_number');
+        }
+        if ($request->input('no_of_records') == '') {
+            $no_of_records = env('NO_OF_RECORDS');
+        } else {
+            $no_of_records = $request->input('no_of_records');
+        }
+
+        $newsLetterListArrCount = Newsletter::newsLetterList();
+        $newsLetterListArr = Newsletter::newsLetterList($page_number, $no_of_records);
+
+        if (!empty($newsLetterListArr)) {
+            $success_message = 'Fetch successfully';
+            $http_response = 'http_response_ok';
+            $result_arr['dataset'] = $newsLetterListArr;
+            $result_arr['total_count'] = count($newsLetterListArrCount);
+        } else {
+            $result_arr['dataset'] = array();
+            $result_arr['total_count'] = 0;
+            $error_message = 'Result not found';
+            $http_response = 'http_response_ok_no_content';
+        }
+
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
     
