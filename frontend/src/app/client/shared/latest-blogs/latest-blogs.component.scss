@@ -29,6 +29,7 @@
     font-size: 15px;
     line-height: 26px;
 }
+
 .tm-blog-slider {
     ::ng-deep .carousel-item {
         .item {
@@ -36,6 +37,7 @@
         }
     }
 }
+
 .tm-blog-topside {
     overflow: hidden;
     position: relative;
@@ -96,12 +98,14 @@
 .tm-blog-content {
     margin-top: 25px;
 }
+
 .tm-blog-content p {
     color: #707070;
     font-weight: 400;
     font-size: 15px;
     line-height: 26px;
 }
+
 .tm-blog-content blockquote {
     margin-top: 25px;
     margin-bottom: 25px;
@@ -277,6 +281,8 @@
     margin-right: 30px;
 }
 
-@media only screen and (min-width:375px) and (max-width:767px){
-    
+.tm-blog {
+    padding: 0 15px;
 }
+
+@media only screen and (min-width:375px) and (max-width:767px) {}

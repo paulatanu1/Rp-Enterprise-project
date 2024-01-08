@@ -17,13 +17,12 @@
       </div>
     </div>
     <div class="row tm-blog-slider">
-      <carousel
+      <!-- <carousel
         [isAnimated]="true"
         [itemsPerSlide]="itemsPerSlide"
         [singleSlideOffset]="singleSlideOffset"
         [noWrap]="noWrap"
       >
-        <!-- Blog Single Item -->
         <slide>
           <div class="col-lg-12">
             <div class="tm-blog tm-scrollanim">
@@ -66,9 +65,7 @@
             </div>
           </div>
         </slide>
-        <!--// Blog Single Item -->
 
-        <!-- Blog Single Item -->
         <slide>
           <div class="col-lg-12">
             <div class="tm-blog tm-scrollanim">
@@ -111,9 +108,7 @@
             </div>
           </div>
         </slide>
-        <!--// Blog Single Item -->
 
-        <!-- Blog Single Item -->
         <slide>
           <div class="col-lg-12">
             <div class="tm-blog tm-scrollanim">
@@ -157,9 +152,7 @@
             </div>
           </div>
         </slide>
-        <!--// Blog Single Item -->
 
-        <!-- Blog Single Item -->
         <slide>
           <div class="col-lg-12">
             <div class="tm-blog tm-scrollanim">
@@ -202,8 +195,52 @@
             </div>
           </div>
         </slide>
-        <!--// Blog Single Item -->
-      </carousel>
+      </carousel> -->
+
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let slide of blogs; let i = index">
+          <ng-template carouselSlide [id]="i.toString()">
+            <div class="col-lg-12">
+              <div class="tm-blog tm-scrollanim">
+                <div class="tm-blog-topside">
+                  <div class="tm-blog-thumb">
+                    <img src="{{ slide.blogImg }}" alt="blog image" />
+                  </div>
+                  <span class="tm-blog-metahighlight">
+                    <span>{{ slide.month }}</span>
+                    {{ slide.month }}
+                  </span>
+                </div>
+                <div class="tm-blog-content">
+                  <h6 class="tm-blog-title">
+                    <a [routerLink]="['/blog']">
+                      {{ slide.blogHeading }}
+                    </a>
+                  </h6>
+                  <ul class="tm-blog-meta">
+                    <li>
+                      <a [routerLink]="['/blog']">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        {{ slide.author }}
+                      </a>
+                    </li>
+                    <li>
+                      <a [routerLink]="['/blog']">
+                        <i class="fa fa-comments" aria-hidden="true"></i>
+                        {{ slide.comments }} Comments
+                      </a>
+                    </li>
+                  </ul>
+                  <p>
+                    {{ slide.blogText }}
+                  </p>
+                  <a [routerLink]="['/blog']" class="tm-readmore">Read more</a>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
     </div>
   </div>
 </div>
