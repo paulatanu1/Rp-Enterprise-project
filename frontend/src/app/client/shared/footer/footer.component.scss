@@ -1412,6 +1412,7 @@ hr {
     margin: 0;
     margin-bottom: 15px;
 }
+
 .single-widget .widget-title {
     font-weight: 600;
     position: relative;
@@ -1420,4 +1421,9 @@ hr {
     margin-bottom: 30px;
     font-size: 18px;
     line-height: 28px;
+}
+
+.error-handel {
+    color: red;
+    margin: 5px 0;
 }

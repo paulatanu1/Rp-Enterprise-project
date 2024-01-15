@@ -136,13 +136,41 @@
               Get Business news, tip and solutions to your problems from our
               experts.
             </p>
-            <form id="tm-mailchimp-form" class="widget-newsletter-form">
+            <form
+              [formGroup]="newsletterForm"
+              id="tm-mailchimp-form"
+              class="widget-newsletter-form"
+              (ngSubmit)="onSubmit()"
+            >
               <input
-                id="mc-email"
-                type="text"
+                type="email"
                 placeholder="Enter email address"
+                formControlName="email"
               />
-              <button id="mc-submit" type="submit" class="tm-button">
+              <div
+                class="error-handel"
+                *ngIf="
+                  newsletterForm.get('email')?.hasError('required') &&
+                  newsletterForm.get('email')?.touched
+                "
+              >
+                Email is required.
+              </div>
+              <div
+                class="error-handel"
+                *ngIf="
+                  newsletterForm.get('email')?.hasError('email') &&
+                  newsletterForm.get('email')?.touched
+                "
+              >
+                Please enter a valid email address.
+              </div>
+              <button
+                id="mc-submit"
+                type="submit"
+                class="tm-button"
+                [disabled]="!newsletterForm.valid"
+              >
                 Subscribe Now
                 <b></b>
               </button>
@@ -168,8 +196,11 @@
       <div class="row align-items-center">
         <div class="col-md-7">
           <p class="tm-footer-copyright">
-            © 2019. Designed by
-            <a href="https://BetaTechnologies.com">BetaTechnologies</a>
+            Powered by
+            <a href="https://BetaTechnologies.com" target="_blank">
+              BetaTechnologies
+            </a>
+            &#169; 2023 - 2024.
           </p>
         </div>
         <div class="col-md-5">
