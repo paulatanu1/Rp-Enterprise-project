@@ -47,20 +47,20 @@
                   </div>
                   <div class="tm-blog-content">
                     <h6 class="tm-blog-title">
-                      <a [routerLink]="['/product']">
+                      <a [routerLink]="['details']">
                         Lab Grown Diamonds vs. Natural Diamonds: Exploring the
                         Differences
                       </a>
                     </h6>
                     <ul class="tm-blog-meta">
                       <li>
-                        <a [routerLink]="['/product']">
+                        <a [routerLink]="['details']">
                           <i class="fa fa-user" aria-hidden="true"></i>
                           Anderson
                         </a>
                       </li>
                       <li>
-                        <a [routerLink]="['/product']">
+                        <a [routerLink]="['details']">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           3 Comments
                         </a>
@@ -72,7 +72,7 @@
                       manufacturer and exporter of lab-grown diamonds, RP
                       Enterprise India aims.[....]
                     </p>
-                    <a [routerLink]="['/product']" class="tm-readmore">
+                    <a [routerLink]="['details']" class="tm-readmore">
                       Read more
                     </a>
                   </div>
@@ -97,20 +97,20 @@
                   </div>
                   <div class="tm-blog-content">
                     <h6 class="tm-blog-title">
-                      <a [routerLink]="['/product']">
+                      <a [routerLink]="['details']">
                         Unveiling the Brilliance: Unique Shapes in Lab-Grown
                         Diamonds
                       </a>
                     </h6>
                     <ul class="tm-blog-meta">
                       <li>
-                        <a [routerLink]="['/product']">
+                        <a [routerLink]="['details']">
                           <i class="fa fa-user" aria-hidden="true"></i>
                           Anderson
                         </a>
                       </li>
                       <li>
-                        <a [routerLink]="['/product']">
+                        <a [routerLink]="['details']">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           3 Comments
                         </a>
@@ -121,7 +121,7 @@
                       when it comes to diamond shapes. With advanced technology
                       and craftsmanship, RP Enterprise [....]
                     </p>
-                    <a [routerLink]="['/product']" class="tm-readmore">
+                    <a [routerLink]="['details']" class="tm-readmore">
                       Read more
                     </a>
                   </div>
@@ -146,20 +146,20 @@
                   </div>
                   <div class="tm-blog-content">
                     <h6 class="tm-blog-title">
-                      <a [routerLink]="['/product']">
+                      <a [routerLink]="['details']">
                         The Ever-Growing Sparkle: The Increasing Demand for
                         Lab-Grown Diamonds
                       </a>
                     </h6>
                     <ul class="tm-blog-meta">
                       <li>
-                        <a [routerLink]="['/product']">
+                        <a [routerLink]="['details']">
                           <i class="fa fa-user" aria-hidden="true"></i>
                           Anderson
                         </a>
                       </li>
                       <li>
-                        <a [routerLink]="['/product']">
+                        <a [routerLink]="['details']">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           3 Comments
                         </a>
@@ -170,7 +170,7 @@
                       demand for lab-grown diamonds. As a leading manufacturer
                       and exporter [....]
                     </p>
-                    <a [routerLink]="['/product']" class="tm-readmore">
+                    <a [routerLink]="['details']" class="tm-readmore">
                       Read more
                     </a>
                   </div>
@@ -195,13 +195,70 @@
               <div class="single-widget widget-categories">
                 <h6 class="widget-title">Categories</h6>
                 <ul>
-                  <li><a [routerLink]="['/product']">Wedding Jewelry</a></li>
-                  <li><a [routerLink]="['/product']">Rings</a></li>
-                  <li><a [routerLink]="['/product']">Earrings</a></li>
-                  <li><a [routerLink]="['/product']">Bracelets</a></li>
-                  <li><a [routerLink]="['/product']">Nacklaces</a></li>
-                  <li><a [routerLink]="['/product']">Children’s Jewelry</a></li>
-                  <li><a [routerLink]="['/product']">Expression Jewelry</a></li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Round' }"
+                    >
+                      Round
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Oval' }"
+                    >
+                      Oval
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Cushion' }"
+                    >
+                      Cushion
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Princess' }"
+                    >
+                      Princess
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Radiant' }"
+                    >
+                      Radiant
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Pear' }"
+                    >
+                      Pear
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Marquise' }"
+                    >
+                      Marquise
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Emerald' }"
+                    >
+                      Emerald
+                    </a>
+                  </li>
                 </ul>
               </div>
               <!--// Single Widget -->

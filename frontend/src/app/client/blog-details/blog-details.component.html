@@ -43,21 +43,29 @@
               </div>
               <div class="tm-blog-content">
                 <h6 class="tm-blog-title">
-                  <a href="blog-details.html">
+                  <a>
                     Lab Grown Diamonds vs. Natural Diamonds: Exploring the
                     Differences
                   </a>
                 </h6>
                 <ul class="tm-blog-meta">
                   <li>
-                    <a href="blog.html">
-                      <i class="ion-android-person"></i>
+                    <a>
+                      <i
+                        _ngcontent-tnc-c72=""
+                        aria-hidden="true"
+                        class="fa fa-user"
+                      ></i>
                       Anderson
                     </a>
                   </li>
                   <li>
-                    <a href="blog-details.html">
-                      <i class="ion-chatbubbles"></i>
+                    <a>
+                      <i
+                        _ngcontent-tnc-c72=""
+                        aria-hidden="true"
+                        class="fa fa-comments"
+                      ></i>
                       3 Comments
                     </a>
                   </li>
@@ -149,10 +157,10 @@
               <div class="blogitem-tags">
                 <h6 class="blogitem-tags-title">Tags:</h6>
                 <ul>
-                  <li><a href="blog.html">Apps</a></li>
-                  <li><a href="blog.html">Development</a></li>
-                  <li><a href="blog.html">Php</a></li>
-                  <li><a href="blog.html">Web</a></li>
+                  <li><a>Apps</a></li>
+                  <li><a>Development</a></li>
+                  <li><a>Php</a></li>
+                  <li><a>Web</a></li>
                 </ul>
               </div>
 
@@ -194,38 +202,73 @@
           <div class="col-lg-4 col-12">
             <div class="widgets widgets-sidebar">
               <!-- Single Widget -->
-              <div class="single-widget widget-search">
-                <h6 class="widget-title">Search</h6>
-                <form action="#" class="widget-search-form">
-                  <input type="text" placeholder="Enter your keyword..." />
-                  <button type="submit"><i class="ti ti-search"></i></button>
-                </form>
-              </div>
-              <!--// Single Widget -->
-
-              <!-- Single Widget -->
               <div class="single-widget widget-categories">
                 <h6 class="widget-title">Categories</h6>
                 <ul>
-                  <li><a href="blog.html">Wedding Jewelry</a></li>
-                  <li><a href="blog.html">Rings</a></li>
-                  <li><a href="blog.html">Earrings</a></li>
-                  <li><a href="blog.html">Bracelets</a></li>
-                  <li><a href="blog.html">Nacklaces</a></li>
-                  <li><a href="blog.html">Children’s Jewelry</a></li>
-                  <li><a href="blog.html">Expression Jewelry</a></li>
-                </ul>
-              </div>
-
-              <div class="single-widget widget-archives">
-                <h6 class="widget-title">Archives</h6>
-                <ul>
-                  <li><a href="#">December 2018</a></li>
-                  <li><a href="#">Septemper 2018</a></li>
-                  <li><a href="#">June 2018</a></li>
-                  <li><a href="#">April 2018</a></li>
-                  <li><a href="#">February 2018</a></li>
-                  <li><a href="#">January 2018</a></li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Round' }"
+                    >
+                      Round
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Oval' }"
+                    >
+                      Oval
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Cushion' }"
+                    >
+                      Cushion
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Princess' }"
+                    >
+                      Princess
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Radiant' }"
+                    >
+                      Radiant
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Pear' }"
+                    >
+                      Pear
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Marquise' }"
+                    >
+                      Marquise
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      [routerLink]="['/product']"
+                      [queryParams]="{ Shapes: 'Emerald' }"
+                    >
+                      Emerald
+                    </a>
+                  </li>
                 </ul>
               </div>
               <!--// Single Widget -->

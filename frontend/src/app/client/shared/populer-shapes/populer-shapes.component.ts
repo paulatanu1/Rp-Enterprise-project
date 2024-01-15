@@ -18,6 +18,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 interface IpopularShapesItem {
   shape: string;
@@ -67,7 +68,8 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
   @Input() title!: boolean;
   constructor(
     private shapes: PopularShapesService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
   ) {}
 
   itemsPerSlide = 4;
@@ -113,9 +115,11 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
   getPopularShapes() {
     this.shapes.popularShapes().subscribe({
       next: (res) => {
+        this.spinner.hide();
         this.popularShapesItem = res.response.raws.data.dataset;
       },
       error: (err) => {
+        this.spinner.hide();
         this.toastr.error(`${err.response.raws.error_message}`, '', {
           timeOut: 3000,
           closeButton: true,
