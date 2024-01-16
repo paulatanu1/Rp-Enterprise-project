@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FooterComponent implements OnInit {
   newsletterForm!: FormGroup;
-
+  disabled: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private newsLatter: NewsLatterService,
@@ -29,20 +29,25 @@ export class FooterComponent implements OnInit {
 
   onSubmit() {
     if (this.newsletterForm.valid) {
+      this.disabled = true;
       const email = this.newsletterForm.value.email;
       this.newsLatter.newsLatter(email).subscribe({
         next: (res) => {
-          console.log(res, 'resss');
+          this.disabled = false;
           this.toastr.success('Thank you for Subscribe', 'Yeah !', {
             timeOut: 2500,
             closeButton: true,
             progressBar: true,
           });
+          this.newsletterForm.reset();
         },
       });
     } else {
-      // Form is invalid, display an error or handle as needed
-      console.log('Form is invalid. Please check your input.');
+      this.toastr.error('Somthing Went wrong', 'Oops !', {
+        timeOut: 2500,
+        closeButton: true,
+        progressBar: true,
+      });
     }
   }
 }
