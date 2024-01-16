@@ -30,6 +30,7 @@ export class FooterComponent implements OnInit {
   onSubmit() {
     if (this.newsletterForm.valid) {
       this.disabled = true;
+      this.newsletterForm.controls['disabled'];
       const email = this.newsletterForm.value.email;
       this.newsLatter.newsLatter(email).subscribe({
         next: (res) => {

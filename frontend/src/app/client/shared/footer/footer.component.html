@@ -11,16 +11,16 @@
         <div class="col-lg-3 col-md-6 col-12">
           <div class="single-widget widget-info">
             <a class="widget-info-logo" [routerLink]="['/']">
-              <img src="assets/images/logo.png" alt="logo" />
+              <img src="assets/images/logo-3.png" alt="logo" />
             </a>
 
-            <p>
+            <!-- <p>
               Lorem ipsum dolor sit amet, consect etur adipiscing elit.
-            </p>
+            </p> -->
             <ul>
               <li>
                 <b>Address :</b>
-                JE-3060, Bharat Diamond Bourse, Bandra Kurla Complex, Bandra
+                JE-5060, Bharat Diamond Bourse, Bandra Kurla Complex, Bandra
                 East Mumbai 400051.
               </li>
               <li>
@@ -169,7 +169,7 @@
                 id="mc-submit"
                 type="submit"
                 class="tm-button"
-                [disabled]="!newsletterForm.valid"
+                [disabled]="!newsletterForm.valid || disabled"
               >
                 Subscribe Now
                 <b></b>
