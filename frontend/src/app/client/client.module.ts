@@ -33,6 +33,7 @@ import { CarouselModule as OwlCarouselModule } from 'ngx-owl-carousel-o';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HighContrastModeDetector } from '@angular/cdk/a11y';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { BlogDetailsComponent } from './blog-details/blog-details.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductComponent,
     MyAccountComponent,
     ProductDetailsComponent,
+    BlogDetailsComponent,
   ],
   imports: [
     CommonModule,

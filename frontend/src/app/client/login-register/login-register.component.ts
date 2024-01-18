@@ -19,6 +19,7 @@ export class LoginRegisterComponent implements OnInit {
     private router: Router
   ) {}
   loginForm!: FormGroup;
+  isChecked: boolean = false;
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
