@@ -252,7 +252,12 @@ class AuthController extends Controller
                 $system_amount = (int)$discountedPrice * (int)$weight;
                 $system_amount = number_format($system_amount, 2, '.', ',');
 
-                $stone_id = "RP" . $items['stone_id'];
+                $needle = env('PRODUCT_LABEL');
+                if (str_contains($items['stone_id'], $needle)) {
+                    $stone_id = $items['stone_id'];
+                } else {
+                    $stone_id = $needle . $items['stone_id'];
+                }
                 $productListArr[$key]['system_price'] = $discountedPrice;
                 $productListArr[$key]['system_amount'] = $system_amount;
                 $productListArr[$key]['product_name'] = $stone_id;
@@ -464,7 +469,13 @@ class AuthController extends Controller
             $system_amount = (int)$discountedPrice * (int)$weight;
             $system_amount = number_format($system_amount, 2, '.', ',');
 
-            $stone_id = "RP" . $productArr['stone_id'];
+            $needle = env('PRODUCT_LABEL');
+            if (str_contains($productArr['stone_id'], $needle)){
+                $stone_id = $productArr['stone_id'];
+            }else{
+                $stone_id = $needle . $productArr['stone_id'];
+            }
+            
             $productArr['system_price'] = $discountedPrice;
             $productArr['system_amount'] = $system_amount;
             $productArr['product_name'] = $stone_id;
