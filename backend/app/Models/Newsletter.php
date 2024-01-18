@@ -53,5 +53,10 @@ class Newsletter extends Model implements AuthenticatableContract, AuthorizableC
         return $newsLetterArr;
     }
 
+    public static function findUser($param){
+        $result = Newsletter::where('email_id',$param)->first();
+        return $result;
+    }
+
     
 }

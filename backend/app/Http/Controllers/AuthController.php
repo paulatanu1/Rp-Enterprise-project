@@ -501,10 +501,16 @@ class AuthController extends Controller
             $post['email_id'] = $request->input('email_id');
         }
 
-        $Newsletter = Newsletter::addRecord($post);
+        $findUser = Newsletter::findUser($post);
+        if($findUser==null){
+            $Newsletter = Newsletter::addRecord($post);
+            $success_message = 'Data add successfully';
+            $http_response = 'http_response_ok';
+        }else{
+            $error_message = 'Opps!! User already exits';
+            $http_response = 'http_response_bad_request';
+        }
         
-        $success_message = 'Data add successfully';
-        $http_response = 'http_response_ok';
         
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }

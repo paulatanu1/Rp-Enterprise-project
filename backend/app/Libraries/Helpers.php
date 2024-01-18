@@ -14,7 +14,7 @@ class Helpers {
     }
 
     public static function json_response($data = array(), $http_response, $error_message, $success_message, $error_msg_details = '') {
-        $developer = 'www.massoftind.com';
+        $developer = 'developer';
         $version = str_replace('_', '.', env('API_VERSION'));
 
         $raws = array();
