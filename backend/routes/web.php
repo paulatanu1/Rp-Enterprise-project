@@ -29,6 +29,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('newArrivel', 'AuthController@newArrivel');
     $router->post('popularShapes', 'AuthController@popularShapes');
     $router->post('productView', 'AuthController@productView');
+    $router->post('newsLatter', 'AuthController@newsLatter');
 });
 
 $router->group(['middleware' => 'admin'], function () use ($router) {
@@ -41,6 +42,7 @@ $router->group(['middleware' => 'admin'], function () use ($router) {
     $router->post('/admin/color', 'AdminController@color');
     $router->post('/admin/clarity', 'AdminController@clarity');
     $router->post('/admin/productDelete', 'AdminController@productDelete');
+    $router->post('/admin/newsLetterList', 'AdminController@newsLetterList');
     // $router->post('/admin/newArrivel', 'AdminController@newArrivel');
     $router->post('logout', 'AuthController@logout');
     $router->post('refresh', 'AuthController@refresh');

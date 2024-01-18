@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-product',
@@ -38,10 +39,12 @@ export class ProductComponent implements OnInit {
   weight: string = '';
   selectedSortingValue: string = 'Asc';
   isNoQueryParam = false;
+  loaderEnable: boolean = true;
   constructor(
     private product: ClientProductService,
     private router: Router,
-    private activatedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
@@ -59,6 +62,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.activatedRouter.queryParams.subscribe({
       next: (params) => {
         if (params['Shapes'] == undefined) {
@@ -112,6 +116,7 @@ export class ProductComponent implements OnInit {
     color: string,
     weight: string
   ) {
+    this.loaderEnable = true;
     this.product
       .getHomePageProducts(
         PageNo,
@@ -127,6 +132,8 @@ export class ProductComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
+          this.spinner.hide();
+          this.loaderEnable = false;
           this.totalItems = res.response.raws.data.total_count;
           this.productList.push(...res.response.raws.data.dataset);
           this.displayedItems++;

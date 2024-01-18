@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use  App\Models\Contact;
 use  App\Models\Product;
 use App\Libraries\Helpers;
+use  App\Models\Newsletter;
 
 
 
@@ -487,6 +488,24 @@ class AuthController extends Controller
             $error_message = 'Data not found';
             $http_response = 'http_response_bad_request';
         }
+        return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
+    }
+
+    public function newsLatter(Request $request){
+        $error_message = $success_message = $http_response = '';
+        $result_arr = $post_array = array();
+        $flag = true;
+        if ($request->input('email_id') == '') {
+            $post['email_id'] = "";
+        } else {
+            $post['email_id'] = $request->input('email_id');
+        }
+
+        $Newsletter = Newsletter::addRecord($post);
+        
+        $success_message = 'Data add successfully';
+        $http_response = 'http_response_ok';
+        
         return Helpers::json_response($result_arr, $http_response, $error_message, $success_message);
     }
 }

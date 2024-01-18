@@ -109,13 +109,31 @@
               </div>
               <div class="col-lg-3 col-md-6 col-sm-12 d-flex">
                 <div class="search-area">
-                  <button mat-button (click)="performSearch()">
+                  <!-- <button mat-button (click)="performSearch()">
                     Search
+                  </button> -->
+                  <button
+                    (click)="performSearch()"
+                    id="mc-submit"
+                    type="submit"
+                    class="tm-button"
+                  >
+                    Search
+                    <i class="fa fa-search" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="reset-area">
-                  <button (click)="resetFilter()" mat-button type="button">
+                  <!-- <button (click)="resetFilter()" mat-button type="button">
                     Reset All Filter
+                  </button> -->
+                  <button
+                    (click)="resetFilter()"
+                    id="mc-submit"
+                    type="submit"
+                    class="tm-button reset"
+                  >
+                    Reset Filters
+                    <i class="fa fa-undo" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -207,7 +225,7 @@
                           Add to cart
                         </a> -->
                         <button
-                          (click)="shareProductOnWhatsApp(item)"
+                          [routerLink]="['details/', item.id]"
                           id="mc-submit"
                           type="submit"
                           class="tm-button cs-width"
@@ -230,7 +248,7 @@
                     font-weight: 600;
                     margin-top: 50px;
                   "
-                  *ngIf="productList.length == 0"
+                  *ngIf="productList.length == 0 && loaderEnable == false"
                 >
                   No Product Found
                 </div>
@@ -241,6 +259,7 @@
             <div class="tm-pagination mt-50"></div>
           </div>
         </div>
+        <span *ngIf="loaderEnable" class="loader"></span>
       </div>
     </div>
   </main>

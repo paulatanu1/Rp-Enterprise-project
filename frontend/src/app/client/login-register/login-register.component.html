@@ -61,6 +61,8 @@
                     type="checkbox"
                     name="login-remember"
                     id="login-remember"
+                    [checked]="isChecked"
+                    (click)="isChecked = true"
                   />
                   <label for="login-remember">Remember Me</label>
                   <p class="mb-0">
@@ -91,7 +93,7 @@
             </form>
           </div>
 
-          <div class="col-lg-6">
+          <!-- <div class="col-lg-6">
             <form action="#" class="tm-form tm-register-form">
               <h4>Create an account</h4>
               <p>Welcome! Register for an account</p>
@@ -143,7 +145,7 @@
                 </div>
               </div>
             </form>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
