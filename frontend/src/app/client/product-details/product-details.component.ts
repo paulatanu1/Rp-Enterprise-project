@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductDetailsService } from '../client-services/product-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 interface IproductDetails {
   id: number;
   status: number;
@@ -82,25 +83,36 @@ export class ProductDetailsComponent implements OnInit {
   };
   constructor(
     private _porductService: ProductDetailsService,
-    private _router: ActivatedRoute
+    private _router: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {
     this._router.params.subscribe({
       next: (res) => {
         this.productId = res['id'];
+        if (this.productId) {
+          this.getProduct();
+        }
       },
     });
   }
 
   ngOnInit(): void {
-    this.getProduct();
+    if (!this.productDetails) {
+      this.getProduct();
+    }
   }
 
   getProduct() {
+    window.scrollTo(0, 0);
+    this.spinner.show();
     this._porductService.getProductDetails(this.productId).subscribe({
       next: (res) => {
         this.productDetails = res.response.raws.data.dataset;
+        this.spinner.hide();
       },
-      error: (err) => {},
+      error: (err) => {
+        this.spinner.hide();
+      },
     });
   }
 

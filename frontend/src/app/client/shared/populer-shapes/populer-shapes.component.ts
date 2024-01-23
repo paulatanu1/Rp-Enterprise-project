@@ -19,6 +19,7 @@ import {
 } from '@angular/animations';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 interface IpopularShapesItem {
   shape: string;
@@ -69,7 +70,9 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
   constructor(
     private shapes: PopularShapesService,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   itemsPerSlide = 4;
@@ -139,5 +142,11 @@ export class PopulerShapesComponent implements OnInit, AfterViewInit {
     window.open(whatsappURL, '_blank');
 
     // <a href="https://api.whatsapp.com/send?phone=1XXXXXXXXXX&text=I want to buy Product X. Price: $19.99">Buy Now</a>
+  }
+
+  navigateDetailsPage(id: number) {
+    const currentParams = this.route.snapshot.params;
+    const updateParams = { ...currentParams, id };
+    this.router.navigate(['product/details', updateParams.id]);
   }
 }
