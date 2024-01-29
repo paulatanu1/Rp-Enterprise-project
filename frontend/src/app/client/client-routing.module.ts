@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TermsAndConditionComponent } from './shared/terms-and-condition/terms-and-condition.component';
+import { PrivacyPolicyComponent } from './shared/privacy-policy/privacy-policy.component';
+import { ReturnAndRefundComponent } from './shared/return-and-refund/return-and-refund.component';
 
 const routes: Routes = [
   {
@@ -46,6 +49,18 @@ const routes: Routes = [
       import('./login-register/login-register.module').then(
         (m) => m.LoginRegisterModule
       ),
+  },
+  {
+    path: 'Terms-and-Conditions',
+    component: TermsAndConditionComponent,
+  },
+  {
+    path: 'privacy-policy',
+    component: PrivacyPolicyComponent,
+  },
+  {
+    path: 'Return-and-Refund',
+    component: ReturnAndRefundComponent,
   },
 ];
 

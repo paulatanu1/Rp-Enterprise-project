@@ -26,6 +26,7 @@
 .bg-white {
     background-color: #ffffff !important;
 }
+
 .tm-section {
     position: relative;
     z-index: 1;
@@ -242,6 +243,7 @@ h3,
     -ms-transform: translateY(0);
     transform: translateY(0);
 }
+
 .tm-product-images img+img {
     position: absolute;
     left: 0;
@@ -252,14 +254,20 @@ h3,
     -o-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
+
 .mt-50 {
     margin-top: 50px;
 }
+
 .tm-product-bottomside h6 {
     margin-bottom: 10px;
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
+}
+
+.tm-product-loadmore a {
+    color: #ffffff;
 }
 
 @media only screen and (min-width:320px) and (max-width:767px) {

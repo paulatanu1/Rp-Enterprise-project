@@ -42,13 +42,22 @@
         <!-- Single Widget -->
         <div class="col-lg-3 col-md-6 col-12">
           <div class="single-widget widget-quicklinks">
-            <h6 class="widget-title">Useful Link</h6>
+            <h6 class="widget-title">Useful Links</h6>
             <ul>
               <li><a [routerLink]="['/about']">About Us</a></li>
-              <li><a href="javascript:void(0)">Delivery Info</a></li>
-              <li><a href="javascript:void(0)">Privacy & Policy</a></li>
-              <li><a href="javascript:void(0)">Returns & Refunds</a></li>
-              <li><a href="javascript:void(0)">Terms & Conditions</a></li>
+              <li>
+                <a [routerLink]="['/privacy-policy']">Privacy & Policy</a>
+              </li>
+              <li>
+                <a [routerLink]="['/Return-and-Refund']">
+                  Returns & Refunds
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/Terms-and-Conditions']">
+                  Terms & Conditions
+                </a>
+              </li>
               <li><a [routerLink]="['/contact']">Contact Us</a></li>
             </ul>
           </div>

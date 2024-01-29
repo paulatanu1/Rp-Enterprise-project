@@ -34,6 +34,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HighContrastModeDetector } from '@angular/cdk/a11y';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { TermsAndConditionComponent } from './shared/terms-and-condition/terms-and-condition.component';
+import { PrivacyPolicyComponent } from './shared/privacy-policy/privacy-policy.component';
+import { ReturnAndRefundComponent } from './shared/return-and-refund/return-and-refund.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { BlogDetailsComponent } from './blog-details/blog-details.component';
     MyAccountComponent,
     ProductDetailsComponent,
     BlogDetailsComponent,
+    TermsAndConditionComponent,
+    PrivacyPolicyComponent,
+    ReturnAndRefundComponent,
   ],
   imports: [
     CommonModule,
