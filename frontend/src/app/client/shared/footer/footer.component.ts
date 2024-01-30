@@ -35,7 +35,7 @@ export class FooterComponent implements OnInit {
       this.newsLatter.newsLatter(email).subscribe({
         next: (res) => {
           this.disabled = false;
-          this.toastr.success('Thank you for Subscribe', 'Yeah !', {
+          this.toastr.success('Thanks for Subscribing.', 'Yeah !', {
             timeOut: 2500,
             closeButton: true,
             progressBar: true,
@@ -44,7 +44,7 @@ export class FooterComponent implements OnInit {
         },
       });
     } else {
-      this.toastr.error('Somthing Went wrong', 'Oops !', {
+      this.toastr.error('Somthing Went wrong or already Subscribed', 'Oops !', {
         timeOut: 2500,
         closeButton: true,
         progressBar: true,

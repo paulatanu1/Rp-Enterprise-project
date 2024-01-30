@@ -66,8 +66,8 @@ export class LatestBlogsComponent implements OnInit {
         'Lab Grown Diamonds vs. Natural Diamonds: Exploring the Differences',
       author: 'Anderson',
       comments: 3,
-      month: 'Aug',
-      date: 15,
+      month: 'Nov',
+      date: 18,
     },
 
     {
@@ -78,8 +78,8 @@ export class LatestBlogsComponent implements OnInit {
         'Unveiling the Brilliance: Unique Shapes in Lab-Grown Diamonds',
       author: 'Anderson',
       comments: 3,
-      month: 'Aug',
-      date: 15,
+      month: 'Dec',
+      date: 23,
     },
 
     {
@@ -90,7 +90,7 @@ export class LatestBlogsComponent implements OnInit {
         'The Ever-Growing Sparkle: The Increasing Demand for Lab-Grown Diamonds',
       author: 'Anderson',
       comments: 3,
-      month: 'Aug',
+      month: 'JAN',
       date: 15,
     },
 
@@ -102,8 +102,8 @@ export class LatestBlogsComponent implements OnInit {
         'Unveiling the Brilliance: Unique Shapes in Lab-Grown Diamonds',
       author: 'Anderson',
       comments: 3,
-      month: 'Aug',
-      date: 15,
+      month: 'Feb',
+      date: 26,
     },
   ];
   constructor() {}
