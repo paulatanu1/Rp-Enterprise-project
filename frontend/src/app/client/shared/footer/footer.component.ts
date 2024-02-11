@@ -11,14 +11,18 @@ import { ToastrService } from 'ngx-toastr';
 export class FooterComponent implements OnInit {
   newsletterForm!: FormGroup;
   disabled: boolean = false;
+  currentYear: Date;
   constructor(
     private formBuilder: FormBuilder,
     private newsLatter: NewsLatterService,
     private toastr: ToastrService
-  ) {}
+  ) {
+    this.currentYear = new Date();
+  }
 
   ngOnInit(): void {
     this.initializeForm();
+    console.log(this.currentYear);
   }
 
   initializeForm() {
